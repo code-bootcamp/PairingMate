@@ -1,5 +1,9 @@
 const BestDealUI = () => {
 
-    return <></>
+    return (
+        <>
+            <div>git test입니다.</div>
+        </>
+    )
 }
 export default BestDealUI;
