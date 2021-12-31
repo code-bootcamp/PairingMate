@@ -8,6 +8,7 @@
 
 
 import { css } from "@emotion/react";
+import "antd/dist/antd.css";
 
 export const globalStyles = css`
   * {
