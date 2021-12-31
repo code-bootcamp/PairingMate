@@ -1,4 +1,4 @@
-<h1 align="center">팀명 : 재훈멘토없는 재훈팀 </h1>
+<h1 align="center">팀명 : 재훈없는 재훈팀 </h1>
 
 <h3 align="center">
 프로젝트 이름 : ParingMate
