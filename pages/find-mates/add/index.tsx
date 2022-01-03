@@ -1,7 +1,7 @@
 import FindMatesAdd from "../../../src/components/units/FindMates/add/FindMatesAddContainer";
 
-const FindmateAddPage = () => {
+const FindmatesAddPage = () => {
   return <FindMatesAdd />;
 };
 
-export default FindmateAddPage;
+export default FindmatesAddPage;
