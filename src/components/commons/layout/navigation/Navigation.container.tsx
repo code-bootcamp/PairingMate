@@ -1,28 +1,22 @@
-import NavigationUI from "./Navigation.presenter"
-import { useState } from "react"
+import NavigationUI from "./Navigation.presenter";
+import { useState } from "react";
 
-const Navigation = () =>{
+const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    const [isOpen, setIsOpen] = useState(false)
-    
-    const onClickopen = () => {
-        if(isOpen === true){
-            setIsOpen(false)
-            console.log(isOpen)
-        }else{
-            setIsOpen(true)
-            console.log(isOpen)
-        }
+  const onClickopen = () => {
+    if (isOpen === true) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
     }
+  };
 
-    return(
-        <>
-        <NavigationUI 
-            isOpen={isOpen}
-            onClickopen={onClickopen}
-        />
-        </>
-    )
-}
+  return (
+    <>
+      <NavigationUI isOpen={isOpen} onClickopen={onClickopen} />
+    </>
+  );
+};
 
-export default Navigation
+export default Navigation;

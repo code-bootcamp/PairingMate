@@ -6,7 +6,6 @@
 // 작성자 : 정혜민
 // 내용 : 전역으로 사용될 css 설정완료
 
-
 import { css } from "@emotion/react";
 import "antd/dist/antd.css";
 
@@ -17,9 +16,38 @@ export const globalStyles = css`
     border: 0;
     box-sizing: border-box;
   }
+  body {
+    font-size: 1rem;
+  }
+
+  body.fp-viewing-0 header {
+    background: none;
+  }
+  body.fp-viewing-0 header h1 button {
+    background-image: url("/images/common/logo.png");
+  }
 
   html {
     scroll-behavior: smooth;
+    font-size: 100%;
+  }
+
+  @media all and (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  @media all and (max-width: 969px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media all and (max-width: 767px) {
+    html {
+      font-size: 13px;
+    }
   }
 
   html,
@@ -106,8 +134,8 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font-family: "Noto Sans CJK KR", sans-serif;
+    // font-size: 100%;
     font-weight: normal;
     vertical-align: baseline;
   }
@@ -153,8 +181,8 @@ export const globalStyles = css`
     color: #111;
   }
   button {
-    background:none;
-    outline:none;
-    cursor : pointer;
+    background: none;
+    outline: none;
+    cursor: pointer;
   }
 `;
