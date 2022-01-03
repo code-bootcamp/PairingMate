@@ -152,4 +152,9 @@ export const globalStyles = css`
   a:hover {
     color: #111;
   }
+  button {
+    background:none;
+    outline:none;
+    cursor : pointer;
+  }
 `;
