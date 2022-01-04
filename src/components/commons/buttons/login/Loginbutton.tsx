@@ -1,5 +1,6 @@
 import { ButtonsProps } from "../button.types";
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 const Loginbuttons = styled.button`
   position: relative;
@@ -24,9 +25,13 @@ const Loginbuttons = styled.button`
 `;
 
 const LoginButton = (props: ButtonsProps) => {
+  const router = useRouter()
+  const onClickMoveToLoginPage = () => {
+    router.push("./login")
+  }
   return (
     <>
-      <Loginbuttons type={props.type}>{props.name}</Loginbuttons>
+      <Loginbuttons type={props.type} onClick={onClickMoveToLoginPage}>{props.name}</Loginbuttons>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import LoginButton from "../../buttons/login/Loginbutton";
+import LogoutButton from "../../buttons/logout/Logoutbutton";
 import * as N from "./Navigation.styles";
 import { NavigationProps } from "./Navigation.types";
 
@@ -16,7 +17,8 @@ const NavigationUI = (props: NavigationProps) => {
             로그인 후 이용이 가능합니다 <br />
             회원가입 후 당신의 <span>메이트</span>를 만나보세요.
           </h6>
-          <LoginButton type="button" name="로그인" />
+          <LoginButton  type="button" name="로그인" />
+          <LogoutButton type="button" name="로그아웃" />
         </N.LoginSection>
 
         <N.NavigationList>
