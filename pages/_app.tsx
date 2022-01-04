@@ -1,8 +1,9 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { Global } from '@emotion/react';
+import { Global, ThemeProvider } from '@emotion/react';
 import { globalStyles } from '../src/commons/styles/globalStyles';
 import Header from '../src/components/commons/layout/header/Header.container';
+import theme from "../src/commons/styles/variables";
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { ApolloClient, ApolloProvider, InMemoryCache, ApolloLink } from '@apollo/client';
@@ -34,9 +35,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     });
     return (
         <ApolloProvider client={client}>
+          <ThemeProvider theme={theme}>
             <Header />
             <Global styles={globalStyles} />
             <Component {...pageProps} />
+          </ThemeProvider>
         </ApolloProvider>
     );
 }

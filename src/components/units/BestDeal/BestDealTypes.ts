@@ -1,1 +1,0 @@
-// Typescript 작성

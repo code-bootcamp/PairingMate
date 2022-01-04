@@ -1,26 +1,18 @@
-import Navigation from "../navigation/Navigation.container"
-import NavigationUI from "../navigation/Navigation.presenter"
-import * as H from "./Header.styles"
+import Navigation from "../navigation/Navigation.container";
+import NavigationUI from "../navigation/Navigation.presenter";
+import * as H from "./Header.styles";
 
-
-const HeaderUI = () =>{
-
-
-    return(
-        <>
-        <H.Header>
+const HeaderUI = () => {
+  return (
+    <>
+      <H.Header>
         <H.Logo>
-            <button>
-                <img src="/images/common/logo.png" alt="" />
-            </button>
+          <button></button>
         </H.Logo>
         <Navigation />
-        </H.Header>
-        
-        
-        </>
-        
-    )
-}
+      </H.Header>
+    </>
+  );
+};
 
-export default HeaderUI
+export default HeaderUI;
