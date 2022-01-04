@@ -1,23 +1,21 @@
 import FindMatesAddUI from "./FindMatesAddPresenter";
 import { FindmatesAddProps } from "./FindMatesAddTypes";
 import { useMutation } from "@apollo/client";
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   IMutation,
   IMutationCreateBoardArgs,
 } from "../../../../commons/types/generated/types";
 import { CREATEBOARD } from "./FindMatesAddQueries";
-import {
-  replaceTags,
-  getCategory,
-} from "../../../../commons/libraries/utils/utils";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
+import { replaceTags } from "../../../../commons/libraries/utils/utils";
 
 const FindMatesAdd = (props: FindmatesAddProps) => {
+  const [isUpdateTag, setIsUpdateTag] = useState(false);
+  const [isUpdateImages, setIsUpdateImages] = useState(false);
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState<string[]>([]);
-  const [inputTag, setInputTag] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
   const [images, setImages] = useState([]);
@@ -45,23 +43,6 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
     setContents(event.target.value);
   };
 
-  const onChangeInputTags = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputTag(event.target.value);
-  };
-
-  const onChangeTags = (event: KeyboardEvent) => {
-    const target = event.target as HTMLInputElement;
-    if (event.key === "Enter") {
-      setTags((prev) => [...prev, "#" + target.value]);
-      setInputTag("");
-    }
-  };
-
-  const onClickDelteTags = (tag: string) => () => {
-    const newTags = tags.filter((el) => el !== tag);
-    setTags(newTags);
-  };
-
   const onClickAddFindmate = async () => {
     try {
       const result = await addFindmate({
@@ -78,26 +59,36 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
         },
       });
       router.push(`/find-mates/${result.data.createBoard._id}/`);
-      console.log(result);
     } catch (error) {
       Modal.error({ content: error.message });
     }
   };
 
-  const onClickUpdateFindmate = () => {};
+  const onClickUpdateFindmate = () => {
+    if (isUpdateTag) {
+      console.log(tags);
+    } else {
+      console.log(replaceTags(props.data?.fetchBoard.youtubeUrl));
+    }
+
+    if (isUpdateImages) {
+      console.log(images);
+    } else {
+      console.log(props.data?.fetchBoard.images);
+    }
+  };
 
   return (
     <FindMatesAddUI
       tags={tags}
-      inputTag={inputTag}
+      setTags={setTags}
+      setIsUpdateTag={setIsUpdateTag}
       data={props.data}
       isUpdate={props.isUpdate}
       setImages={setImages}
+      setIsUpdateImages={setIsUpdateImages}
       setBoardAddress={setBoardAddress}
       onChangeCategory={onChangeCategory}
-      onChangeInputTags={onChangeInputTags}
-      onChangeTags={onChangeTags}
-      onClickDelteTags={onClickDelteTags}
       onClickAddFindmate={onClickAddFindmate}
       onChangeTitle={onChangeTitle}
       onChangeContents={onChangeContents}

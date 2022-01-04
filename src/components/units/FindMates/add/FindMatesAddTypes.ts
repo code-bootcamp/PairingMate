@@ -7,11 +7,13 @@ export interface FindmatesAddProps {
 }
 
 export interface FindmatesAddUIProps {
-  inputTag: string;
   tags: string[];
+  setTags: Dispatch<SetStateAction<string[]>>;
+  setIsUpdateTag: Dispatch<SetStateAction<boolean>>;
   data?: Pick<IQuery, "fetchBoard">;
   isUpdate?: boolean;
   setImages: Dispatch<SetStateAction<any[]>>;
+  setIsUpdateImages: Dispatch<SetStateAction<boolean>>;
   setBoardAddress: Dispatch<
     SetStateAction<{
       zipcode: string;
@@ -20,11 +22,8 @@ export interface FindmatesAddUIProps {
     }>
   >;
   onChangeCategory: (event: ChangeEvent<HTMLSelectElement>) => void;
-  onChangeInputTags: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeContents: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeTags: (event: KeyboardEvent) => void;
-  onClickDelteTags: (tag: string) => () => void;
   onClickAddFindmate: () => void;
   onClickUpdateFindmate: () => void;
 }
