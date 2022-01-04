@@ -4,27 +4,27 @@ import { Global, ThemeProvider } from '@emotion/react';
 import { globalStyles } from '../src/commons/styles/globalStyles';
 import Header from '../src/components/commons/layout/header/Header.container';
 import theme from "../src/commons/styles/variables";
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { ApolloClient, ApolloProvider, InMemoryCache, ApolloLink } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
-// firebase
-// 송민성 : firebase appKey설정
 const firebaseConfig = {
-    apiKey: 'AIzaSyBKq5dWLNYR5vLlm67HnDb_j2fAQY5Fo14',
-    authDomain: 'pairingmate-6126c.firebaseapp.com',
-    projectId: 'pairingmate-6126c',
-    storageBucket: 'pairingmate-6126c.appspot.com',
-    messagingSenderId: '1084875720748',
-    appId: '1:1084875720748:web:d09dab9be5a037e5982989',
-};
-
+    apiKey: "AIzaSyDgy7AmFAGZ5FPmsm3MhmgJvoNvyZApn7Y",
+    authDomain: "pairingmate-dev.firebaseapp.com",
+    projectId: "pairingmate-dev",
+    storageBucket: "pairingmate-dev.appspot.com",
+    messagingSenderId: "234476987446",
+    appId: "1:234476987446:web:147698d507b39acb30a497",
+    measurementId: "G-77ZN8XW422"
+  };
+  
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const authService = getAuth();
+export const app = initializeApp(firebaseConfig);
 
-function MyApp({ Component, pageProps }: AppProps) {
+export const auth = getAuth();
+
+const MyApp=({ Component, pageProps }: AppProps)=> {
     // ApolloClient 셋팅
     const uploadLink = createUploadLink({
         uri: 'https://backend04-team.codebootcamp.co.kr/team02',

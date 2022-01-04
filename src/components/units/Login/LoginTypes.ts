@@ -1,5 +1,9 @@
 // Typescript 작성
 
+import { ChangeEvent } from "react";
+
 export interface LoginUIProps {
-    onClickModal : () => void;
+    onChangeEmail: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
+    onClickLogin: () => void;
 }
