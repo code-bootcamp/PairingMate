@@ -3,6 +3,8 @@ import MainBanner from "../src/components/commons/layout/banner/main/Mainbanner.
 import MainSection01 from "../src/components/units/Main/Section01/Section01.container";
 import MainSection02 from "../src/components/units/Main/Section02/Section02.container";
 import ReactFullpage from "@fullpage/react-fullpage";
+import MainSection03 from "../src/components/units/Main/Section03/Section03.container";
+import MainSection04 from "../src/components/units/Main/Section04/Section04.container";
 
 const Home: NextPage = () => {
   return (
@@ -23,6 +25,12 @@ const Home: NextPage = () => {
                 </div>
                 <div className="section">
                   <MainSection02 />
+                </div>
+                <div className="section">
+                  <MainSection03 />
+                </div>
+                <div className="section fp-auto-height">
+                  <MainSection04 />
                 </div>
               </ReactFullpage.Wrapper>
             </>
