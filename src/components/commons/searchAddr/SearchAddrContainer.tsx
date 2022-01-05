@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState, Dispatch, SetStateAction } from "react";
+import { IQuery } from "../../../commons/types/generated/types";
 
 declare const window: Window &
   typeof globalThis & {
@@ -7,6 +8,7 @@ declare const window: Window &
   };
 
 interface SearchAddrProps {
+  data: Pick<IQuery, "fetchBoard">;
   setBoardAddress: Dispatch<
     SetStateAction<{
       zipcode: string;
@@ -58,7 +60,13 @@ const SearchAddr = (props: SearchAddrProps) => {
       </Head>
       <button onClick={onClickSearchAddr}>주소검색</button>
       <div>
-        주소 : <input type="text" value={addr} readOnly />
+        주소 :{" "}
+        <input
+          type="text"
+          placeholder={props.data?.fetchBoard.boardAddress?.address}
+          value={addr}
+          readOnly
+        />
       </div>
     </>
   );

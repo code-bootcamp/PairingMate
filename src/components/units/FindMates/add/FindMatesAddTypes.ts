@@ -27,3 +27,11 @@ export interface FindmatesAddUIProps {
   onClickAddFindmate: () => void;
   onClickUpdateFindmate: () => void;
 }
+
+export interface UpdateBoardInput {
+  title?: string;
+  contents?: string;
+  youtubeUrl?: string;
+  images?: string[];
+  boardAddress?: {};
+}

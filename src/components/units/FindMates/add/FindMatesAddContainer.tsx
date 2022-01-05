@@ -1,15 +1,19 @@
 import FindMatesAddUI from "./FindMatesAddPresenter";
-import { FindmatesAddProps } from "./FindMatesAddTypes";
+import { FindmatesAddProps, UpdateBoardInput } from "./FindMatesAddTypes";
 import { useMutation } from "@apollo/client";
 import { ChangeEvent, useState } from "react";
 import {
   IMutation,
   IMutationCreateBoardArgs,
+  IMutationUpdateBoardArgs,
 } from "../../../../commons/types/generated/types";
-import { CREATEBOARD } from "./FindMatesAddQueries";
+import { CREATEBOARD, UPDATE_BOARD } from "./FindMatesAddQueries";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
-import { replaceTags } from "../../../../commons/libraries/utils/utils";
+import {
+  getCategory,
+  getTitle,
+} from "../../../../commons/libraries/utils/utils";
 
 const FindMatesAdd = (props: FindmatesAddProps) => {
   const [isUpdateTag, setIsUpdateTag] = useState(false);
@@ -28,6 +32,10 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
     Pick<IMutation, "createBoard">,
     IMutationCreateBoardArgs
   >(CREATEBOARD);
+  const [updateFindmate] = useMutation<
+    Pick<IMutation, "updateBoard">,
+    IMutationUpdateBoardArgs
+  >(UPDATE_BOARD);
 
   const router = useRouter();
 
@@ -44,6 +52,20 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
   };
 
   const onClickAddFindmate = async () => {
+    if (
+      category === "" ||
+      title === "" ||
+      contents === "" ||
+      tags.length === 0 ||
+      boardAddress.address === ""
+    ) {
+      Modal.warning({ content: "모든 내용을 작성해주세요" });
+      return;
+    }
+    if (images.length === 0) {
+      Modal.warning({ content: "최소 1장의 이미지를 넣어주세요" });
+      return;
+    }
     try {
       const result = await addFindmate({
         variables: {
@@ -64,17 +86,47 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
     }
   };
 
-  const onClickUpdateFindmate = () => {
-    if (isUpdateTag) {
-      console.log(tags);
-    } else {
-      console.log(replaceTags(props.data?.fetchBoard.youtubeUrl));
+  const onClickUpdateFindmate = async () => {
+    if (images.length === 0) {
+      Modal.warning({ content: "최소 1장의 이미지를 넣어주세요" });
+      return;
     }
+    const updateBoardInput: UpdateBoardInput = {};
+    // 카테고리만 수정 되었을때
+    if (category !== "" && title === "")
+      updateBoardInput.title =
+        category + "$%$%" + getTitle(props.data?.fetchBoard.title);
 
-    if (isUpdateImages) {
-      console.log(images);
-    } else {
-      console.log(props.data?.fetchBoard.images);
+    // 제목만 수정 되었을때
+    if (title !== "" && category === "")
+      updateBoardInput.title =
+        getCategory(props.data?.fetchBoard.title) + "$%$%" + title;
+
+    // 제목 카테고리 둘다 수정 되었을때
+    if (category !== "" && title !== "")
+      updateBoardInput.title = category + "$%$%" + title;
+
+    if (contents !== "") updateBoardInput.contents = contents;
+
+    if (isUpdateTag) updateBoardInput.youtubeUrl = tags.join("");
+
+    if (isUpdateImages) updateBoardInput.images = images;
+
+    if (boardAddress.address !== "")
+      updateBoardInput.boardAddress = boardAddress;
+
+    try {
+      await updateFindmate({
+        variables: {
+          boardId: String(router.query.findmateId),
+          password: "1234",
+          updateBoardInput,
+        },
+      });
+      Modal.success({ content: "수정 되었습니다." });
+      router.push(`/find-mates/${router.query.findmateId}`);
+    } catch (error) {
+      Modal.error({ content: error.message });
     }
   };
 
