@@ -1,8 +1,7 @@
 import RundayCourse from "../../src/components/units/RundayCourse/RundayCourseContainer";
 
 const RundayCoursePage = () => {
-
-    return <RundayCourse />
-}
+  return <RundayCourse />;
+};
 
 export default RundayCoursePage;
