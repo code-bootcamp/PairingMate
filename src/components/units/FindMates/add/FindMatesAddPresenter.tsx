@@ -68,7 +68,10 @@ const FindMatesAddUI = (props: FindmatesAddUIProps) => {
         </div>
 
         <div>
-          <SearchAddr setBoardAddress={props.setBoardAddress} />
+          <SearchAddr
+            setBoardAddress={props.setBoardAddress}
+            data={props.data}
+          />
         </div>
         {props.isUpdate ? (
           <button onClick={props.onClickUpdateFindmate}>수정</button>
