@@ -5,10 +5,13 @@ import MainSection02 from "../src/components/units/Main/Section02/Section02.cont
 import ReactFullpage from "@fullpage/react-fullpage";
 import MainSection03 from "../src/components/units/Main/Section03/Section03.container";
 import MainSection04 from "../src/components/units/Main/Section04/Section04.container";
+import Header from "../src/components/commons/layout/header/Header.container";
+import Footer from "../src/components/commons/layout/footer/Footer.container";
 
 const Home: NextPage = () => {
   return (
     <>
+      <Header />
       <ReactFullpage
         responsiveWidth={1320}
         responsiveHeight={850}
@@ -31,6 +34,9 @@ const Home: NextPage = () => {
                 </div>
                 <div className="section fp-auto-height">
                   <MainSection04 />
+                </div>
+                <div className="section fp-auto-height">
+                  <Footer />
                 </div>
               </ReactFullpage.Wrapper>
             </>
