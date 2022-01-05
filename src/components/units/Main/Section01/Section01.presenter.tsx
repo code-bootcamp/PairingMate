@@ -1,7 +1,8 @@
 import { FullpageSection, Inner } from "../../../../commons/styles/common";
 import * as MS1 from "./Section01.styles";
+import { Section01Props } from "./Section01.types";
 
-const MainSection01UI = () => {
+const MainSection01UI = (props: Section01Props) => {
   return (
     <>
       <FullpageSection>
@@ -19,7 +20,7 @@ const MainSection01UI = () => {
             </MS1.TextDesc>
           </MS1.TextWrap>
           <MS1.AboutContsCard>
-            <li>
+            <li onClick={props.onClickMoveToFindMates}>
               <figure>
                 <figcaption>
                   <h4>FindMates</h4>
@@ -27,7 +28,7 @@ const MainSection01UI = () => {
               </figure>
             </li>
 
-            <li>
+            <li onClick={props.onClickMoveToFitnessCenter}>
               <figure>
                 <figcaption>
                   <h4>Fitness Center</h4>
@@ -35,7 +36,7 @@ const MainSection01UI = () => {
               </figure>
             </li>
 
-            <li>
+            <li onClick={props.onClickMoveToBestDeal}>
               <figure>
                 <figcaption>
                   <h4>Best Deal</h4>
@@ -43,7 +44,7 @@ const MainSection01UI = () => {
               </figure>
             </li>
 
-            <li>
+            <li onClick={props.onClickMoveToRundayCourse}>
               <figure>
                 <figcaption>
                   <h4>Runday course</h4>

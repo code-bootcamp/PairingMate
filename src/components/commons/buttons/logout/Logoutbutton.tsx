@@ -8,8 +8,8 @@ const Logoutbuttons = styled.button`
   position: relative;
   font-size: 16px;
   margin-left: 16px;
-  color:#d53e3d;
-  
+  color: #d53e3d;
+
   &::after {
     content: "";
     position: absolute;
@@ -29,23 +29,29 @@ const Logoutbuttons = styled.button`
 `;
 
 const LogoutButton = (props: ButtonsProps) => {
-    const auth = getAuth();
+  const auth = getAuth();
 
-    const onClickLogout = () => {
-        signOut(auth).then(() => {
-          // Sign-out successful.
-          Modal.success({title:"로그아웃" , content:"메인 페이지로 이동 합니다."});
-          router.push("/");
-        }).catch((error) => {
-          // An error happened.
-          console.log(error);
+  const onClickLogout = async () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        Modal.success({
+          title: "로그아웃",
+          content: "메인 페이지로 이동 합니다.",
         });
-        
-    }
+        router.push("/");
+        setTimeout(() => location.reload(), 1000);
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
   return (
     <>
-      <Logoutbuttons type={props.type} onClick={onClickLogout}>{props.name}</Logoutbuttons>
-      {/* <Logoutbuttons type={props.type} >{props.name}</Logoutbuttons> */}
+      <Logoutbuttons type={props.type} onClick={onClickLogout}>
+        {props.name}
+      </Logoutbuttons>
     </>
   );
 };

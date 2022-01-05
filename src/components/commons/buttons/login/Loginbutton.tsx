@@ -25,13 +25,15 @@ const Loginbuttons = styled.button`
 `;
 
 const LoginButton = (props: ButtonsProps) => {
-  const router = useRouter()
+  const router = useRouter();
   const onClickMoveToLoginPage = () => {
-    router.push("./login")
-  }
+    router.push("./login");
+  };
   return (
     <>
-      <Loginbuttons type={props.type} onClick={onClickMoveToLoginPage}>{props.name}</Loginbuttons>
+      <Loginbuttons type={props.type} onClick={onClickMoveToLoginPage}>
+        {props.name}
+      </Loginbuttons>
     </>
   );
 };

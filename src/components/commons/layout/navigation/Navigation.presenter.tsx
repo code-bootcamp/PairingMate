@@ -17,25 +17,29 @@ const NavigationUI = (props: NavigationProps) => {
             로그인 후 이용이 가능합니다 <br />
             회원가입 후 당신의 <span>메이트</span>를 만나보세요.
           </h6>
-          <LoginButton  type="button" name="로그인" />
+          <LoginButton type="button" name="로그인" />
           <LogoutButton type="button" name="로그아웃" />
         </N.LoginSection>
 
         <N.NavigationList>
           <li>
-            <button>FindMates</button>
+            <button onClick={props.onClickMoveToFindMates}>FindMates</button>
           </li>
           <li>
-            <button>Fitness Center</button>
+            <button onClick={props.onClickMoveToFitnessCenter}>
+              Fitness Center
+            </button>
           </li>
           <li>
-            <button>Best Deal</button>
+            <button onClick={props.onClickMoveToBestDeal}>Best Deal</button>
           </li>
           <li>
-            <button>Runday Course</button>
+            <button onClick={props.onClickMoveToRundayCourse}>
+              Runday Course
+            </button>
           </li>
           <li>
-            <button>고객센터</button>
+            <button onClick={props.onClickMoveToCSCenter}>고객센터</button>
           </li>
         </N.NavigationList>
       </N.Navigation>
