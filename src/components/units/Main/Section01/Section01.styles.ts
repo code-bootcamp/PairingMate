@@ -18,9 +18,9 @@ export const SectionBg = styled.div`
     height: 100%;
     min-height: 500px;
     max-height: 500px;
-    background-image: url(/images/common/logo.png);
+    background-image: url(/images/main/bg_findmates_section.png);
     background-repeat: no-repeat;
-    background-size: 30%;
+    background-size: 50%;
     background-position: bottom right;
     opacity: 0.5;
   }

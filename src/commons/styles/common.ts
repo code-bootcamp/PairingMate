@@ -15,3 +15,8 @@ export const FullpageSection = styled.section`
   width: 100%;
   height: 100%;
 `;
+
+export const Contents = styled.div`
+  width: 100%;
+  height: 100%;
+`;
