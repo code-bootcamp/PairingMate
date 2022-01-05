@@ -2,6 +2,7 @@ import Footer from "./footer/Footer.container";
 import Header from "./header/Header.container";
 import { ILayoutProps } from "./layout.types";
 import { useRouter } from "next/router";
+import SubBanner from "./banner/sub/test";
 
 const MAIN_ONLY = ["/"];
 
@@ -13,6 +14,7 @@ const Layout = (props: ILayoutProps) => {
       {!isMainOnly ? (
         <>
           <Header />
+          <SubBanner />
           <div>{props.children}</div>
           <Footer />
         </>
