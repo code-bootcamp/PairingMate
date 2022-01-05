@@ -6,4 +6,5 @@ export interface LoginUIProps {
     onChangeEmail: (event: ChangeEvent<HTMLInputElement>) => void;
     onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
     onClickLogin: () => void;
+    onClickSignup: () =>  void;
 }

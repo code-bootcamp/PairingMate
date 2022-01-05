@@ -4,17 +4,29 @@ import { ILayoutProps } from "./layout.types";
 import { useRouter } from "next/router";
 
 const MAIN_ONLY = ["/"];
+const HIDDEN_HEADERS = [ "/login" , "/signup" ];
+const HIDDEN_FOOTERS = [ "/login" , "/signup" ];
 
 const Layout = (props: ILayoutProps) => {
   const router = useRouter();
   const isMainOnly = MAIN_ONLY.includes(router.asPath);
+  const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
+  const isHiddenFooter = HIDDEN_FOOTERS.includes(router.asPath);
+
   return (
     <>
       {!isMainOnly ? (
         <>
-          <Header />
-          <div>{props.children}</div>
-          <Footer />
+          {isHiddenHeader && isHiddenFooter ? (
+            <div>{props.children}</div>
+          ) : (
+            <>   
+            <Header />
+              <div>{props.children}</div>
+            <Footer />
+            </>
+          )
+        }
         </>
       ) : (
         <div>{props.children}</div>
