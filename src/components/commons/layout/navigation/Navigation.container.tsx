@@ -1,6 +1,7 @@
 import NavigationUI from "./Navigation.presenter";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { reload } from "firebase/auth";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
