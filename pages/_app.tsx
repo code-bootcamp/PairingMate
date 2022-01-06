@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/fonts/NotoSansKR/NotoSansKR.css"
 import type { AppProps } from "next/app";
 import { Global, ThemeProvider } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
