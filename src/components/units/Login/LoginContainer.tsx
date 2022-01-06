@@ -1,14 +1,15 @@
 import LoginUI from "./LoginPresenter";
 import { Modal } from 'antd'
 import { ChangeEvent, useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/router";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const auth = getAuth();
   const router = useRouter();
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
   const onChangeEmail = (event:ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -65,6 +66,35 @@ const Login = () => {
       });
   };
 
+  const onClickGoogleLogin = async () => {
+    await signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+        console.log("user : ", user);
+        router.push("/");
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+
+        console.log("Error_code", errorCode);
+        console.log("Error_message", errorMessage);
+        console.log("Error_email", email);
+        console.log("Error_credential", credential);
+      });
+  };
+
   const onClickSignup = () => {
     router.push("/signup");
   }
@@ -74,6 +104,7 @@ const Login = () => {
           onChangeEmail={onChangeEmail}
           onChangePassword = {onChangePassword}
           onClickLogin={onClickLogin}
+          onClickGoogleLogin={onClickGoogleLogin}
           onClickSignup={onClickSignup}
       />
   )
