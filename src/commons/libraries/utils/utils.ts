@@ -24,3 +24,7 @@ export const getCategory = (title: string) => {
 export const getTitle = (title: string) => {
   return title.split("$%$%")[1];
 };
+
+export const replaceAddr = (addr: string) => {
+  return addr.split(" ")[0] + " " + addr.split(" ")[1];
+};
