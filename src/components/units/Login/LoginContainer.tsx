@@ -2,6 +2,13 @@ import LoginUI from "./LoginPresenter";
 import { Modal } from 'antd'
 import { ChangeEvent, useState } from "react";
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  getFirestore,
+  getDoc,
+  setDoc,
+  doc,
+} from "firebase/firestore";
+import { app } from "../../../../pages/_app";
 import { useRouter } from "next/router";
 
 const Login = () => {
@@ -10,6 +17,7 @@ const Login = () => {
   const router = useRouter();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
+  const db = getFirestore(app);
 
   const onChangeEmail = (event:ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -66,27 +74,41 @@ const Login = () => {
       });
   };
 
-  const onClickGoogleLogin = async () => {
-    await signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
+  const onClickGoogleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then( async (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        // The signed-in user info.
         const user = result.user;
-        // ...
-        console.log("user : ", user);
-        router.push("/");
+        // console.log("user_uid : ", user.uid);
+
+        const uidRef = doc(db, "users" , user.uid);
+        const docSnap = await getDoc(uidRef);
+
+        if(docSnap.exists()){
+          // console.log("Document data : " , docSnap.data());
+          router.push("/")
+        } else {
+          // console.log("No Such Data!");
+          try {
+              await setDoc(doc(db, "users", user.uid), {
+                uid: user.uid,
+                email: user.email,
+                name: user.displayName,
+              });
+              // 회원가입 3 폼으로 이동
+              Modal.error({title:"추가 정보 페이지로 이동합니다"});
+              router.push("/signup");
+            } catch (error) {
+              Modal.error({title:error});
+            }
+        }
       })
       .catch((error) => {
-        // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
         const email = error.email;
-        // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
 
         console.log("Error_code", errorCode);
         console.log("Error_message", errorMessage);
