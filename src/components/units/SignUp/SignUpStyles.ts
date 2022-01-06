@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Button } from 'antd';
 
 // Css 작성
 export const SignUpWrapper = styled.div`
@@ -16,7 +17,6 @@ export const SignUpWrapper = styled.div`
 export const SignUpWrap = styled.div`
     height:100%;
     padding: 60px 50px;
-    background-color: #87CEFA;
 `;
 
 export const SignUpHeadTitle = styled.h1`
@@ -25,34 +25,41 @@ export const SignUpHeadTitle = styled.h1`
     line-height:1.5;
     color:black;
     strong{
-        color:white;
+        color:#03A9F4;
         font-weight: bold;
-        text-shadow: 2px 2px 2px gray;
     }
 `;
 
 export const SignUpBodyTitle = styled.label`
     display: block;
-    margin:20px 0px;
+    margin-top: 30px;
     font-weight:400;
     font-size:16px;
-    color:white;
 `;
 
-export const SignUpRadioWrapper = styled.div`
-    
+export const SignUpButtonWrapper = styled.div`
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+    height:180px;
+    margin-top: 30px;
+
 `;
 
 export const SignUpFooterTitle = styled.label`
     display: block;
-    margin-bottom: 7px;
     font-weight: normal;
     font-size: 16px;
     line-height: 23px;
-
 `;
 
-export const SignUpRadio = styled.input`
-    margin-bottom: 10px;
-`;
+export const SignUpButton = styled(Button)`
+    display: block;
+    width: 100%;
+    height:50px;
+    margin-top:5px;
+    text-align:left;
+    line-height:23px;
+
+`;  
 
