@@ -1,4 +1,5 @@
 import { Inner } from "../../../../commons/styles/common";
+import * as S from "./FindMatesAddStyles";
 import {
   getCategory,
   getTitle,
@@ -10,33 +11,31 @@ import TagsUpdate from "../../../commons/tags/update/TagsUpdateContainer";
 import Uploads from "../../../commons/uploads/UploadsContainer";
 
 const FindMatesAddUI = (props: FindmatesAddUIProps) => {
+  console.log(getCategory(props.data?.fetchBoard.title || ""));
   return (
     <>
       <Inner>
-        <select
-          defaultValue={
-            props.isUpdate
-              ? getCategory(props.data?.fetchBoard.title || "")
-              : "none"
-          }
-          onChange={props.onChangeCategory}
-        >
-          <option disabled value="none">
-            카테고리
-          </option>
-          <option value="Indoor">Indoor</option>
-          <option value="Outdoor">Outdoor</option>
-        </select>
-        <div>
-          제목 :
-          <input
+        <S.FindmatesAddWrapper>
+          <select
+            defaultValue={
+              props.isUpdate
+                ? getCategory(props.data?.fetchBoard.title || "")
+                : "none"
+            }
+            onChange={props.onChangeCategory}
+          >
+            <option disabled value="none">
+              카테고리
+            </option>
+            <option value="Indoor">Indoor</option>
+            <option value="Outdoor">Outdoor</option>
+          </select>
+          <S.TitleInput
             type="text"
+            placeholder="제목을 입력해주세요"
             onChange={props.onChangeTitle}
             defaultValue={getTitle(props.data?.fetchBoard.title || "")}
           />
-        </div>
-
-        <div>
           {props.isUpdate ? (
             <TagsUpdate
               data={props.data?.fetchBoard.youtubeUrl}
@@ -47,37 +46,31 @@ const FindMatesAddUI = (props: FindmatesAddUIProps) => {
           ) : (
             <TagsAdd tags={props.tags} setTags={props.setTags} />
           )}
-        </div>
-
-        <div>
-          내용 :
-          <input
-            type="text"
+          <S.ContentsInput
+            placeholder="내용을 입력해주세요"
             onChange={props.onChangeContents}
             defaultValue={props.data?.fetchBoard.contents}
           />
-        </div>
-
-        <div>
-          <Uploads
-            isUpdate={props.isUpdate}
-            data={props.data?.fetchBoard.images}
-            setIsUpdateImages={props.setIsUpdateImages}
-            setImages={props.setImages}
-          />
-        </div>
-
-        <div>
-          <SearchAddr
-            setBoardAddress={props.setBoardAddress}
-            data={props.data}
-          />
-        </div>
-        {props.isUpdate ? (
-          <button onClick={props.onClickUpdateFindmate}>수정</button>
-        ) : (
-          <button onClick={props.onClickAddFindmate}>등록</button>
-        )}
+          <S.FindmatesInputFooter>
+            <SearchAddr
+              setBoardAddress={props.setBoardAddress}
+              data={props.data}
+            />
+            <Uploads
+              isUpdate={props.isUpdate}
+              data={props.data?.fetchBoard.images}
+              setIsUpdateImages={props.setIsUpdateImages}
+              setImages={props.setImages}
+            />
+          </S.FindmatesInputFooter>
+          <S.FindmatesButtonWrapper>
+            {props.isUpdate ? (
+              <button onClick={props.onClickUpdateFindmate}>수정</button>
+            ) : (
+              <button onClick={props.onClickAddFindmate}>등록</button>
+            )}
+          </S.FindmatesButtonWrapper>
+        </S.FindmatesAddWrapper>
       </Inner>
     </>
   );

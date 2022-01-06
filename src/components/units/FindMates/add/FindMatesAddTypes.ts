@@ -23,7 +23,7 @@ export interface FindmatesAddUIProps {
   >;
   onChangeCategory: (event: ChangeEvent<HTMLSelectElement>) => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeContents: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onClickAddFindmate: () => void;
   onClickUpdateFindmate: () => void;
 }

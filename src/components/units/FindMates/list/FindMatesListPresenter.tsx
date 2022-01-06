@@ -1,5 +1,6 @@
+import * as S from "./FindMatesListStyles";
 import {
-  getCategory,
+  getDate,
   getTitle,
   replaceTags,
   replaceUrl,
@@ -10,34 +11,92 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
   return (
     <>
       <Inner>
-        <div>
-          <div onClick={props.onClickCategory("")}>전체</div>
-          <div onClick={props.onClickCategory("Indoor")}>Indoor</div>
-          <div onClick={props.onClickCategory("Outdoor")}>Outdoor</div>
-          <div onClick={props.onClickMoveToFindmateAddPage}>findmate add</div>
-        </div>
-
-        {props.data?.fetchBoards.map((el) => (
-          <div
-            key={el._id}
-            style={{ margin: "20px", backgroundColor: "yellowgreen" }}
-            onClick={props.onClickFindmateGetPage(el._id)}
-          >
-            <div>{getCategory(el.title)}</div>
-            <div>{getTitle(el.title)}</div>
-            <div>{el.contents}</div>
-            {replaceTags(el.youtubeUrl).map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-            {el.images.length !== 0 && (
-              <img
-                src={replaceUrl(el.images[0])}
-                alt=""
-                style={{ width: "50px", height: "50px" }}
-              />
-            )}
-          </div>
-        ))}
+        <>
+          <Inner>
+            <S.FindmatesListWrapper>
+              <S.FindmatesListHead>
+                <S.UserProfile>
+                  <img
+                    src="/images/common/user-default.png"
+                    alt="user-profile"
+                  />
+                </S.UserProfile>
+                <S.FindmatesAddButton
+                  onClick={props.onClickMoveToFindmateAddPage}
+                >
+                  <S.FindmatesAddButtonIcon>
+                    <img src="/images/common/pen-icon.png" alt="" />
+                  </S.FindmatesAddButtonIcon>
+                </S.FindmatesAddButton>
+              </S.FindmatesListHead>
+              <S.ListWrapper>
+                <S.NavigationList>
+                  <li>
+                    <button onClick={props.onClickCategory("")}>전체</button>
+                  </li>
+                  <li>
+                    <button onClick={props.onClickCategory("Indoor")}>
+                      Indoor
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={props.onClickCategory("Outdoor")}>
+                      Outdoor
+                    </button>
+                  </li>
+                </S.NavigationList>
+                {props.data?.fetchBoards.map((el) => (
+                  <S.FindmatesList
+                    key={el._id}
+                    onClick={props.onClickFindmateGetPage(el._id)}
+                  >
+                    <div>
+                      <S.FindmatesInfo>
+                        <S.UserProfile>
+                          <img
+                            src="/images/common/user-default.png"
+                            alt="user-profile"
+                          />
+                        </S.UserProfile>
+                        <S.FindmatesInfoName>{el.writer}</S.FindmatesInfoName>
+                        <S.FindmatesInfoDate>
+                          {getDate(el.createdAt)}
+                        </S.FindmatesInfoDate>
+                        <S.FindmatesInfoAddr>
+                          <S.FindmatesLocationIcon>
+                            <img src="/images/common/location.png" alt="" />
+                          </S.FindmatesLocationIcon>
+                          {el.boardAddress?.address}
+                        </S.FindmatesInfoAddr>
+                      </S.FindmatesInfo>
+                      <S.FindmatesContents>
+                        <h2>{getTitle(el.title)}</h2>
+                        <p>{el.contents}</p>
+                        {replaceTags(el.youtubeUrl).map((tag) => (
+                          <span key={tag}>{tag}</span>
+                        ))}
+                        <div>
+                          <img src="/images/common/like-icon.png" alt="" />
+                        </div>
+                        <S.FindmatesInfoLikeCount>
+                          {el.likeCount}
+                        </S.FindmatesInfoLikeCount>
+                      </S.FindmatesContents>
+                    </div>
+                    <S.FindmatesImg>
+                      {el.images.length !== 0 && (
+                        <img src={replaceUrl(el.images[0])} alt="" />
+                      )}
+                    </S.FindmatesImg>
+                  </S.FindmatesList>
+                ))}
+              </S.ListWrapper>
+              <S.FindmatesFooter>
+                <button>더보기</button>
+              </S.FindmatesFooter>
+            </S.FindmatesListWrapper>
+          </Inner>
+        </>
       </Inner>
     </>
   );

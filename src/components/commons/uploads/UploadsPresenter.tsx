@@ -1,29 +1,40 @@
 import { replaceUrl } from "../../../commons/libraries/utils/utils";
 import { UploadsUIProps } from "./UploadsTypes";
+import * as S from "../../units/FindMates/add/FindMatesAddStyles";
 
 const UploadsUI = (props: UploadsUIProps) => {
   return (
     <>
-      <div
-        style={{ width: "50px", height: "50px", backgroundColor: "gray" }}
-        onClick={props.onClickUploadIcon}
-      >
-        +
-      </div>
-      {props.isUpdate ? (
-        <div style={{ backgroundColor: "gold" }}>
-          {props.isChangeImages
-            ? props.uploadFile.map((el) => (
-                <img
-                  key={el}
-                  src={replaceUrl(el)}
-                  alt=""
-                  style={{ width: "100px", height: "100px" }}
-                  onClick={props.onClickDeleteFile(el)}
-                />
-              ))
-            : props.data?.map((el) => (
-                <img
+      <S.FindmatesUploadsWrapper>
+        <img src="/images/common/image-icon-1.png" alt="" />
+        <button>이미지 선택</button>
+        <S.UploadImageWrapper>
+          {props.isUpdate ? (
+            <>
+              {props.isChangeImages
+                ? props.uploadFile.map((el) => (
+                    <S.UploadImage
+                      key={el}
+                      src={replaceUrl(el)}
+                      alt=""
+                      style={{ width: "100px", height: "100px" }}
+                      onClick={props.onClickDeleteFile(el)}
+                    />
+                  ))
+                : props.data?.map((el) => (
+                    <S.UploadImage
+                      key={el}
+                      src={replaceUrl(el)}
+                      alt=""
+                      style={{ width: "100px", height: "100px" }}
+                      onClick={props.onClickDeleteFile(el)}
+                    />
+                  ))}
+            </>
+          ) : (
+            <>
+              {props.uploadFile.map((el) => (
+                <S.UploadImage
                   key={el}
                   src={replaceUrl(el)}
                   alt=""
@@ -31,20 +42,18 @@ const UploadsUI = (props: UploadsUIProps) => {
                   onClick={props.onClickDeleteFile(el)}
                 />
               ))}
-        </div>
-      ) : (
-        <div style={{ backgroundColor: "gold" }}>
-          {props.uploadFile.map((el) => (
+            </>
+          )}
+          <S.UploadImageIcon>
             <img
-              key={el}
-              src={replaceUrl(el)}
+              src="/images/common/image-icon-2.png"
               alt=""
-              style={{ width: "100px", height: "100px" }}
-              onClick={props.onClickDeleteFile(el)}
+              onClick={props.onClickUploadIcon}
             />
-          ))}
-        </div>
-      )}
+          </S.UploadImageIcon>
+        </S.UploadImageWrapper>
+      </S.FindmatesUploadsWrapper>
+
       <input
         type="file"
         hidden
