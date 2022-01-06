@@ -47,7 +47,7 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
     setTitle(event.target.value);
   };
 
-  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(event.target.value);
   };
 
@@ -87,10 +87,6 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
   };
 
   const onClickUpdateFindmate = async () => {
-    if (images.length === 0) {
-      Modal.warning({ content: "최소 1장의 이미지를 넣어주세요" });
-      return;
-    }
     const updateBoardInput: UpdateBoardInput = {};
     // 카테고리만 수정 되었을때
     if (category !== "" && title === "")
@@ -114,6 +110,11 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
 
     if (boardAddress.address !== "")
       updateBoardInput.boardAddress = boardAddress;
+
+    if (images.length === 0 && isUpdateImages) {
+      Modal.warning({ content: "최소 1장의 이미지를 넣어주세요" });
+      return;
+    }
 
     try {
       await updateFindmate({

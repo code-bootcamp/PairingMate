@@ -34,7 +34,6 @@ const Uploads = (props: UploadsProps) => {
           } else {
             setUploadFile([...props.data, result.data.uploadFile.url]);
             props.setImages([...props.data, result.data.uploadFile.url]);
-            console.log(result.data.uploadFile.url);
             setIsChangeImages(true);
             props.setIsUpdateImages(true);
           }

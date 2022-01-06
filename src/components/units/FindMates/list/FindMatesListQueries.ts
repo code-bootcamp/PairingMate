@@ -10,6 +10,13 @@ export const FETCH_BOARDS = gql`
       youtubeUrl
       images
       createdAt
+      user {
+        name
+      }
+      boardAddress {
+        address
+      }
+      likeCount
     }
   }
 `;

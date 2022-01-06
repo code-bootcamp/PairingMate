@@ -5,6 +5,7 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
+import * as S from "../../../units/FindMates/add/FindMatesAddStyles";
 import { replaceTags } from "../../../../commons/libraries/utils/utils";
 
 interface TagsProps {
@@ -49,14 +50,14 @@ const TagsUpdate = (props: TagsProps) => {
   };
   return (
     <>
-      <div>
-        태그 :
-        <input
-          type="text"
-          value={inputTag}
-          onChange={onChangeInputTags}
-          onKeyPress={onChangeTags}
-        />
+      <S.TagsInput
+        type="text"
+        placeholder="해쉬태그를 입력해주세요"
+        value={inputTag}
+        onChange={onChangeInputTags}
+        onKeyPress={onChangeTags}
+      />
+      <S.TagsWrapper>
         {isUpdate
           ? props.tags.map((tag, index) => (
               <span
@@ -76,7 +77,7 @@ const TagsUpdate = (props: TagsProps) => {
                 {tag}
               </span>
             ))}
-      </div>
+      </S.TagsWrapper>
     </>
   );
 };

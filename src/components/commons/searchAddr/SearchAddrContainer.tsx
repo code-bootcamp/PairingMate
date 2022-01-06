@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, Dispatch, SetStateAction } from "react";
 import { IQuery } from "../../../commons/types/generated/types";
+import * as S from "../../units/FindMates/add/FindMatesAddStyles";
 
 declare const window: Window &
   typeof globalThis & {
@@ -58,16 +59,16 @@ const SearchAddr = (props: SearchAddrProps) => {
       <Head>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       </Head>
-      <button onClick={onClickSearchAddr}>주소검색</button>
-      <div>
-        주소 :{" "}
+      <S.FindmatesSearchWrapper>
+        <img src="/images/common/location-black.png" alt="" />
+        <button onClick={onClickSearchAddr}>장소</button>
         <input
           type="text"
           placeholder={props.data?.fetchBoard.boardAddress?.address}
           value={addr}
           readOnly
         />
-      </div>
+      </S.FindmatesSearchWrapper>
     </>
   );
 };
