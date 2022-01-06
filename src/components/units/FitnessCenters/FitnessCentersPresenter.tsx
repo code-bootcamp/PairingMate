@@ -1,4 +1,3 @@
-import { Inner } from "../../../commons/styles/common";
 import * as F from "./FitnessCentersStyles";
 
 const FitnessCentersUI = (props) => {
