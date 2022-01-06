@@ -67,14 +67,14 @@ export const LoginFildsetInfo = styled.div`
 export const LoginButton = styled.button`
     width:100%;
     height: 51px;
-    margin-top:20px;
+    margin-top:10px;
     background: #213358;
     border-radius: 15px;
     color:white;
 `;
 
 export const SignupWrapper = styled.div`
-    margin-top : 48px;
+    margin-top : 30px;
 `;
 
 export const SignupTitle = styled.label`
@@ -88,4 +88,20 @@ export const SignupButton = styled.button`
     background: white;
     border-radius: 15px;
     color:#213358;
+`;
+
+export const GoogleBtn = styled.button`
+    width:100%;
+    height:51px;
+    margin-top:30px;
+    background: #213358;
+    border-radius:15px;
+    font-weight:400;
+    color:white;
+    label{
+        font-size:20px;
+        font-weight:bold;
+        /* font-style:italic; */
+        color:white;
+    }
 `;

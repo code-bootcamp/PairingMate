@@ -35,6 +35,10 @@ const LoginUI = (props: LoginUIProps) => {
                                 onClick={props.onClickSignup}> 회원가입 
                             </L.SignupButton>
                         </L.SignupWrapper>
+                        <L.GoogleBtn 
+                            type="button" 
+                            onClick={props.onClickGoogleLogin}> Sign in with <label>Google</label>
+                        </L.GoogleBtn>
                     </L.LoginFildset>
                 </L.LoginWrap>
             </Inner>
