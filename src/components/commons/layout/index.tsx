@@ -3,16 +3,18 @@ import Header from "./header/Header.container";
 import { ILayoutProps } from "./layout.types";
 import { useRouter } from "next/router";
 import SubBanner from "./banner/sub/SubBanner.container";
+import SubNavigation from "./navigation/snb/SubNavigation.container";
 
 const MAIN_ONLY = ["/"];
 const HIDDEN_HEADERS = ["/login", "/signup"];
 const HIDDEN_FOOTERS = ["/login", "/signup"];
-
+const CSCENTER_ONLY = ["/cs-center"];
 const Layout = (props: ILayoutProps) => {
   const router = useRouter();
   const isMainOnly = MAIN_ONLY.includes(router.asPath);
   const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
   const isHiddenFooter = HIDDEN_FOOTERS.includes(router.asPath);
+  const isCscenterOnly = CSCENTER_ONLY.includes(router.asPath);
 
   return (
     <>
@@ -24,6 +26,7 @@ const Layout = (props: ILayoutProps) => {
             <>
               <Header />
               <SubBanner />
+              {isCscenterOnly ? <SubNavigation /> : ""}
               <div>{props.children}</div>
               <Footer />
             </>

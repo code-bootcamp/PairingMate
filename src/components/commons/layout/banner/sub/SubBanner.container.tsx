@@ -6,7 +6,7 @@ const PageUrl = [
     title: "FindMates",
   },
   {
-    url: "/fitness-center",
+    url: "/fitness-centers",
     title: "Fitness Center",
   },
   {
