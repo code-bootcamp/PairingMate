@@ -89,11 +89,15 @@ export const SignupButton = styled.button`
     border-radius: 15px;
     color:#213358;
 `;
-
+export const EmptyArea = styled.p`
+    padding: 20px 0;
+    text-align:center;
+    color:white;
+`;
 export const GoogleBtn = styled.button`
     width:100%;
     height:51px;
-    margin-top:30px;
+    /* margin-top:30px; */
     background: #213358;
     border-radius:15px;
     font-weight:400;
