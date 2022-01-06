@@ -57,12 +57,6 @@ export const LoginFildsetTitle = styled.h1`
     }
 `;
 
-/* 객체의 노출여부와 표현 방식 */
-/* 위치와 좌표 */
-/* 크기와 여백 */
-/* 윤곽과 배경 */
-/* 글자와 정렬 */
-/* 내용 */
 export const LoginFildsetInfo = styled.div`
     display:flex;
     flex-direction: column;
@@ -79,15 +73,15 @@ export const LoginButton = styled.button`
     color:white;
 `;
 
-export const SigninWrapper = styled.div`
+export const SignupWrapper = styled.div`
     margin-top : 48px;
 `;
 
-export const SigninTitle = styled.label`
+export const SignupTitle = styled.label`
     font-size:18px;
     color:white;
 `;
-export const SigninButton = styled.button`
+export const SignupButton = styled.button`
     width:100%;
     height: 50px;
     margin-top:7px;
