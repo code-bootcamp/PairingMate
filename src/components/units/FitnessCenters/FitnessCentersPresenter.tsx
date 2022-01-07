@@ -18,7 +18,10 @@ const FitnessCentersUI = (props) => {
                   </F.PlaceName>
                   <F.Address> {el.address_name}</F.Address>
                   <F.Phone>Tel. {el.phone}</F.Phone>
-                  <F.MoveToDetail href={el.place_url}>상세보기</F.MoveToDetail>
+                  <F.Distance>{el.distance}미터</F.Distance>
+                  <F.MoveToDetail href={el.place_url} target="_blank">
+                    상세보기
+                  </F.MoveToDetail>
                 </F.List>
               ))}
           </F.GetList>
