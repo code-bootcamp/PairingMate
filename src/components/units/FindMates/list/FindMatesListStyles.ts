@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 export const FindmatesListWrapper = styled.div`
   width: 1400px;
   padding: 35px;
-  border: 1px solid #dddddd;
 `;
 
 export const FindmatesListHead = styled.div`

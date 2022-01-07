@@ -38,7 +38,11 @@ const FindmatesGetUI = (props: IFindmateGetUIProps) => {
             <hr />
             <S.IconWrapper>
               <div>
-                <S.SubIcon>
+                <S.SubIcon
+                  onClick={props.onClickLikeFindmates(
+                    props.data?.fetchBoard._id
+                  )}
+                >
                   <img src="/images/common/like-icon-blue.png" alt="" />
                 </S.SubIcon>
                 <span>{props.data?.fetchBoard.likeCount}</span>
@@ -58,7 +62,13 @@ const FindmatesGetUI = (props: IFindmateGetUIProps) => {
               >
                 수정하기
               </button>
-              <button>삭제하기</button>
+              <button
+                onClick={props.onClickDeleteFindmates(
+                  props.data?.fetchBoard._id
+                )}
+              >
+                삭제하기
+              </button>
             </footer>
           </S.FindmatesUserInfo>
           <S.FindmatesContentsInfo>
