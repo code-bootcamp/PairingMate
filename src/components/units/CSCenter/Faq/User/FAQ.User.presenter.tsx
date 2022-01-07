@@ -1,18 +1,35 @@
-import { useCallback, useRef, useState } from "react";
 import { Inner } from "../../../../../commons/styles/common";
-import { AccodianList } from "./FAQ.User.styles";
+import { IFAQProps } from "./FAQ.User.types";
+import * as F from "./FAQ.User.styles";
 
-const FAQUserUI = () => {
+const FAQUserUI = (props: IFAQProps) => {
   return (
     <>
       <Inner>
-        <h1>고객센터</h1>
-        <AccodianList>
-          <li>
+        <F.Title>자주 묻는 질문</F.Title>
+        <F.AccodianList className="accodian">
+          <li onClick={props.onClickToggleAccodian} className="active">
             <h3>회원 탈퇴는 어떻게 하나요?</h3>
+            <div>
+              안녕하세요 Mate님 문의 주시면 탈퇴처리 해드리겠습니다.안녕하세요
+              Mate님 문의 주시면 탈퇴처리 해드리겠습니다.안녕하세요 Mate님 문의
+              주시면 탈퇴처리 해드리겠습니다.안녕하세요 Mate님 문의 주시면
+              탈퇴처리 해드리겠습니다.안녕하세요 Mate님 문의 주시면 탈퇴처리
+              해드리겠습니다.안녕하세요 Mate님 문의 주시면 탈퇴처리
+              해드리겠습니다.안녕하세요 Mate님 문의 주시면 탈퇴처리
+              해드리겠습니다.안녕하세요 Mate님 문의 주시면 탈퇴처리
+              해드리겠습니다.안녕하세요 Mate님 문의 주시면 탈퇴처리
+              해드리겠습니다.안녕하세요 Mate님 문의 주시면 탈퇴처리
+              해드리겠습니다.안녕하세요 Mate님 문의 주시면 탈퇴처리
+              해드리겠습니다.안녕하세요 Mate님 문의 주시면 탈퇴처리
+              해드리겠습니다.
+            </div>
+          </li>
+          <li onClick={props.onClickToggleAccodian}>
+            <h3>회원 탈퇴는 어떻게 하나요?2</h3>
             <div>안녕하세요 Mate님! 탈퇴하지말아주세요 ㅠㅠ</div>
           </li>
-        </AccodianList>
+        </F.AccodianList>
       </Inner>
     </>
   );
