@@ -17,22 +17,27 @@ const Navigation = () => {
 
   const onClickMoveToFindMates = () => {
     router.push("/find-mates");
+    setIsOpen(false);
   };
 
   const onClickMoveToFitnessCenter = () => {
     router.push("/fitness-centers");
+    setIsOpen(false);
   };
 
   const onClickMoveToBestDeal = () => {
     router.push("/best-deal");
+    setIsOpen(false);
   };
 
   const onClickMoveToRundayCourse = () => {
     router.push("/runday-course");
+    setIsOpen(false);
   };
 
   const onClickMoveToCSCenter = () => {
     router.push("/cs-center");
+    setIsOpen(false);
   };
 
   return (

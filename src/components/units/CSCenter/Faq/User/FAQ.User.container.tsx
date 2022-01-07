@@ -4,7 +4,6 @@ const FAQUser = () => {
   const onClickToggleAccodian = (event: any) => {
     const current = event.currentTarget;
     const chkActive = current.classList.value.indexOf("active");
-    console.log(current);
     check();
 
     if (chkActive === -1) {

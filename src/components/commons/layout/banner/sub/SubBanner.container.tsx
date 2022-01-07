@@ -32,7 +32,7 @@ const SubBanner = () => {
         setSectionName(el.title);
       }
     });
-  }, []);
+  });
 
   return (
     <>

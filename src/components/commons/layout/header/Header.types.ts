@@ -1,3 +1,6 @@
 export interface NaviButtonProps {
-    isOpen: boolean;
+  isOpen: boolean;
+}
+export interface HeaderProps {
+  onClickMoveToMain: () => void;
 }
