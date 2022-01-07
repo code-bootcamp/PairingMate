@@ -34,7 +34,8 @@ export const GetList = styled.div`
 `;
 export const List = styled.div`
   width: 100%;
-  height: 217px;
+  height: 150px;
+  border-bottom: 1px solid #eeeeee;
 `;
 export const PlaceName = styled.h3`
   width: 100%;
@@ -55,6 +56,14 @@ export const Address = styled.div`
   color: #555555;
 `;
 export const Phone = styled.div`
+  width: 100%;
+  height: 23px;
+  margin-left: 33px;
+  margin-top: 11px;
+  font-size: 14px;
+  line-height: 20px;
+`;
+export const Distance = styled.div`
   width: 100%;
   height: 23px;
   margin-left: 33px;

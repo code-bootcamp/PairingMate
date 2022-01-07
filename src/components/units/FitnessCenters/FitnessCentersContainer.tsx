@@ -10,7 +10,6 @@ const FitnessCenters = () => {
   const [myKeyword, setMyKeyword] = useState([]);
   const [myLat, setMyLat] = useState<number>();
   const [myLon, setMyLon] = useState<number>();
-  const [myLocation, setMyLocation] = useState("");
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -43,19 +42,20 @@ const FitnessCenters = () => {
             displayMarker(locPosition, message);
 
             if (myLon && myLat) {
-              const addressGps = await axios.get(
-                `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?autoload=false&x=${myLon}&y=${myLat}`,
-                {
-                  headers: {
-                    Authorization: "KakaoAK 80255a1f4e1c8018da2312bc4f97ad51",
-                  },
-                }
-              );
-
-              console.log(addressGps);
-
-              setMyLocation(addressGps.data?.documents[0].address_name);
-              console.log(addressGps.data?.documents[0].address_name);
+              const search = async () => {
+                const result = await axios.get(
+                  `https://dapi.kakao.com/v2/local/search/keyword.json?autoload=false&page=1&size=15&sort=distance&query=${
+                    "주변" + "헬스장"
+                  }&y=${myLat}&x=${myLon}&radius=10000`,
+                  {
+                    headers: {
+                      Authorization: "KakaoAK 80255a1f4e1c8018da2312bc4f97ad51",
+                    },
+                  }
+                );
+                setMyKeyword(result.data.documents);
+              };
+              search();
             }
           });
         } else {
@@ -85,24 +85,6 @@ const FitnessCenters = () => {
       });
     };
   }, [myLat, myLon]); // 의존성배열에 address값을 담아 address값이 변경되면 지도만 다시 랜더링 합니다.
-  console.log("현재 내 위치 경위도 값 : ", myLon, myLat);
-
-  useEffect(() => {
-    const search = async () => {
-      const result = await axios.get(
-        `https://dapi.kakao.com/v2/local/search/keyword.json?autoload=false&page=1&size=15&sort=accuracy&query=${
-          myLocation + "주변" + "헬스장"
-        }`,
-        {
-          headers: {
-            Authorization: "KakaoAK 80255a1f4e1c8018da2312bc4f97ad51",
-          },
-        }
-      );
-      setMyKeyword(result.data.documents);
-    };
-    search();
-  }, [myLocation]);
 
   const newMarker = (index: number) => () => {
     // console.log(myKeyword[0].x);
