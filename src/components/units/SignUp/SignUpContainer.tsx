@@ -6,12 +6,12 @@ const SignUp = () => {
 
     const onClickSignupUser = () => {
         alert("일반회원으로 가입 시작합니다.")
-        // router.push("");
+        router.push("/signup/step-2-user");
     }
 
     const onClickSignupCompany = () => {
         alert("기업회원으로 가입 시작합니다.");
-        // router.push("");
+        router.push("/signup/step-2-company");
     }
     
     return (
