@@ -28,6 +28,10 @@ const FitnessCenters = () => {
           level: 2, // 지도의 확대 레벨
         };
         const map = new window.kakao.maps.Map(mapContainer, mapOption);
+        map.setZoomable(false);
+        const zoomControl = new window.kakao.maps.ZoomControl();
+        map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+
         if (navigator.geolocation) {
           // GeoLocation을 이용해서 접속 위치를 얻어옵니다
           navigator.geolocation.getCurrentPosition(async function (position) {
@@ -44,9 +48,7 @@ const FitnessCenters = () => {
             if (myLon && myLat) {
               const search = async () => {
                 const result = await axios.get(
-                  `https://dapi.kakao.com/v2/local/search/keyword.json?autoload=false&page=1&size=15&sort=distance&query=${
-                    "주변" + "헬스장"
-                  }&y=${myLat}&x=${myLon}&radius=10000`,
+                  `https://dapi.kakao.com/v2/local/search/keyword.json?autoload=false&page=1&size=15&sort=distance&query=${"주변 헬스장"}&y=${myLat}&x=${myLon}&radius=10000`,
                   {
                     headers: {
                       Authorization: "KakaoAK 80255a1f4e1c8018da2312bc4f97ad51",
@@ -94,6 +96,7 @@ const FitnessCenters = () => {
       level: 2, // 지도의 확대 레벨
     };
     const map = new window.kakao.maps.Map(mapContainer, mapOption);
+    map.setZoomable(false);
     const markerPosition = new window.kakao.maps.LatLng(
       myKeyword[index].y,
       myKeyword[index].x
