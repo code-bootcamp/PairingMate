@@ -28,3 +28,9 @@ export const getTitle = (title: string) => {
 export const replaceAddr = (addr: string) => {
   return addr.split(" ")[0] + " " + addr.split(" ")[1];
 };
+
+export const emailRegExp = (email: string) => {
+  const regExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+  
+  return regExp.test(email);
+}

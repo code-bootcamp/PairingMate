@@ -72,23 +72,6 @@ export const SignUpInput = styled.input`
     outline:none;
 `;
 
-export const EmailChkButton = styled.button`
-    position: absolute;
-    left:348px;
-    top:190px;
-    width: 100px;
-    height: 30px;
-    background: #C4C4C4;
-    
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 30px;
-    text-align: center;
-    color: #555555;
-`;
-
 export const SignUpButton = styled.button`
     margin: 0 auto;
     position: relative;
