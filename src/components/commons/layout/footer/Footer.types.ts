@@ -1,3 +1,7 @@
 export interface FooterProps {
-  onClickToMoveToMain: () => void;
+  onClickMoveToMain: () => void;
+  onClickMoveToEmail: () => void;
+  onClickMoveToPrivacyPolicy: () => void;
+  onClickMoveToFAQ: () => void;
+  onClickMoveToPartnerInquiry: () => void;
 }

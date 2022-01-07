@@ -8,25 +8,31 @@ const FooterUI = (props: FooterProps) => {
       <F.Footer>
         <F.FooterInner>
           <F.FooterLogo>
-            <button>
+            <button onClick={props.onClickMoveToMain}>
               <img src="/images/common/logo.png" alt="PairingMate Logo" />
             </button>
           </F.FooterLogo>
           <F.FooterMenu>
             <li>
-              <button>개인정보 취급방침</button>
+              <button onClick={props.onClickMoveToPrivacyPolicy}>
+                개인정보 취급방침
+              </button>
             </li>
 
             <li>
-              <button>이메일 무단수집거부</button>
+              <button onClick={props.onClickMoveToEmail}>
+                이메일 무단수집거부
+              </button>
             </li>
 
             <li>
-              <button>고객센터</button>
+              <button onClick={props.onClickMoveToFAQ}>고객센터</button>
             </li>
 
             <li>
-              <button>파트너 문의</button>
+              <button onClick={props.onClickMoveToPartnerInquiry}>
+                파트너 문의
+              </button>
             </li>
           </F.FooterMenu>
         </F.FooterInner>

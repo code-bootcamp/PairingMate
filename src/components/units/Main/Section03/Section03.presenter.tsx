@@ -29,67 +29,69 @@ const MainSection03UI = () => {
               <button>PILATES</button>
             </li>
           </MS3.BestDealTaplist>
-          <MS3.BestDealList>
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+          <div>
+            <MS3.BestDealList>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
 
-            <li>
-              <figure>
-                <figcaption>BestDeal Data</figcaption>
-              </figure>
-            </li>
-          </MS3.BestDealList>
+              <li>
+                <figure>
+                  <figcaption>BestDeal Data</figcaption>
+                </figure>
+              </li>
+            </MS3.BestDealList>
+          </div>
         </div>
       </Inner>
     </>

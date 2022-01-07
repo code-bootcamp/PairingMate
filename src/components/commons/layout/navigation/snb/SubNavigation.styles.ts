@@ -7,14 +7,25 @@ export const SubNavigationList = styled.ul`
   height: 100%;
   margin: 0 auto;
   text-align: center;
+  border-bottom: 1px solid #ebebeb;
 
   li {
     display: inline-block;
-    padding: 20px 15px;
 
     button {
       position: relative;
-      padding-bottom: ${theme.PaddingBottom.pb10};
+      padding: 15px 35px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 1px;
+        height: 50%;
+        transform: translateY(-50%);
+        background: #ebebeb;
+      }
 
       &::after {
         content: "";
@@ -30,6 +41,14 @@ export const SubNavigationList = styled.ul`
       &:hover {
         &::after {
           width: 100%;
+        }
+      }
+    }
+
+    &:last-child {
+      button {
+        &::before {
+          display: none;
         }
       }
     }
