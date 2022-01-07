@@ -1,12 +1,16 @@
-import HeaderUI from "./Header.presenter"
+import router from "next/router";
+import HeaderUI from "./Header.presenter";
 
-const Header = () =>{
+const Header = () => {
+  const onClickMoveToMain = () => {
+    router.push("/");
+  };
 
-    return(
-        <>
-            <HeaderUI />
-        </>
-    )
-}
+  return (
+    <>
+      <HeaderUI onClickMoveToMain={onClickMoveToMain} />
+    </>
+  );
+};
 
-export default Header
+export default Header;
