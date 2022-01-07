@@ -13,33 +13,30 @@ const SignUpStep2CompanyUI = (props: SignUpStep2CompanyUIProps) => {
                 <S.SignUpInfoWrapper>
                     <S.SignUpInfoWrap>
                         <S.SignUpInfoTitle>이메일<label>*</label></S.SignUpInfoTitle>
-                        <S.SignUpEmailWrapper>
+                        <S.SignUpInputWrap>
                             <S.SignUpInput type="text" placeholder="이메일을 입력해주세요" />
                             <S.EmailChkButton>중복확인</S.EmailChkButton>
-                        </S.SignUpEmailWrapper>
+                        </S.SignUpInputWrap>
                     </S.SignUpInfoWrap>
-                        
                     <S.SignUpInfoWrap>
                         <S.SignUpInfoTitle>회사명<label>*</label></S.SignUpInfoTitle>
-                        <S.SignUpEmailWrapper>
+                        <S.SignUpInputWrap>
                             <S.SignUpInput type="text" placeholder="회사명을 입력해주세요" />
-                        </S.SignUpEmailWrapper>
-                    </S.SignUpInfoWrap>
-
+                        </S.SignUpInputWrap>
+                    </S.SignUpInfoWrap> 
                     <S.SignUpInfoWrap>
                         <S.SignUpInfoTitle>비밀번호<label>*</label></S.SignUpInfoTitle>
-                        <S.SignUpEmailWrapper>
+                        <S.SignUpInputWrap>
                             <S.SignUpInput type="password" placeholder="비밀번호를 입력해주세요" />
-                        </S.SignUpEmailWrapper>
+                        </S.SignUpInputWrap>
                     </S.SignUpInfoWrap>
-                    
                     <S.SignUpInfoWrap>
                         <S.SignUpInfoTitle>비밀번호 확인<label>*</label></S.SignUpInfoTitle>
-                        <S.SignUpEmailWrapper>
+                        <S.SignUpInputWrap>
                             <S.SignUpInput type="password" placeholder="비밀번호를 재입력해주세요" />
-                        </S.SignUpEmailWrapper>
+                        </S.SignUpInputWrap>
                     </S.SignUpInfoWrap>
-                    <S.SignUpButton > 회원가입 </S.SignUpButton>
+                    <S.SignUpButton> 회원가입 </S.SignUpButton>
                 </S.SignUpInfoWrapper>
             </S.SignUpWrap>
         </S.SignUpWrapper>
