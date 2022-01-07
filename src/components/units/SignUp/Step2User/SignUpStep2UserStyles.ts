@@ -27,7 +27,7 @@ export const SignUpHeadTitle = styled.h1`
     line-height: 1.5;
     color: #333333;
     strong{
-        color:#03A9F4;
+        color:#333333;
         font-weight: bold;
     }
 `;

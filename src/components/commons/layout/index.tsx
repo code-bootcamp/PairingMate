@@ -6,8 +6,8 @@ import SubBanner from "./banner/sub/SubBanner.container";
 import SubNavigation from "./navigation/snb/SubNavigation.container";
 
 const MAIN_ONLY = ["/"];
-const HIDDEN_HEADERS = ["/login", "/signup"];
-const HIDDEN_FOOTERS = ["/login", "/signup"];
+const HIDDEN_HEADERS = ["/login", "/signup", "/signup/step-2-company", "/signup/step-2-user"];
+const HIDDEN_FOOTERS = ["/login", "/signup", "/signup/step-2-company", "/signup/step-2-user"];
 const CSCENTER_ONLY = ["/cs-center"];
 const Layout = (props: ILayoutProps) => {
   const router = useRouter();
