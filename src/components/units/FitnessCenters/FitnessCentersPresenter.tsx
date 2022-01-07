@@ -16,10 +16,20 @@ const FitnessCentersUI = (props) => {
                   <F.PlaceName onClick={props.newMarker(index)}>
                     {el.place_name}
                   </F.PlaceName>
-                  <F.Address> {el.address_name}</F.Address>
-                  <F.Phone>Tel. {el.phone}</F.Phone>
-                  <F.Distance>{el.distance}미터</F.Distance>
+                  <F.Address>
+                    <F.Img src="/images/sub/fitness-centers/map-marker-alt-solid.svg" />
+                    {el.address_name}
+                  </F.Address>
+                  <F.Phone>
+                    <F.Img src="/images/sub/fitness-centers/phone-solid.svg" />
+                    {el.phone ? el.phone : "연락처 정보없음"}
+                  </F.Phone>
+                  <F.Distance>
+                    <F.DistanceImg src="/images/sub/fitness-centers/running-solid.svg" />
+                    {el.distance}M
+                  </F.Distance>
                   <F.MoveToDetail href={el.place_url} target="_blank">
+                    <F.Img src="/images/sub/fitness-centers/search-solid.svg" />
                     상세보기
                   </F.MoveToDetail>
                 </F.List>
