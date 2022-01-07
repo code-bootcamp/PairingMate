@@ -8,6 +8,7 @@ import { CREATE_USED_ITEM } from "./BestDealAddQueries";
 import { FormValues } from "./BestDealAddTypes";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
+import { Modal } from "antd";
 
 const BestDealAdd = () => {
   const [category, setCategory] = useState("");
@@ -44,6 +45,21 @@ const BestDealAdd = () => {
   };
 
   const onClickAddBestdeal = async (data: FormValues) => {
+    if (
+      category === "" ||
+      price === Number("") ||
+      title === "" ||
+      tags.length === 0 ||
+      contents === "" ||
+      boardAddress.address === ""
+    ) {
+      Modal.warning({ content: "모든 내용을 입력해주세요" });
+      return;
+    }
+    if (images.length === 0) {
+      Modal.warning({ content: "최소 1장의 이미지를 넣어주세요" });
+      return;
+    }
     try {
       const result = await addBestdeal({
         variables: {
@@ -58,7 +74,7 @@ const BestDealAdd = () => {
           },
         },
       });
-      alert("등록에 성공하였습니다");
+      Modal.success({ content: "등록에 성공하였습니다" });
       console.log(result);
       // router.push()
     } catch (error) {
