@@ -1,14 +1,17 @@
 import * as SN from "./SubNavigation.styles";
+import { SubNavigationProps } from "./SubNavigation.types";
 
-const SubNavigationUI = () => {
+const SubNavigationUI = (props: SubNavigationProps) => {
   return (
     <>
       <SN.SubNavigationList>
         <li>
-          <button>FAQ</button>
+          <button onClick={props.onClickMoveToFAQ}>FAQ</button>
         </li>
         <li>
-          <button>파트너 문의</button>
+          <button onClick={props.onClickMoveToPartnerInquiry}>
+            파트너 문의
+          </button>
         </li>
       </SN.SubNavigationList>
     </>

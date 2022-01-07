@@ -10,7 +10,7 @@ export const SubNavigationList = styled.ul`
 
   li {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 20px 15px;
 
     button {
       position: relative;
