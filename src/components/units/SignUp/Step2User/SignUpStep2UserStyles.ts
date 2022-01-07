@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Button } from 'antd';
 
 // Css 작성
 export const SignUpWrapper = styled.div`
@@ -8,7 +7,8 @@ export const SignUpWrapper = styled.div`
     top: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    height: 500px;
+    height: 600px;
+    padding: 60px 50px;
     border: 1px solid #DDDDDD;
     box-sizing: border-box;
     box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.25);
@@ -16,7 +16,6 @@ export const SignUpWrapper = styled.div`
 
 export const SignUpWrap = styled.div`
     height:100%;
-    padding: 60px 50px;
 `;
 
 export const SignUpHeadTitle = styled.h1`
@@ -32,36 +31,61 @@ export const SignUpHeadTitle = styled.h1`
     }
 `;
 
-export const SignUpBodyTitle = styled.label`
-    display: block;
-    margin-top: 30px;
-    font-weight:400;
-    font-size:16px;
-`;
-
-export const SignUpButtonWrapper = styled.div`
+export const SignUpInfoWrapper = styled.div`
     display: flex;
     flex-direction:column;
-    justify-content:space-between;
-    height:180px;
-    margin-top: 30px;
-
+    margin-top : 30px;
+    /* background-color: green ; */
 `;
 
-export const SignUpFooterTitle = styled.label`
-    display: block;
-    font-weight: normal;
+export const SignUpInfoWrap = styled.div`
+    margin-bottom: 15px;
+`;
+
+export const SignUpInfoTitle = styled.label`
+    font-weight: 500;
     font-size: 16px;
     line-height: 23px;
+    label{
+        color:red;
+    }
 `;
 
-export const SignUpButton = styled(Button)`
-    display: block;
-    width: 100%;
-    height:50px;
-    margin-top:5px;
-    text-align:left;
-    line-height:23px;
+export const SignUpInputWrap = styled.div`
+    /* width: 100%; */
+`;
 
-`;  
+export const SignUpInput = styled.input`
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    border-bottom: 1px solid #DDDDDD;
+    line-height:20px;
+    &::placeholder{
+        font-family: Noto Sans KR;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #EBEBEB;
+        line-height: 20px;
+    }
+    outline:none;
+`;
+
+export const SignUpButton = styled.button`
+    margin: 0 auto;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    background: #C4C4C4;
+
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+
+    color: #555555;
+`;
 
