@@ -8,6 +8,7 @@ export const SignUpWrapper = styled.div`
     transform: translate(-50%, -50%);
     width: 500px;
     height: 600px;
+    padding: 60px 50px;
     border: 1px solid #DDDDDD;
     box-sizing: border-box;
     box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.25);
@@ -15,7 +16,6 @@ export const SignUpWrapper = styled.div`
 
 export const SignUpWrap = styled.div`
     height:100%;
-    padding: 60px 50px;
 `;
 
 export const SignUpHeadTitle = styled.h1`
@@ -32,15 +32,17 @@ export const SignUpHeadTitle = styled.h1`
 `;
 
 export const SignUpInfoWrapper = styled.div`
-
+    display: flex;
+    flex-direction:column;
+    margin-top : 30px;
+    /* background-color: green ; */
 `;
 
 export const SignUpInfoWrap = styled.div`
-
+    margin-bottom: 15px;
 `;
 
 export const SignUpInfoTitle = styled.label`
-    /* display: block; */
     font-weight: 500;
     font-size: 16px;
     line-height: 23px;
@@ -49,9 +51,8 @@ export const SignUpInfoTitle = styled.label`
     }
 `;
 
-export const SignUpEmailWrapper = styled.div`
-    width: 100%;
-    /* margin-bottom:30px; */
+export const SignUpInputWrap = styled.div`
+    /* width: 100%; */
 `;
 
 export const SignUpInput = styled.input`
