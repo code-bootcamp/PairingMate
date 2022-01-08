@@ -44,6 +44,7 @@ export const BestDealTaplist = styled.ul`
   justify-content: center;
   padding-bottom:${theme.PaddingBottom.pb70};
 
+
   li {
       padding: 0 10px;
 
@@ -70,6 +71,11 @@ export const BestDealTaplist = styled.ul`
       }
   }
 `;
+
+export const BestDealScrollWrap = styled.div`
+  width: 100%;
+  overflow-x: scroll;
+`;
 export const BestDealList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -91,5 +97,21 @@ export const BestDealList = styled.ul`
         padding-left: 20px;
       }
     }
+  }
+  @media all and ${theme.laptop} {
+    li {
+      width: 33.333%;
+      &:nth-of-type(n + 7) {
+        display: none;
+      }
+    }
+
+    @media all and ${theme.tablet} {
+      li {
+        width: 50%;
+        &:nth-of-type(n + 5) {
+          display: none;
+        }
+      }
   }
 `;

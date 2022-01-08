@@ -47,6 +47,13 @@ export const BestFindMatesList = styled.ul`
     width: 25%;
     padding: 0 10px;
   }
+
+  @media all and ${theme.tablet} {
+    li {
+      width: 50%;
+      margin-bottom: ${theme.MarginBottom.mb30};
+    }
+  }
 `;
 
 export const BestFindMatesCard = styled.figure`

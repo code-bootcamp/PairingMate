@@ -32,6 +32,18 @@ const PageUrl = [
     title: "고객센터",
     images: "/images/sub/bg_sub_visual05.jpg",
   },
+
+  {
+    url: "/cs-center/policy/email",
+    title: "고객센터",
+    images: "/images/sub/bg_sub_visual05.jpg",
+  },
+
+  {
+    url: "/cs-center/policy/privacy-policy",
+    title: "고객센터",
+    images: "/images/sub/bg_sub_visual05.jpg",
+  },
 ];
 
 const SubBanner = () => {
