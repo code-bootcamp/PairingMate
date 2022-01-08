@@ -3,8 +3,10 @@ import * as S from "./RundayCourseStyles";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import SeoulMap from "../../commons/seoulMap/mapContainer";
+import { replaceSubway } from "../../../commons/libraries/utils/utils";
 import { RundayCourseUIProps } from "./RundayCourseTypes";
-import { seoulGuname } from "../../../commons/data/seoulGill";
+import ModalUI from "./ModalContainer";
 
 const settings = {
   dots: false,
@@ -12,39 +14,70 @@ const settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToScroll: 2,
 };
 
 const RundayCourseUI = (props: RundayCourseUIProps) => {
   return (
     <>
+      {props.isOpen && (
+        <ModalUI
+          onClickClose={props.onClickClose}
+          pointData={props.pointData}
+        />
+      )}
       <Inner>
-        <div>
-          <select defaultValue={"none"} onChange={props.onChangeGuName}>
-            <option value={"none"} disabled>
-              행정구 선택
-            </option>
-            {seoulGuname.map((el) => (
-              <option key={el} value={el}>
-                {el}
-              </option>
-            ))}
-          </select>
-          <button onClick={props.onClickSearchCourse}>검색</button>
-        </div>
+        <S.MapWrapper>
+          <SeoulMap onClickSearchList={props.onClickSearchList} />
+        </S.MapWrapper>
         <S.ListWrapper>
           <Slider {...settings}>
             {props.data.map((el, index) => (
-              <div key={index}>
-                <S.SliderInnerDiv>
-                  <div>{el.AREA_GU}</div>
-                  <div>{el.COURSE_NAME}</div>
-                  <div>{el.CPI_NAME}</div>
-                  <div>{el.DISTANCE}</div>
-                  <div>{el.LEAD_TIME}</div>
-                  <div>{el.RELATE_SUBWAY}</div>
-                </S.SliderInnerDiv>
-              </div>
+              <S.SliderInnerDiv key={index}>
+                <nav
+                  onClick={props.onClickGetCourseInfo(
+                    el.COURSE_NAME,
+                    el.CPI_NAME
+                  )}
+                >
+                  <span>{el.AREA_GU}</span>
+                  <h3>{el.COURSE_NAME}</h3>
+                  <span>{el.CPI_NAME}</span>
+                  <ul>
+                    <li>
+                      <S.IconWrapper>
+                        <img
+                          src="/images/sub/runday-course/distance-icon.png"
+                          alt=""
+                        />
+                      </S.IconWrapper>
+                      <span>{el.DISTANCE}</span>
+                    </li>
+                    <li>
+                      <S.IconWrapper>
+                        <img
+                          src="/images/sub/runday-course/time-icon.png"
+                          alt=""
+                        />
+                      </S.IconWrapper>
+                      <span>{el.LEAD_TIME}</span>
+                    </li>
+                    <li>
+                      <S.IconWrapper>
+                        <img
+                          src="/images/sub/runday-course/subway-icon.png"
+                          alt=""
+                        />
+                      </S.IconWrapper>
+                      <span>
+                        {replaceSubway(el.RELATE_SUBWAY || "").map((el) =>
+                          el.length !== 0 ? <h4 key={el}>{el}</h4> : "없음"
+                        )}
+                      </span>
+                    </li>
+                  </ul>
+                </nav>
+              </S.SliderInnerDiv>
             ))}
           </Slider>
         </S.ListWrapper>

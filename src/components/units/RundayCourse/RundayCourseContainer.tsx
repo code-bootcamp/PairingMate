@@ -1,22 +1,38 @@
 import { Modal } from "antd";
 import axios from "axios";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import RundayCourseUI from "./RundayCoursePresenter";
 import { GU_COURSE_NAME } from "../../../commons/data/seoulGill";
-import RundayCourseTestUI from "./RundayCourseTestUI";
 
 const RundayCourse = () => {
   let newData = [];
-  const [pointName, setPointName] = useState("");
   const [data, setData] = useState([]);
-  const [courseName, setCourseName] = useState<string[]>([]);
+  const [pointData, setPointData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const onClickSearchCourse = async () => {
-    if (!courseName) {
+  const onClickGetCourseInfo =
+    (courseName: string, pointName: string) => async () => {
+      setIsOpen(true);
+      try {
+        const result = await axios.get(
+          `http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${courseName}/${pointName}`
+        );
+        console.log(result);
+        setPointData(result.data?.SeoulGilWalkCourse.row);
+      } catch (error) {
+        Modal.error({ content: "서버 장애 , 관리자에게 문의해주세요." });
+      }
+    };
+  const onClickClose = () => {
+    setIsOpen(false);
+  };
+
+  const onClickSearchList = (location: string) => () => {
+    if (GU_COURSE_NAME[location] === undefined) {
       Modal.warning({ content: "해당지역은 오픈예정입니다." });
       return;
     }
-    courseName.forEach(async (el) => {
+    GU_COURSE_NAME[location].forEach(async (el: string) => {
       const result = await axios.get(
         `http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${el}`
       );
@@ -25,20 +41,17 @@ const RundayCourse = () => {
         setData(newData);
       }
     });
-    console.log("검색");
-  };
-
-  const onChangeGuName = (event: ChangeEvent<HTMLSelectElement>) => {
-    setCourseName(GU_COURSE_NAME[event.target.value]);
   };
 
   return (
-    // <RundayCourseUI
-    //   onChangeGuName={onChangeGuName}
-    //   onClickSearchCourse={onClickSearchCourse}
-    //   data={data}
-    // />
-    <RundayCourseTestUI />
+    <RundayCourseUI
+      data={data}
+      pointData={pointData}
+      isOpen={isOpen}
+      onClickSearchList={onClickSearchList}
+      onClickGetCourseInfo={onClickGetCourseInfo}
+      onClickClose={onClickClose}
+    />
   );
 };
 export default RundayCourse;
