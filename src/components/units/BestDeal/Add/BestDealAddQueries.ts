@@ -27,3 +27,31 @@ export const CREATE_USED_ITEM = gql`
     }
   }
 `;
+
+export const UPDATE_USED_ITEM = gql`
+  mutation updateUseditem($updateUseditemInput: UpdateUseditemInput!) {
+    updateUseditem(updateUseditemInput: $updateUseditemInput) {
+      _id
+      name
+      remarks
+      contents
+      price
+      tags
+      images
+      pickedCount
+      useditemAddress {
+        _id
+        address
+        createdAt
+        updatedAt
+        deletedAt
+      }
+      buyer
+      seller
+      soldAt
+      createdAt
+      updatedAt
+      deletedAt
+    }
+  }
+`;
