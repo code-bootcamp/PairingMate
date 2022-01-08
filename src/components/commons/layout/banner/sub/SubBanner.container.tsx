@@ -23,26 +23,19 @@ const PageUrl = [
     images: "/images/sub/bg_sub_visual04.jpg",
   },
   {
-    url: "/cs-center",
+    url: [
+      "/cs-center",
+      "/cs-center/partner",
+      "/cs-center/policy/email",
+      "/cs-center/policy/privacy-policy",
+    ],
     title: "고객센터",
     images: "/images/sub/bg_sub_visual05.jpg",
   },
   {
-    url: "/cs-center/partner",
-    title: "고객센터",
-    images: "/images/sub/bg_sub_visual05.jpg",
-  },
-
-  {
-    url: "/cs-center/policy/email",
-    title: "고객센터",
-    images: "/images/sub/bg_sub_visual05.jpg",
-  },
-
-  {
-    url: "/cs-center/policy/privacy-policy",
-    title: "고객센터",
-    images: "/images/sub/bg_sub_visual05.jpg",
+    url: ["/mypage/user", "mypage/company"],
+    title: "Mypage",
+    images: "/images/sub/bg_sub_visual06.jpg",
   },
 ];
 
@@ -52,11 +45,10 @@ const SubBanner = () => {
 
   useEffect(() => {
     PageUrl.forEach((el) => {
-      if (el.url === window.location.pathname) {
+      if (el.url.includes(window.location.pathname)) {
         setSectionName(el.title);
         setBgUrl(el.images);
       }
-      console.log(el.images);
     });
   });
 
