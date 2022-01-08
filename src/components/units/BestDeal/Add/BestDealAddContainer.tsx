@@ -2,15 +2,20 @@ import { useMutation } from "@apollo/client";
 import {
   IMutation,
   IMutationCreateUseditemArgs,
+  IMutationUpdateUseditemArgs,
 } from "../../../../commons/types/generated/types";
 import BestDealUI from "./BestDealAddPresenter";
-import { CREATE_USED_ITEM } from "./BestDealAddQueries";
-import { FormValues } from "./BestDealAddTypes";
+import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from "./BestDealAddQueries";
+import {
+  FormValues,
+  BestdealAddProps,
+  UpdateUseditemInput,
+} from "./BestDealAddTypes";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 
-const BestDealAdd = () => {
+const BestDealAdd = (props: BestdealAddProps) => {
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState(0);
   const [title, setTitle] = useState("");
@@ -25,6 +30,11 @@ const BestDealAdd = () => {
     Pick<IMutation, "createUseditem">,
     IMutationCreateUseditemArgs
   >(CREATE_USED_ITEM);
+
+  const [updateBestdeal] = useMutation<
+    Pick<IMutation, "updateUseditem">,
+    IMutationUpdateUseditemArgs
+  >(UPDATE_USED_ITEM);
 
   const router = useRouter();
 
@@ -82,6 +92,10 @@ const BestDealAdd = () => {
     }
   };
 
+  const onClickUpdateBestdeal = async () => {
+    const updateUseditemInput: UpdateUseditemInput = {};
+  };
+
   return (
     <BestDealUI
       setImages={setImages}
@@ -93,6 +107,7 @@ const BestDealAdd = () => {
       onChangeTitle={onChangeTitle}
       onChangeContents={onChangeContents}
       onClickAddBestdeal={onClickAddBestdeal}
+      data={props.data}
     />
   );
 };
