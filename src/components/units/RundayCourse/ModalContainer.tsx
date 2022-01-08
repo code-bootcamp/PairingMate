@@ -1,53 +1,42 @@
-import styled from "@emotion/styled";
-
-const ModalWrapper = styled.div`
-  width: 500px;
-  height: 500px;
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 20px;
-  position: absolute;
-  z-index: 1;
-`;
-const Modal = styled.div`
-  padding: 50px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-`;
-const ModalContents = styled.div`
-  font-size: 18px;
-`;
-const ModalCloseButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  border-radius: 5px;
-  border: 1px solid #000;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  :hover {
-    background-color: #000;
-    color: #fff;
-  }
-`;
+import { replaceSubway } from "../../../commons/libraries/utils/utils";
+import * as S from "./ModalStyles";
 
 interface Props {
+  pointData: any[];
   onClickClose: () => void;
 }
 
 const ModalUI = (props: Props) => {
   return (
-    <ModalWrapper>
-      <Modal>
-        <ModalContents>이것은 모달입니다</ModalContents>
-        <ModalCloseButton onClick={props.onClickClose}>닫기</ModalCloseButton>
-      </Modal>
-    </ModalWrapper>
+    <S.ModalWrapper>
+      <S.CloseIcon
+        src="/images/sub/runday-course/close-icon.png"
+        alt=""
+        onClick={props.onClickClose}
+      />
+      <div>
+        <img src="/images/sub/runday-course/강서구.jpg" alt="" />
+      </div>
+      <nav>
+        <h3>{props.pointData[0]?.COURSE_NAME}</h3>
+        <span>{props.pointData[0]?.CPI_NAME}</span>
+        <p>{props.pointData[0]?.CONTENT}</p>
+        <span>{props.pointData[0]?.DETAIL_COURSE}</span>
+        <ul>
+          <li>
+            <S.InfoTag>{props.pointData[0]?.DISTANCE}</S.InfoTag>
+          </li>
+          <li>
+            <S.InfoTag>{props.pointData[0]?.LEAD_TIME}</S.InfoTag>
+          </li>
+          <li>
+            {replaceSubway(props.pointData[0]?.RELATE_SUBWAY || "").map(
+              (el) => el.length !== 0 && <S.InfoTag key={el}>{el}</S.InfoTag>
+            )}
+          </li>
+        </ul>
+      </nav>
+    </S.ModalWrapper>
   );
 };
 

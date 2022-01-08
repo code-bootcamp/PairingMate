@@ -1,3 +1,4 @@
+// 작성자 : 우형래
 export function getDate(myDate: Date) {
   const date = new Date(myDate);
   const year = date.getFullYear();
@@ -6,6 +7,7 @@ export function getDate(myDate: Date) {
   return `${year}-${month}-${day}`;
 }
 
+// 작성자 : 우형래
 export const replaceTags = (tags: string) => {
   return tags
     .split("#")
@@ -13,24 +15,35 @@ export const replaceTags = (tags: string) => {
     .map((el) => "#" + el);
 };
 
+// 작성자 : 우형래
 export const replaceUrl = (url: string) => {
   return `https://storage.googleapis.com/${url}`;
 };
 
+// 작성자 : 우형래
 export const getCategory = (title: string) => {
   return title.split("$%$%")[0];
 };
 
+// 작성자 : 우형래
 export const getTitle = (title: string) => {
   return title.split("$%$%")[1];
 };
 
+// 작성자 : 우형래
 export const replaceAddr = (addr: string) => {
   return addr.split(" ")[0] + " " + addr.split(" ")[1];
 };
 
+// 작성자 : 권태욱
 export const emailRegExp = (email: string) => {
-  const regExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
-  
+  const regExp =
+    /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+
   return regExp.test(email);
-}
+};
+
+// 작성자 : 우형래
+export const replaceSubway = (subwayName: string) => {
+  return subwayName.split(",");
+};

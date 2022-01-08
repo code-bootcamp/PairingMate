@@ -7,7 +7,7 @@ const UploadsUI = (props: UploadsUIProps) => {
     <>
       <S.FindmatesUploadsWrapper>
         <img src="/images/common/image-icon-1.png" alt="" />
-        <button>이미지 선택</button>
+        <label>이미지 선택</label>
         <S.UploadImageWrapper>
           {props.isUpdate ? (
             <>

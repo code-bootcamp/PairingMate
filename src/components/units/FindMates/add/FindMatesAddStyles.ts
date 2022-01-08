@@ -3,12 +3,13 @@ import styled from "@emotion/styled";
 export const FindmatesAddWrapper = styled.div`
   width: 1400px;
   padding: 120px 50px 120px 50px;
-  box-shadow: 0px 10px 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
 
   select {
     width: 550px;
     height: 50px;
     padding-left: 10px;
+    outline: none;
     border: 1px solid #efefef;
     color: #555555;
   }
@@ -17,6 +18,7 @@ export const FindmatesAddWrapper = styled.div`
   textarea {
     padding: 10px 0px 10px 10px;
     margin-top: 30px;
+    outline: none;
   }
 `;
 
@@ -99,6 +101,12 @@ export const FindmatesUploadsWrapper = styled.div`
     top: 5px;
     left: 30px;
   }
+
+  label {
+    position: absolute;
+    top: 5px;
+    left: 30px;
+  }
 `;
 
 export const UploadImageWrapper = styled.div`
@@ -118,6 +126,10 @@ export const UploadImageIcon = styled.div`
   img {
     width: 20px;
     height: 20px;
+  }
+
+  :hover {
+    cursor: pointer;
   }
 `;
 
