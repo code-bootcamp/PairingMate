@@ -19,7 +19,6 @@ const RundayCourseUI = (props: RundayCourseUIProps) => {
   return (
     <>
       <Inner>
-        <h1>RundayCourse List Page</h1>
         <div>
           <select defaultValue={"none"} onChange={props.onChangeGuName}>
             <option value={"none"} disabled>

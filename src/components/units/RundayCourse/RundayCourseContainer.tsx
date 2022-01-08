@@ -3,6 +3,7 @@ import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import RundayCourseUI from "./RundayCoursePresenter";
 import { GU_COURSE_NAME } from "../../../commons/data/seoulGill";
+import RundayCourseTestUI from "./RundayCourseTestUI";
 
 const RundayCourse = () => {
   let newData = [];
@@ -32,11 +33,12 @@ const RundayCourse = () => {
   };
 
   return (
-    <RundayCourseUI
-      onChangeGuName={onChangeGuName}
-      onClickSearchCourse={onClickSearchCourse}
-      data={data}
-    />
+    // <RundayCourseUI
+    //   onChangeGuName={onChangeGuName}
+    //   onClickSearchCourse={onClickSearchCourse}
+    //   data={data}
+    // />
+    <RundayCourseTestUI />
   );
 };
 export default RundayCourse;
