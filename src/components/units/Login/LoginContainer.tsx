@@ -1,6 +1,6 @@
 import LoginUI from "./LoginPresenter";
 import { Modal } from 'antd'
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import {
   getFirestore,
@@ -8,12 +8,16 @@ import {
   setDoc,
   doc,
 } from "firebase/firestore";
-import { app } from "../../../../pages/_app";
+import { app, GlobalContext } from "../../../../pages/_app";
 import { useRouter } from "next/router";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "./LoginQueries";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loginUser] = useMutation(LOGIN_USER);
+  const { setAccessToken } = useContext(GlobalContext);
   const router = useRouter();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
@@ -27,7 +31,7 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const onClickLogin = () => {
+  const onClickUserLogin = () => {
     if( !email && !password ){
       Modal.error({title: "Empty Information!", content: "로그인 정보를 입력 해주세요"})
       return;
@@ -41,7 +45,10 @@ const Login = () => {
         // Login
         const user = userCredential.user;
         // ...
-        router.push("/")
+        console.log("User : ", user);
+        localStorage.setItem("refreshToken","true");
+        
+        router.push("/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -74,6 +81,24 @@ const Login = () => {
       });
   };
 
+  const onClickCompanyLogin = async () => {
+    try {
+      const result = await loginUser({
+        variables : {
+          email,
+          password
+        }
+      });
+      console.log("Company user : ", result);
+      localStorage.setItem("refreshToken", "true");
+      setAccessToken?.(result.data.loginUser.accessToken || "");
+      router.push("/");
+    } catch (error) {
+      Modal.error({content:error.message});
+    }
+
+  }
+
   const onClickGoogleLogin = () => {
     signInWithPopup(auth, provider)
       .then( async (result) => {
@@ -87,6 +112,7 @@ const Login = () => {
 
         if(docSnap.exists()){
           // console.log("Document data : " , docSnap.data());
+          localStorage.setItem("refreshToken","true");
           router.push("/")
         } else {
           // console.log("No Such Data!");
@@ -125,7 +151,8 @@ const Login = () => {
       <LoginUI 
           onChangeEmail={onChangeEmail}
           onChangePassword = {onChangePassword}
-          onClickLogin={onClickLogin}
+          onClickUserLogin={onClickUserLogin}
+          onClickCompanyLogin={onClickCompanyLogin}
           onClickGoogleLogin={onClickGoogleLogin}
           onClickSignup={onClickSignup}
       />

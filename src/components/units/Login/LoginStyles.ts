@@ -33,6 +33,7 @@ export const LoginWrap = styled.form`
 
 export const LoginFildset = styled.fieldset`
     padding: 60px 50px;
+    /* background-color: red; */
     input {
         height:30px;
         padding: 5px;
@@ -67,14 +68,14 @@ export const LoginFildsetInfo = styled.div`
 export const LoginButton = styled.button`
     width:100%;
     height: 51px;
-    margin-top:10px;
+    margin:10px 0;
     background: #213358;
     border-radius: 15px;
     color:white;
 `;
 
 export const SignupWrapper = styled.div`
-    margin-top : 30px;
+    margin-top : 10px;
 `;
 
 export const SignupTitle = styled.label`

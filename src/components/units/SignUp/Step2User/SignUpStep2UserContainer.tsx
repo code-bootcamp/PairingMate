@@ -88,7 +88,7 @@ const SignUpStep2User = () => {
                 }
             });
             Modal.success({title:"성공!" , content:"회원가입에 성공하였습니다."});
-            router.push("/");
+            router.push("/login");
         } catch (error) {
             Modal.error({title:error.message});
         }
