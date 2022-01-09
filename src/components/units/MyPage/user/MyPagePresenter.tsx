@@ -71,6 +71,16 @@ const MyPageUI = (props: IMypageProps) => {
                 <button>결제내역</button>
               </li>
             </M.MypageTabList>
+            <M.MypageContents>
+              <h3>내가 쓴 게시글</h3>
+              <M.MypageFindMatesPostWrap>
+                <ul>
+                  {props.data?.fetchBoards.map((el) => (
+                    <li key={el._id}>{el.title}</li>
+                  ))}
+                </ul>
+              </M.MypageFindMatesPostWrap>
+            </M.MypageContents>
           </M.MyPageArticle>
         </M.MypageSection>
       </Inner>
