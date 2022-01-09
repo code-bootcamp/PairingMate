@@ -26,10 +26,14 @@ const LoginUI = (props: LoginUIProps) => {
                         </L.LoginFildsetInfo>
                         <L.LoginButton 
                             type="button" 
-                            onClick={props.onClickLogin}> 로그인 
+                            onClick={props.onClickUserLogin}> 일반 회원 로그인 
+                        </L.LoginButton>
+                        <L.LoginButton 
+                            type="button" 
+                            onClick={props.onClickCompanyLogin}> 기업 회원 로그인 
                         </L.LoginButton>
                         <L.SignupWrapper>
-                            <L.SignupTitle>아이디가 없으신가요?</L.SignupTitle>
+                            {/* <L.SignupTitle>아이디가 없으신가요?</L.SignupTitle> */}
                             <L.SignupButton 
                                 type="button" 
                                 onClick={props.onClickSignup}> 회원가입 
