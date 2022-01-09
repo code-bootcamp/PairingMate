@@ -54,6 +54,7 @@ const MyPageUI = (props: IMypageProps) => {
                 <button>결제내역</button>
               </li>
             </M.MypageTabList>
+            <div></div>
           </M.MyPageArticle>
         </M.MypageSection>
       </Inner>

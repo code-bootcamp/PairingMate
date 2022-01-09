@@ -173,3 +173,11 @@ export const MypageTabList = styled.ul`
     }
   }
 `;
+
+export const MypageContents = styled.div`
+  padding: 20px 0;
+`;
+
+export const MypageFindMatesPostWrap = styled.div`
+  padding: 20px 0;
+`;
