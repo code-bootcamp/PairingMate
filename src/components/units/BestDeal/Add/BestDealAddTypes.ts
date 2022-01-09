@@ -27,11 +27,15 @@ export interface BestdealAddUIProps {
     }>
   >;
   data: any;
+  isUpdate?: boolean;
+  setIsUpdateImages: Dispatch<SetStateAction<boolean>>;
+  setIsUpdateTag: Dispatch<SetStateAction<boolean>>;
   onChangeCategory: (event: ChangeEvent<HTMLSelectElement>) => void;
   onChangePrice: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onClickAddBestdeal: (data: FormValues) => Promise<void>;
+  onClickUpdateBestdeal: () => void;
 }
 
 export interface UpdateUseditemInput {
@@ -41,5 +45,5 @@ export interface UpdateUseditemInput {
   price?: number;
   tags?: string[];
   images?: string[];
-  address?: string[];
+  useditemAddress?: {};
 }
