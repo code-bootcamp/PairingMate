@@ -23,9 +23,7 @@ const BestDealGet = () => {
   const [deleteBestdeal] = useMutation<
     Pick<IMutation, "deleteUseditem">,
     IMutationDeleteUseditemArgs
-  >(DELETE_USED_ITEM, {
-    variables: { useditemId: String(router.query.bestdealId) },
-  });
+  >(DELETE_USED_ITEM);
 
   const onMoveToBestdealUpdate = (bestdealId: string) => () => {
     router.push(`/best-deal/${bestdealId}/update/`);
@@ -43,7 +41,13 @@ const BestDealGet = () => {
 
   const onMoveToPayment = () => {};
 
-  return <BestDealGetUI />;
+  return (
+    <BestDealGetUI
+      data={data}
+      onMoveToBestdealUpdate={onMoveToBestdealUpdate}
+      onClickDeleteBestdeal={onClickDeleteBestdeal}
+    />
+  );
 };
 
 export default BestDealGet;

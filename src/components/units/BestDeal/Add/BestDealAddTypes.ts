@@ -1,16 +1,16 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
-export interface FormValues {
-  name: string;
-  remarks: string;
-  contents: string;
-  price: number;
-  tags?: string[];
-  images?: string[];
-  address: string[];
-  data: any;
-}
+// export interface FormValues {
+//   name: string;
+//   remarks: string;
+//   contents: string;
+//   price: number;
+//   tags?: string[];
+//   images?: string[];
+//   address: string[];
+//   data: any;
+// }
 
 export interface BestdealAddProps {
   data?: Pick<IQuery, "fetchUseditem">;
@@ -34,7 +34,7 @@ export interface BestdealAddUIProps {
   onChangePrice: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  onClickAddBestdeal: (data: FormValues) => Promise<void>;
+  onClickAddBestdeal: () => void;
   onClickUpdateBestdeal: () => void;
 }
 

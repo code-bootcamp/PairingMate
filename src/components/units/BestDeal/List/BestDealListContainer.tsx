@@ -13,29 +13,63 @@ import {
 const BestDealList = () => {
   const router = useRouter();
 
-  const { data: getBestDealList, fetchMore } = useQuery<
-    Pick<IQuery, "fetchUseditems">,
-    IQueryFetchUseditemsArgs
-  >(FETCH_USED_ITEMS, {
-    variables: { isSoldout: false },
-  });
+  const {
+    data: bestDealList,
+    fetchMore,
+    refetch,
+  } = useQuery<Pick<IQuery, "fetchUseditems">, IQueryFetchUseditemsArgs>(
+    FETCH_USED_ITEMS,
+    {
+      variables: { isSoldout: false },
+    }
+  );
 
-  const { data: getBestOfBestDealList } = useQuery<
-    Pick<IQuery, "fetchUseditemsOfTheBest">,
-    IQueryFetchUseditemsArgs
-  >(FETCH_USED_ITEMS_OF_THE_BEST, { variables: {} });
+  const { data: bestOfBestDealList } = useQuery<
+    Pick<IQuery, "fetchUseditemsOfTheBest">
+  >(FETCH_USED_ITEMS_OF_THE_BEST);
 
-  const onClickTitle = (event: any) => {
-    router.push(`/best-deal/${router.query.bestdealId}`);
+  const onClickBestdealGetPage = (bestdealId: string) => () => {
+    router.push(`/best-deal/${bestdealId}`);
+  };
+
+  const onClickCategory = (category: string) => () => {
+    refetch({ search: category });
+  };
+
+  const onClickMoveToBestdealAddPage = () => {
+    router.push(`/best-deal/add/`);
+  };
+
+  const onClickGetBestdealList = () => {
+    if (!bestDealList) return;
+
+    fetchMore({
+      variables: {
+        page: Math.ceil(bestDealList?.fetchUseditems.length / 10) + 1,
+      },
+      updateQuery: (prev: any, { fetchMoreResult }) => {
+        if (!fetchMoreResult?.fetchUseditems)
+          return { fetchUseditems: [...prev.fetchUseditems] };
+
+        return {
+          fetchUseditems: [
+            ...prev.fetchUseditems,
+            ...fetchMoreResult?.fetchUseditems,
+          ],
+        };
+      },
+    });
   };
 
   return (
     <>
       <BestDealListUI
-        getBestDealList={getBestDealList}
-        fetchMore={fetchMore}
-        getBestOfBestDealList={getBestOfBestDealList}
-        onClickTitle={onClickTitle}
+        bestDealList={bestDealList}
+        bestOfBestDealList={bestOfBestDealList}
+        onClickBestdealGetPage={onClickBestdealGetPage}
+        onClickCategory={onClickCategory}
+        onClickMoveToBestdealAddPage={onClickMoveToBestdealAddPage}
+        onClickGetBestdealList={onClickGetBestdealList}
       />
     </>
   );

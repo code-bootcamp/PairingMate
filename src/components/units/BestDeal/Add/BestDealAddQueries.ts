@@ -18,8 +18,24 @@ export const CREATE_USED_ITEM = gql`
         updatedAt
         deletedAt
       }
-      buyer
-      seller
+      buyer {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
+      seller {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
       soldAt
       createdAt
       updatedAt
@@ -52,8 +68,24 @@ export const UPDATE_USED_ITEM = gql`
         updatedAt
         deletedAt
       }
-      buyer
-      seller
+      buyer {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
+      seller {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
       soldAt
       createdAt
       updatedAt

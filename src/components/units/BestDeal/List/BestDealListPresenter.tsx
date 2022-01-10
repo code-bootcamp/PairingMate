@@ -1,42 +1,67 @@
 import { Inner } from "../../../../commons/styles/common";
+import { BestdealListUIProps } from "./BestDealListTypes";
+import * as B from "./BestDealListStyles";
+import { Fragment } from "react";
 
-const BestDealListUI = (props) => {
-  console.log(props.getBestOfBestDealList);
+const BestDealListUI = (props: BestdealListUIProps) => {
+  console.log(props.bestDealList);
   return (
     <>
       <Inner>
-        <h2>PairingMate추천 운동센터</h2>
+        <B.Title>PairingMate추천 운동센터</B.Title>
         <div>
-          <div>
-            {props.getBestOfBestDealList?.fetchUseditemsOfTheBest.map(
+          {/* <B.Wrapper>
+            {props.bestOfBestDealList?.fetchUseditemsOfTheBest.map(
               (el: any) => (
                 <div key={el._id}>
-                  <img
+                  <B.BestdealImg
                     src={`https://storage.googleapis.com/${el.images[0]}`}
-                  ></img>
-                  <div id={el._id} onClick={props.onClickTitle}>
+                  ></B.BestdealImg>
+                  <B.BestdealTitle
+                    id={el._id}
+                    onClick={props.onClickBestdealGetPage(el._id)}
+                  >
                     {el.name}
+                  </B.BestdealTitle>
+                  <div>{el.useditemAddress?.address}</div>
+                  <div key={el}>
+                    {el.tags.map((el: any) => (
+                      <div>{el}</div>
+                    ))}
                   </div>
-                  <div>{el.useditemAddress}</div>
-                  <div>{el.tags}</div>
                 </div>
               )
             )}
-          </div>
-          <div>
-            {props.getBestDealList?.fetchUseditems.map((el: any) => (
+          </B.Wrapper> */}
+          <B.Wrapper>
+            {props.bestDealList?.fetchUseditems.map((el: any) => (
               <div key={el._id}>
-                <img
+                <B.BestdealImg
                   src={`https://storage.googleapis.com/${el.images[0]}`}
-                ></img>
-                <div id={el._id} onClick={props.onClickTitle}>
-                  {el.name}
-                </div>
-                <div>{el.useditemAddress}</div>
-                <div>{el.tags}</div>
+                ></B.BestdealImg>
+                <B.TextBox>
+                  <B.BestdealTitle
+                    id={el._id}
+                    onClick={props.onClickBestdealGetPage(el._id)}
+                  >
+                    {el.name}
+                  </B.BestdealTitle>
+                  <B.BestdealAddress>
+                    {el.useditemAddress?.address}
+                  </B.BestdealAddress>
+                  <B.TagsWrapper>
+                    {el.tags.map((el: any) => (
+                      <Fragment key={el}>
+                        <B.BestdealTags>{el}</B.BestdealTags>
+                      </Fragment>
+                    ))}
+                  </B.TagsWrapper>
+                </B.TextBox>
               </div>
             ))}
-          </div>
+          </B.Wrapper>
+          <button onClick={props.onClickGetBestdealList}>더보기</button>
+          <button onClick={props.onClickMoveToBestdealAddPage}>글쓰기</button>
         </div>
       </Inner>
     </>
