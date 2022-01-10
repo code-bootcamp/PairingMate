@@ -73,7 +73,13 @@ const BestDealAddUI = (props: BestdealAddUIProps) => {
             </div>
           </div>
         </div>
-        <button>하기</button>
+        <div>
+          {props.isUpdate ? (
+            <button onClick={props.onClickUpdateBestdeal}>수정</button>
+          ) : (
+            <button onClick={props.onClickAddBestdeal}>등록</button>
+          )}
+        </div>
       </B.Wrapper>
     </Inner>
   );

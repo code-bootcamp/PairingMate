@@ -3,6 +3,7 @@ import BestDealList from "../../src/components/units/BestDeal/List/BestDealListC
 const BestDealListPage = () => {
   return (
     <>
+      {/* <div>zzzz</div> */}
       <BestDealList />
     </>
   );

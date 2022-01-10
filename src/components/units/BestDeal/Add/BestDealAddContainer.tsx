@@ -6,11 +6,7 @@ import {
 } from "../../../../commons/types/generated/types";
 import BestDealUI from "./BestDealAddPresenter";
 import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from "./BestDealAddQueries";
-import {
-  FormValues,
-  BestdealAddProps,
-  UpdateUseditemInput,
-} from "./BestDealAddTypes";
+import { BestdealAddProps, UpdateUseditemInput } from "./BestDealAddTypes";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
@@ -56,7 +52,7 @@ const BestDealAdd = (props: BestdealAddProps) => {
     setContents(event.target.value);
   };
 
-  const onClickAddBestdeal = async (data: FormValues) => {
+  const onClickAddBestdeal = async () => {
     if (
       category === "" ||
       price === Number("") ||
@@ -65,6 +61,7 @@ const BestDealAdd = (props: BestdealAddProps) => {
       contents === "" ||
       boardAddress.address === ""
     ) {
+      console.log("zzz", category);
       Modal.warning({ content: "모든 내용을 입력해주세요" });
       return;
     }

@@ -15,22 +15,11 @@ export const FETCH_USED_ITEMS = gql`
         _id
         address
         addressDetail
-        createdAt
-        updatedAt
-        deletedAt
       }
       seller {
         _id
         email
-        name
-        picture
-        createdAt
-        updatedAt
       }
-      soldAt
-      createdAt
-      updatedAt
-      deletedAt
     }
   }
 `;
