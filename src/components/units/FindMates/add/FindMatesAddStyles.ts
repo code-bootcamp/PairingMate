@@ -6,7 +6,7 @@ export const FindmatesAddWrapper = styled.div`
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
 
   select {
-    width: 550px;
+    width: 150px;
     height: 50px;
     padding-left: 10px;
     outline: none;
@@ -19,6 +19,7 @@ export const FindmatesAddWrapper = styled.div`
     padding: 10px 0px 10px 10px;
     margin-top: 30px;
     outline: none;
+    line-height: 35px;
   }
 `;
 
