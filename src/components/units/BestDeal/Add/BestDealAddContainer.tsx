@@ -25,6 +25,8 @@ const BestDealAdd = (props: BestdealAddProps) => {
     address: "",
   });
   const [images, setImages] = useState([]);
+  const [isUpdateTag, setIsUpdateTag] = useState(false);
+  const [isUpdateImages, setIsUpdateImages] = useState(false);
 
   const [addBestdeal] = useMutation<
     Pick<IMutation, "createUseditem">,
@@ -86,7 +88,7 @@ const BestDealAdd = (props: BestdealAddProps) => {
       });
       Modal.success({ content: "등록에 성공하였습니다" });
       console.log(result);
-      // router.push()
+      router.push(`/best-deal/${router.query.bestdealId}`);
     } catch (error) {
       console.log("상품등록 실패");
     }
@@ -94,12 +96,40 @@ const BestDealAdd = (props: BestdealAddProps) => {
 
   const onClickUpdateBestdeal = async () => {
     const updateUseditemInput: UpdateUseditemInput = {};
+    if (category !== "") updateUseditemInput.remarks = category;
+
+    if (price !== Number("")) updateUseditemInput.price = price;
+
+    if (title !== "") updateUseditemInput.name = title;
+
+    if (contents !== "") updateUseditemInput.contents = contents;
+
+    if (isUpdateTag) updateUseditemInput.tags = tags.join[""];
+    if (isUpdateImages) updateUseditemInput.images = images;
+    if (boardAddress.address !== "")
+      updateUseditemInput.useditemAddress = boardAddress;
+    if (images.length === 0 && isUpdateImages) {
+      Modal.warning({ content: "최소 1장의 이미지를 넣어주세요" });
+      return;
+    }
+
+    try {
+      await updateBestdeal({
+        variables: {
+          useditemId: String(router.query.bestdealId),
+          updateUseditemInput,
+        },
+      });
+      Modal.success({ content: "수정되었습니다" });
+      router.push(`/best-deal/${router.query.bestdealId}`);
+    } catch (error) {
+      console.log("수정에 실패하였습니다");
+    }
   };
 
   return (
     <BestDealUI
       setImages={setImages}
-      setBoardAddress={setBoardAddress}
       tags={tags}
       setTags={setTags}
       onChangeCategory={onChangeCategory}
@@ -108,6 +138,11 @@ const BestDealAdd = (props: BestdealAddProps) => {
       onChangeContents={onChangeContents}
       onClickAddBestdeal={onClickAddBestdeal}
       data={props.data}
+      isUpdate={props.isUpdate}
+      setIsUpdateImages={setIsUpdateImages}
+      setIsUpdateTag={setIsUpdateTag}
+      setBoardAddress={setBoardAddress}
+      onClickUpdateBestdeal={onClickUpdateBestdeal}
     />
   );
 };

@@ -4,6 +4,7 @@ import SearchAddr from "../../../commons/searchAddr/SearchAddrContainer";
 import TagsAdd from "../../../commons/tags/add/TagsAddContainer";
 import Uploads from "../../../commons/uploads/UploadsContainer";
 import { BestdealAddUIProps } from "./BestDealAddTypes";
+import TagsUpdate from "../../../commons/tags/update/TagsUpdateContainer";
 
 const BestDealAddUI = (props: BestdealAddUIProps) => {
   return (
@@ -23,6 +24,7 @@ const BestDealAddUI = (props: BestdealAddUIProps) => {
             type="text"
             placeholder="가격정보를 입력해주세요"
             onChange={props.onChangePrice}
+            defaultValue={props.data?.price}
           />
         </B.Header>
         <div>
@@ -30,29 +32,48 @@ const BestDealAddUI = (props: BestdealAddUIProps) => {
             type="text"
             placeholder="매장정보를 입력하세요."
             onChange={props.onChangeTitle}
+            defaultValue={props.data?.name}
           />
         </div>
         <div>
-          <TagsAdd setTags={props.setTags} tags={props.tags} />
+          {props.isUpdate ? (
+            <TagsUpdate
+              data={props.data?.fetchBoard.youtubeUrl}
+              tags={props.tags}
+              setTags={props.setTags}
+              setIsUpdateTag={props.setIsUpdateTag}
+            />
+          ) : (
+            <TagsAdd tags={props.tags} setTags={props.setTags} />
+          )}
         </div>
         <textarea
           placeholder="시설정보를 입력하세요"
           onChange={props.onChangeContents}
+          defaultValue={props.data?.contents}
         />
         <div>
           <div>
             <div>
               <span>이미지</span>
-              <SearchAddr setBoardAddress={props.setBoardAddress} />
+              <SearchAddr
+                setBoardAddress={props?.setBoardAddress}
+                data={props.data}
+              />
             </div>
           </div>
           <div>
             <div>
-              <Uploads setImages={props.setImages} />
+              <Uploads
+                setImages={props.setImages}
+                isUpdate={props.isUpdate}
+                data={props.data?.fetchBoard.images}
+                setIsUpdateImages={props.setIsUpdateImages}
+              />
             </div>
           </div>
         </div>
-        <button>등록하기</button>
+        <button>하기</button>
       </B.Wrapper>
     </Inner>
   );
