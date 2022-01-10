@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { TabTitlesProps } from "./tab.types";
 import * as T from "./Tabs.styles";
 
-const TabsTitle = (props: any) => {
+const TabsTitle = (props: TabTitlesProps) => {
   const [isActive, setIsActive] = useState(false);
   const onClickTabTitie = () => {
     props.setSelectedTab(props.index);

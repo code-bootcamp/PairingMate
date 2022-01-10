@@ -62,17 +62,6 @@ const MyPageUI = (props: IMypageProps) => {
             </M.UserInterestedWrap>
           </M.MyPageUserInfo>
           <M.MyPageArticle>
-            {/* <M.MypageTabList className="tab">
-              <li onClick={props.onClickTabActive} className="on">
-                <button label="제목"></button>
-              </li>
-              <li onClick={props.onClickTabActive}>
-                <button>게시글</button>
-              </li>
-              <li onClick={props.onClickTabActive}>
-                <button>결제내역</button>
-              </li>
-            </M.MypageTabList> */}
             <div>
               <Tabs>
                 <Tab title="전체">
@@ -139,8 +128,12 @@ const MyPageUI = (props: IMypageProps) => {
                     </M.MypageTableWrap>
                   </M.MypageContents>
                 </Tab>
-                <Tab title="내가 쓴 글">내가쓴거쥐</Tab>
-                <Tab title="결제내역">내가 결제한거쥐</Tab>
+                <Tab title="내가 쓴 글">
+                  <M.MypageContents>내가쓴거쥐</M.MypageContents>
+                </Tab>
+                <Tab title="결제내역">
+                  <M.MypageContents>내가 결제한거쥐</M.MypageContents>
+                </Tab>
               </Tabs>
             </div>
           </M.MyPageArticle>
