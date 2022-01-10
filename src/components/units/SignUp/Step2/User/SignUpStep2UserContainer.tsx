@@ -1,10 +1,10 @@
 import { Modal } from "antd";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { doc, collection, getDocs, getFirestore, query, setDoc, where } from "firebase/firestore";
 import router from "next/router";
 import { useState } from "react";
-import { app } from "../../../../../pages/_app";
-import { emailRegExp } from "../../../../commons/libraries/utils/utils";
+import { app } from "../../../../../../pages/_app";
+import { emailRegExp } from "../../../../../commons/libraries/utils/utils";
 import SignUpStep2UserUI from "./SignUpStep2UserPresenter";
 
 const SignUpStep2User = () => {
@@ -16,6 +16,7 @@ const SignUpStep2User = () => {
     const [passwordChk, setPasswordChk] = useState<string>("");
     const db = getFirestore(app);
     const auth = getAuth();
+    const [aaa, setAaa] = useState([]);
     const onChangeInputs = (event) => {
         setSignCompanyInputs({
             ...signUserInputs,
@@ -49,48 +50,29 @@ const SignUpStep2User = () => {
         else if(!email) Modal.error({title:"이메일을 입력해주세요!"});
         else if(!password) Modal.error({title:"비밀번호를 입력해주세요!"});
 
-        try{
-
-            // firebase doc 추가
-            createUserWithEmailAndPassword(auth, email, password)
-            .then(async (userCredential) => {
-                // Signed in
+        const q = query(collection(db, "users"), where("email", "==" , email));
+        const querySnapshot = await getDocs(q);
+        
+        if(querySnapshot.docs.map((el) => (el.data())).length > 0) {
+            Modal.error({title:"실패!" , content:"이미 사용 중인 이메일 입니다."})
+            return;
+        } else {
+            Modal.success({title:"성공!" , content:"사용 가능한 이메일 입니다."});
+            await createUserWithEmailAndPassword(auth, email, password)
+            .then( async (userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
-                // ...
-                try {
-                    await setDoc(doc(db, "users", user.uid), {
-                        uid: user.uid,
-                        email: user.email,
-                    });
-                } catch (error) {
-                    console.log(error);
-                }
+                await setDoc(doc(db, "users", user.uid), {
+                    uid: user.uid,
+                    email: user.email,
+                });
             })
             .catch((error) => {
                 const errorCode = error.code;
-
-                if (errorCode === "auth/email-already-in-use") {
-                    Modal.error({
-                        title: "Email already in use!",
-                        content: "이미 사용 되고 있는 이메일 입니다.",
-                    });
-                } else if (errorCode === "auth/weak-password") {
-                    Modal.error({
-                        title: "Weak Password!",
-                        content: "비밀번호는 6자리 이상으로 설정 해주세요",
-                    });
-                } else if (errorCode === "auth/invalid-email") {
-                    Modal.error({
-                        title: "Invalid Email!",
-                        content: "Email 형식이 틀립니다",
-                    });
-                }
+                Modal.error({title:errorCode});
             });
-            Modal.success({title:"성공!" , content:"회원가입에 성공하였습니다."});
-            router.push("/login");
-        } catch (error) {
-            Modal.error({title:error.message});
+            Modal.success({title:"성공!" , content:"프로필 설정페이지로 이동합니다!"});
+            router.push("/signup/step-3-user");
         }
     }
     return (
