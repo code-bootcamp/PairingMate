@@ -1,5 +1,5 @@
 import NavigationUI from "./Navigation.presenter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { reload } from "firebase/auth";
 
@@ -39,6 +39,14 @@ const Navigation = () => {
     router.push("/cs-center");
     setIsOpen(false);
   };
+
+  // useEffect(() => {
+  //   if(localStorage.getItem(("refreshToken")) === "false"){
+  //     console.log("refreshToken 1 : " , localStorage.getItem(("refreshToken")))
+  //   } else {
+  //     console.log("refreshToken 2 : " , localStorage.getItem(("refreshToken")))
+  //   }
+  // }, [])
 
   return (
     <>

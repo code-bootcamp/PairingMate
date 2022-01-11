@@ -16,7 +16,7 @@ const SignUpStep2User = () => {
     const [passwordChk, setPasswordChk] = useState<string>("");
     const db = getFirestore(app);
     const auth = getAuth();
-    const [aaa, setAaa] = useState([]);
+    
     const onChangeInputs = (event) => {
         setSignCompanyInputs({
             ...signUserInputs,
@@ -61,7 +61,6 @@ const SignUpStep2User = () => {
             await createUserWithEmailAndPassword(auth, email, password)
             .then( async (userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
                 await setDoc(doc(db, "users", user.uid), {
                     uid: user.uid,
                     email: user.email,

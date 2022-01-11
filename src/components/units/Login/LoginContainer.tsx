@@ -42,12 +42,8 @@ const Login = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Login
         const user = userCredential.user;
-        // ...
-        console.log("User : ", user);
         localStorage.setItem("refreshToken","true");
-        
         router.push("/");
       })
       .catch((error) => {
@@ -105,24 +101,20 @@ const Login = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const user = result.user;
-        // console.log("user_uid : ", user.uid);
 
         const uidRef = doc(db, "users" , user.uid);
         const docSnap = await getDoc(uidRef);
 
         if(docSnap.exists()){
-          // console.log("Document data : " , docSnap.data());
           localStorage.setItem("refreshToken","true");
           router.push("/")
         } else {
-          // console.log("No Such Data!");
           try {
               await setDoc(doc(db, "users", user.uid), {
                 uid: user.uid,
                 email: user.email,
                 name: user.displayName,
               });
-              // 회원가입 3 폼으로 이동
               Modal.success({title:"추가 정보 페이지로 이동합니다"});
               router.push("/signup/step-3-user");
             } catch (error) {
