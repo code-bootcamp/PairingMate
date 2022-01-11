@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import theme from "../../../commons/styles/variables";
 
 export const ModalWrapper = styled.div`
   position: absolute;
@@ -25,9 +26,12 @@ export const ModalWrapper = styled.div`
 
   h3 {
     margin-bottom: 20px;
+    font-weight: bolder;
   }
   p {
     margin: 20px 0px 20px 0px;
+    line-height: 25px;
+    color: #c4c4c4;
   }
   ul {
     margin-top: 20px;
@@ -40,11 +44,19 @@ export const ModalWrapper = styled.div`
   }
 `;
 
+export const InfoText = styled.span`
+  margin-right: 5px;
+  padding: 3px;
+  color: #324e86;
+  font-size: 15px;
+  font-weight: bolder;
+`;
+
 export const InfoTag = styled.span`
   margin-right: 5px;
   padding: 3px;
   border-radius: 7px;
-  background-color: #324e86;
+  background-color: ${theme.SubWayColor.line1};
   color: white;
   font-size: 15px;
 `;

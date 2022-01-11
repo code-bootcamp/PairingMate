@@ -47,3 +47,8 @@ export const emailRegExp = (email: string) => {
 export const replaceSubway = (subwayName: string) => {
   return subwayName.split(",");
 };
+
+// 작성자 : 우형래
+export const replaceCourseImage = (area: string) => {
+  return `/images/sub/runday-course/${area}.jpg`;
+};

@@ -77,6 +77,7 @@ export const SliderInnerDiv = styled.div`
 
     span {
       position: absolute;
+      width: 100%;
       top: 3px;
     }
 
