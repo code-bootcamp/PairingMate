@@ -17,10 +17,12 @@ const GetBestdealMapsPage = (props) => {
         const container = document.getElementById("map");
         const options = {
           center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-          level: 3,
+          level: 2,
         };
         const map = new window.kakao.maps.Map(container, options);
-        // ===== 주소를 좌표로 변경해주는 기능입니다. =====
+        map.setZoomable(false);
+        const zoomControl = new window.kakao.maps.ZoomControl();
+        map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
         const geocoder = new window.kakao.maps.services.Geocoder();
 
         geocoder.addressSearch(
@@ -36,13 +38,6 @@ const GetBestdealMapsPage = (props) => {
                 map: map,
                 position: coords,
               });
-
-              const infowindow = new window.kakao.maps.InfoWindow({
-                content:
-                  '<div style="width:150px;text-align:center;padding:6px 0;">코드캠프</div>',
-              });
-              infowindow.open(map, marker);
-
               map.setCenter(coords);
             }
           }
