@@ -11,8 +11,10 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
   return (
     <>
       <Inner>
-        <S.FindmateAddButton></S.FindmateAddButton>
         <S.FindmatesListWrapper>
+          <S.FindMateAddButtonWrap>
+            <S.FindmateAddButton></S.FindmateAddButton>
+          </S.FindMateAddButtonWrap>
           <S.FindmatesListHead>
             <S.UserProfile>
               <img src="/images/common/user-default.png" alt="user-profile" />
