@@ -1,8 +1,19 @@
 import styled from "@emotion/styled";
+import theme from "../../../../commons/styles/variables";
+
+export const FindMateAddButtonWrap = styled.p`
+  position: fixed;
+  width: 100%;
+  max-width: 1320px;
+
+  @media all and (max-width: 1280px) {
+    width: 85%;
+    max-width: 100%;
+  }
+`;
 
 export const FindmateAddButton = styled.button`
-  position: fixed;
-  right: 670px;
+  float: right;
   width: 48px;
   height: 48px;
   border-radius: 50px;
@@ -10,7 +21,7 @@ export const FindmateAddButton = styled.button`
 `;
 
 export const FindmatesListWrapper = styled.div`
-  width: 1400px;
+  width: 100%;
   padding: 35px;
 `;
 
