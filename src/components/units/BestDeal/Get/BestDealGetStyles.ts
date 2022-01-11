@@ -246,5 +246,28 @@ export const BodyContent = styled.div`
 export const TableWrapper = styled.div`
   width: 100%;
   margin-top: 70px;
-  background-color: brown;
+  /* background-color: brown; */
+`;
+export const Table = styled.table`
+  width: 100%;
+  margin-top: 50px;
+  thead {
+    th {
+      height: 45px;
+      padding: 10px 0;
+      background-color: #ebebeb;
+      border-color: #ebebeb;
+      border-width: 1px 1px 0px 1px;
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        height: 45px;
+        padding: 10px 0;
+        border: 1px solid #ebebeb;
+      }
+    }
+  }
 `;
