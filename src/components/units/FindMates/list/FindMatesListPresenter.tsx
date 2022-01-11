@@ -13,7 +13,9 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
       <Inner>
         <S.FindmatesListWrapper>
           <S.FindMateAddButtonWrap>
-            <S.FindmateAddButton></S.FindmateAddButton>
+            <S.FindmateAddButton
+              onClick={props.onClickMoveToFindmateAddPage}
+            ></S.FindmateAddButton>
           </S.FindMateAddButtonWrap>
           <S.FindmatesListHead>
             <S.UserProfile>
@@ -46,7 +48,7 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
                 key={el._id}
                 onClick={props.onClickFindmateGetPage(el._id)}
               >
-                <div>
+                <S.ContentsWrapper>
                   <S.FindmatesInfo>
                     <S.UserProfile>
                       <img
@@ -62,7 +64,7 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
                       <S.FindmatesLocationIcon>
                         <img src="/images/common/location.png" alt="" />
                       </S.FindmatesLocationIcon>
-                      {el.boardAddress?.address}
+                      <span>{el.boardAddress?.address}</span>
                     </S.FindmatesInfoAddr>
                   </S.FindmatesInfo>
                   <S.FindmatesContents>
@@ -78,7 +80,7 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
                       {el.likeCount}
                     </S.FindmatesInfoLikeCount>
                   </S.FindmatesContents>
-                </div>
+                </S.ContentsWrapper>
                 <S.FindmatesImg>
                   {el.images.length !== 0 && (
                     <img src={replaceUrl(el.images[0])} alt="" />
