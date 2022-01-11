@@ -46,7 +46,6 @@ const SignUpStep3User = () => {
     }
   
     const onClickUpdateDoc = async () => {
-        console.log("profileImage : " , profileImage);
       try {
         await updateDoc(docu, {
             name,

@@ -3,7 +3,6 @@ import "../styles/fonts/NotoSansKR/NotoSansKR.css";
 import type { AppProps } from "next/app";
 import { Global, ThemeProvider } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
-import Header from "../src/components/commons/layout/header/Header.container";
 import theme from "../src/commons/styles/variables";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -31,7 +30,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-
 export const auth = getAuth();
 export const GlobalContext = createContext(null);
 
@@ -70,7 +68,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               authorization: `Bearer ${newAccessToken}`,
             },
           });
-
           return forward(operation);
         }
       }
