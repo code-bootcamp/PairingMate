@@ -6,25 +6,24 @@ export const Header = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: 690px;
-  margin: 0 -30px;
-  /* background-color: yellow; */
 
   @media all and ${theme.tablet} {
     margin: 0;
   }
 `;
-
 export const BestDealImgWrap = styled.figure`
   width: 50%;
   padding: 0 30px;
-  background-color: blue;
 
   @media all and ${theme.tablet} {
     width: 100%;
     padding: 0 30px;
   }
 `;
-export const HeaderImg = styled.img``;
+export const HeaderImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 export const HeaderTextWrapper = styled.div`
   width: 50%;
   height: 690px;
@@ -256,8 +255,9 @@ export const Table = styled.table`
       height: 45px;
       padding: 10px 0;
       background-color: #ebebeb;
-      border-color: #ebebeb;
-      border-width: 1px 1px 0px 1px;
+      border: 1px solid #dddddd;
+      font-size: ${theme.fontsize.fs18};
+      line-height: 45px;
     }
   }
 
@@ -266,8 +266,25 @@ export const Table = styled.table`
       td {
         height: 45px;
         padding: 10px 0;
-        border: 1px solid #ebebeb;
+        border-color: #ebebeb;
+        border-style: solid;
+        border-width: 1px 0px 1px 1px;
+        font-size: ${theme.fontsize.fs16};
+        line-height: 45px;
+        text-align: center;
+        vertical-align: middle;
+        &:last-child {
+          border-right: 1px solid #ebebeb;
+        }
       }
     }
   }
+`;
+export const MapWrapper = styled.div`
+  width: 100%;
+  margin-top: 70px;
+`;
+export const Map = styled.div`
+  width: 100%;
+  margin-top: 50px;
 `;

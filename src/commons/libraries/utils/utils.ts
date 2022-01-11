@@ -52,3 +52,8 @@ export const replaceSubway = (subwayName: string) => {
 export const replaceCourseImage = (area: string) => {
   return `/images/sub/runday-course/${area}.jpg`;
 };
+
+// 작성자 : 김영탁
+export const priceToString = (price: number) => {
+  return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
