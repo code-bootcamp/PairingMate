@@ -39,17 +39,18 @@ export const TagsInput = styled.input`
   width:100%;
   font-size: 16px;
   border-bottom: 1px solid #efefef;
-
+  outline: none;
   &::placeholder {
     color: #dddddd;
   }
 `;
 
 export const TagsWrapper = styled.div`
-  width: 1300px;
+  width: 100%;
+  height: auto;
   padding: 10px 0px 10px 10px;
   margin-top: 20px;
-
+  word-break:break-all;
   span {
     margin-right: 5px;
     color: #324e86;

@@ -7,7 +7,7 @@ export const SignupWrapper = styled.div`
     top: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    height: 700px;
+    height: 720px;
     padding: 60px 50px;
     border: 1px solid #DDDDDD;
     box-sizing: border-box;
@@ -47,18 +47,33 @@ export const SignupImgWrapper = styled.div`
         width: 200px;
         height: 200px;
     }
-    
     input{
         display: none;
     }
 `
 export const SignupDisplayName = styled.input`
     outline:none;
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border-bottom: 1px solid #f7f7f7;
 `
 
 export const SignupTagsWrapper = styled.div`
-    margin: 20px 0;
+    margin: 10px 0;
+    height:180px;
+    max-height:200px;
     h4{
-        margin-bottom:10px;
+        margin-bottom:15px;
     }
 `;
+
+export const SignupFooterWrapper = styled.div`
+    text-align:center;
+    button{
+        width:100px;
+        height:30px;
+        border-radius:10px;
+        background-color: lightgray;
+    }
+`

@@ -21,7 +21,9 @@ const SignUpStep3UserUI = (props: SignUpStep3UserUIProps) => {
                     <h4>👀 &nbsp; 관심사 체크하기</h4>
                     <TagsAdd tags={props.Tags} setTags={props.setTags} />
                 </S.SignupTagsWrapper>
-                <button onClick={props.onClickUpdateDoc}> 등록하기 </button>
+                <S.SignupFooterWrapper>
+                    <button onClick={props.onClickUpdateDoc}> 등록하기 </button>
+                </S.SignupFooterWrapper>
             </S.SignupWrap>
         </S.SignupWrapper>
     )
