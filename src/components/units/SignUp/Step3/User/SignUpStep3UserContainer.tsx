@@ -51,7 +51,7 @@ const SignUpStep3User = () => {
         await updateDoc(docu, {
             name,
             image: profileImage,
-            // tage : Tags
+            tags : Tags
         });
         Modal.success({ title: "성공!" , content:"지금 부터 Pairing Mate를 만나보세요!"});
         router.push("/login");
