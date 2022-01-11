@@ -1,4 +1,7 @@
-import { replaceSubway } from "../../../commons/libraries/utils/utils";
+import {
+  replaceCourseImage,
+  replaceSubway,
+} from "../../../commons/libraries/utils/utils";
 import * as S from "./ModalStyles";
 
 interface Props {
@@ -15,7 +18,7 @@ const ModalUI = (props: Props) => {
         onClick={props.onClickClose}
       />
       <div>
-        <img src="/images/sub/runday-course/강서구.jpg" alt="" />
+        <img src={replaceCourseImage(props.pointData[0]?.AREA_GU)} alt="" />
       </div>
       <nav>
         <h3>{props.pointData[0]?.COURSE_NAME}</h3>
@@ -24,10 +27,10 @@ const ModalUI = (props: Props) => {
         <span>{props.pointData[0]?.DETAIL_COURSE}</span>
         <ul>
           <li>
-            <S.InfoTag>{props.pointData[0]?.DISTANCE}</S.InfoTag>
+            <S.InfoText>{props.pointData[0]?.DISTANCE}</S.InfoText>
           </li>
           <li>
-            <S.InfoTag>{props.pointData[0]?.LEAD_TIME}</S.InfoTag>
+            <S.InfoText>{props.pointData[0]?.LEAD_TIME}</S.InfoText>
           </li>
           <li>
             {replaceSubway(props.pointData[0]?.RELATE_SUBWAY || "").map(
