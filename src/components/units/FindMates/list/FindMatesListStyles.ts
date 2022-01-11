@@ -1,5 +1,14 @@
 import styled from "@emotion/styled";
 
+export const FindmateAddButton = styled.button`
+  position: fixed;
+  right: 670px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  background-color: black;
+`;
+
 export const FindmatesListWrapper = styled.div`
   width: 1400px;
   padding: 35px;
@@ -168,12 +177,27 @@ export const FindmatesContents = styled.div`
 `;
 
 export const FindmatesFooter = styled.footer`
-  text-align: center;
+  display: flex;
+  justify-content: center;
 
+  div {
+    width: 40px;
+    height: 40px;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  /* 
   button {
     width: 180px;
     height: 50px;
     border: 1px solid #dddddd;
     border-radius: 15px;
-  }
+  } */
 `;

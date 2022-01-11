@@ -11,6 +11,7 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
   return (
     <>
       <Inner>
+        <S.FindmateAddButton></S.FindmateAddButton>
         <S.FindmatesListWrapper>
           <S.FindmatesListHead>
             <S.UserProfile>
@@ -85,7 +86,12 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
             ))}
           </S.ListWrapper>
           <S.FindmatesFooter>
-            <button>더보기</button>
+            {props.data?.fetchBoards.length !==
+              props.findmatesCount?.fetchBoardsCount && (
+              <div onClick={props.onClickLoadMore}>
+                <img src="/images/common/down-arrow.png" alt="" />
+              </div>
+            )}
           </S.FindmatesFooter>
         </S.FindmatesListWrapper>
       </Inner>

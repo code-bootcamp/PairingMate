@@ -3,7 +3,7 @@ import { CREATE_USER } from "./SignUpStep2CompanyQueries"
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { Modal } from "antd";
-import { emailRegExp } from "../../../../commons/libraries/utils/utils";
+import { emailRegExp } from "../../../../../commons/libraries/utils/utils";
 import router from "next/router";
 
 const SignUpStep2Company = () => {

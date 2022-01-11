@@ -51,11 +51,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     credentials: "include",
   });
 
-  useEffect(() => {
-    // const accessToken = localStorage.getItem("accessToken") || "";
-    // if (accessToken) setMyAccessToken(accessToken);
-    if (localStorage.getItem("refreshToken")) getAccessToken(setMyAccessToken);
-  }, []);
+  // useEffect(() => {
+  //   // const accessToken = localStorage.getItem("accessToken") || "";
+  //   // if (accessToken) setMyAccessToken(accessToken);
+  //   if (localStorage.getItem("refreshToken")) getAccessToken(setMyAccessToken);
+  // }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {
@@ -66,7 +66,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           // 3. 기존에 실패한 요청 다시 재요청하기
           operation.setContext({
             headers: {
-              ...operation.getContext().heafers,
+              ...operation.getContext().headers,
               authorization: `Bearer ${newAccessToken}`,
             },
           });
@@ -78,7 +78,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   });
 
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink as ApolloLink]),
+    link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
 

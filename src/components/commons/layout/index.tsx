@@ -12,6 +12,7 @@ const HIDDEN_HEADERS = [
   "/signup/step-2-company",
   "/signup/step-2-user",
   "/admin",
+  "/signup/step-3-user"
 ];
 const HIDDEN_FOOTERS = [
   "/login",
@@ -19,6 +20,7 @@ const HIDDEN_FOOTERS = [
   "/signup/step-2-company",
   "/signup/step-2-user",
   "/admin",
+  "/signup/step-3-user"
 ];
 const CSCENTER_ONLY = ["/cs-center", "/cs-center/partner"];
 const Layout = (props: ILayoutProps) => {
