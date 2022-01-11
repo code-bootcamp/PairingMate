@@ -12,23 +12,7 @@ const MyPage = () => {
     FETCH_BOARDS
   );
 
-  const onClickTabActive = (event: any) => {
-    const current = event.currentTarget;
-    const chkActive = current.classList.value.indexOf("on");
-    check();
-
-    if (chkActive === -1) {
-      current.classList.add("on");
-    }
-  };
-
-  const check = () => {
-    const checkitem = document.getElementsByClassName("tab");
-    for (let i = 0; i < checkitem[0].children.length; i++) {
-      checkitem[0].children[i].classList.remove("on");
-    }
-  };
-  return <MyPageUI onClickTabActive={onClickTabActive} data={data} />;
+  return <MyPageUI data={data} />;
 };
 
 export default MyPage;
