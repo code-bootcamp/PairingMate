@@ -1,6 +1,8 @@
 import { Inner } from "../../../../commons/styles/common";
 import * as M from "./MyPageStyles";
 import { IMypageProps } from "./MyPageTypes";
+import Tabs from "../../../commons/tabs/Tabs";
+import Tab from "../../../commons/tabs/Tabs.Contents";
 const MyPageUI = (props: IMypageProps) => {
   return (
     <>
@@ -60,9 +62,9 @@ const MyPageUI = (props: IMypageProps) => {
             </M.UserInterestedWrap>
           </M.MyPageUserInfo>
           <M.MyPageArticle>
-            <M.MypageTabList className="tab">
+            {/* <M.MypageTabList className="tab">
               <li onClick={props.onClickTabActive} className="on">
-                <button>전체</button>
+                <button label="제목"></button>
               </li>
               <li onClick={props.onClickTabActive}>
                 <button>게시글</button>
@@ -70,17 +72,77 @@ const MyPageUI = (props: IMypageProps) => {
               <li onClick={props.onClickTabActive}>
                 <button>결제내역</button>
               </li>
-            </M.MypageTabList>
-            <M.MypageContents>
-              <h3>내가 쓴 게시글</h3>
-              <M.MypageFindMatesPostWrap>
-                <ul>
-                  {props.data?.fetchBoards.map((el) => (
-                    <li key={el._id}>{el.title}</li>
-                  ))}
-                </ul>
-              </M.MypageFindMatesPostWrap>
-            </M.MypageContents>
+            </M.MypageTabList> */}
+            <div>
+              <Tabs>
+                <Tab title="전체">
+                  <M.MypageContents>
+                    <h3>내가 쓴 게시글</h3>
+                    <M.MypageFindMatesPostWrap>
+                      <ul>
+                        {props.data?.fetchBoards.map((el) => (
+                          <li key={el._id}>{el.title}</li>
+                        ))}
+                      </ul>
+                    </M.MypageFindMatesPostWrap>
+
+                    <h3>결제 내역</h3>
+                    <M.MypageTableWrap>
+                      <M.MypageTable>
+                        <colgroup>
+                          <col width="25%" />
+                          <col width="25%" />
+                          <col width="25%" />
+                          <col width="25%" />
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th>결제번호</th>
+                            <th>결제품목</th>
+                            <th>결제금액</th>
+                            <th>결제일</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>20220110-12345678</td>
+                            <td>스포애니 회원권</td>
+                            <td>144,400원</td>
+                            <td>2022-01-10</td>
+                          </tr>
+                          <tr>
+                            <td>20220110-12345678</td>
+                            <td>스포애니 회원권</td>
+                            <td>144,400원</td>
+                            <td>2022-01-10</td>
+                          </tr>
+                          <tr>
+                            <td>20220110-12345678</td>
+                            <td>스포애니 회원권</td>
+                            <td>144,400원</td>
+                            <td>2022-01-10</td>
+                          </tr>
+                          <tr>
+                            <td>20220110-12345678</td>
+                            <td>스포애니 회원권</td>
+                            <td>144,400원</td>
+                            <td>2022-01-10</td>
+                          </tr>
+                          <tr>
+                            <td>20220110-12345678</td>
+                            <td>스포애니 회원권</td>
+                            <td>144,400원</td>
+                            <td>2022-01-10</td>
+                          </tr>
+                        </tbody>
+                      </M.MypageTable>
+                    </M.MypageTableWrap>
+                  </M.MypageContents>
+                </Tab>
+                <Tab title="내가 쓴 글">내가쓴거쥐</Tab>
+                <Tab title="결제내역">내가 결제한거쥐</Tab>
+              </Tabs>
+            </div>
           </M.MyPageArticle>
         </M.MypageSection>
       </Inner>

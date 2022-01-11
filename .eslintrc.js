@@ -19,5 +19,6 @@ module.exports = {
     "react/display-name": "off",
     "no-useless-return": "off",
     "no-unused-vars": "off",
+    "no-use-before-define": "off",
   },
 };

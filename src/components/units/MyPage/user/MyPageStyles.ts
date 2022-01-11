@@ -128,6 +128,7 @@ export const HashTagList = styled.ul`
 export const MyPageArticle = styled.article`
   width: 70%;
   padding: 50px;
+  border: 1px solid #ebebeb;
 `;
 
 export const MypageTabList = styled.ul`
@@ -180,4 +181,30 @@ export const MypageContents = styled.div`
 
 export const MypageFindMatesPostWrap = styled.div`
   padding: 20px 0;
+`;
+
+export const MypageTableWrap = styled.div`
+  padding: 30px 0;
+`;
+export const MypageTable = styled.table`
+  width: 100%;
+
+  thead {
+    tr {
+      th {
+        padding: 10px 0px;
+        background-color: #ebebeb;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        padding: 10px 0;
+        border: 1px solid #ebebeb;
+        border-width: 1px 0px 1px 1px;
+        text-align: center;
+      }
+    }
+  }
 `;
