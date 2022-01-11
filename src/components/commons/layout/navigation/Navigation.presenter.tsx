@@ -20,7 +20,7 @@ const NavigationUI = (props: NavigationProps) => {
           </h6>
 
           <LoginButton type="button" name="로그인" />
-          <button type="button" name="마이페이지"></button>
+          {/* <button type="button" name="마이페이지"></button> */}
           <LogoutButton type="button" name="로그아웃" />
         </N.LoginSection>
 
