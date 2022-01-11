@@ -115,14 +115,66 @@ const BestDealGetUI = (props: IBestDealGetUIProps) => {
               <B.Percent>20%</B.Percent>
               <B.OriginalPrice>180,000원</B.OriginalPrice>
             </B.PriceSubTitle>
+            <B.PriceButtonLineWrapper>
+              <B.Price>144,000원</B.Price>
+              <B.Month>6개월</B.Month>
+              <B.Payment>구매하기</B.Payment>
+            </B.PriceButtonLineWrapper>
           </B.PriceWrapper>
-          <B.PriceButtonLineWrapper>
-            <B.Price>144,000원</B.Price>
-            <B.Month>6개월</B.Month>
-            <B.Payment>구매하기</B.Payment>
-          </B.PriceButtonLineWrapper>
         </B.HeaderTextWrapper>
       </B.Header>
+      <B.TabWrapper>
+        <B.TabOn>시설정보</B.TabOn>
+        <B.TabOff>환불규정</B.TabOff>
+        <B.TabOff>시설사진</B.TabOff>
+        <B.TabOff>후기</B.TabOff>
+      </B.TabWrapper>
+      <B.Body>
+        <B.BodyWrapper>
+          <B.BodyTitle>시설소개</B.BodyTitle>
+          <B.BodyContent>
+            1. 약 400여평 구로디지털단지 최고 시설로 오픈한 스포애니
+            구로디지털점은 헬스, 요가, 댄스 등 각종 G.X를 갖춘 대규모 종합
+            피트니스센터 입니다. <br />
+            <br />
+            2. 신세대 기호에 맞춘 젊고 세련된 감각의 최신식 인테리어로 오픈
+            하였습니다. <br />
+            <br />
+            3. 약 40여종의 유산소기구, 50여종의 최고급 운동시설이 준비되어
+            있습니다. * 웨이트머신 브랜드 : 외산 최고급 싸이백스 풀세트 <br />
+            <br />
+            4. 넓고 쾌적한 샤워시설, 휴게실 등 다양한 부대시설을 제공합니다
+            <br />
+            <br />
+            5. 합리적인 비용으로 헬스는 물론 댄스,요가 등 다양한 그룹 엑서사이즈
+            프로그램을 모두 이용하실 수 있습니다. (G.X 예약방식은 지점별로
+            상이하며 지점으로 문의해 주시기 바랍니다.) <br />
+            <br />
+            6. 평일 24시간, 연중무휴 오픈으로 원하는 시간에 어느때나 이용하실 수
+            있습니다.
+            <br />
+            <br />
+            7. 체성분 분석기를 활용하여 전문강사진이 과학적으로 운동지도
+            해드립니다.
+            <br />
+            <br />
+            8. 스포애니 전용 어플로 스포애니의 모든 지점을 동시에 이용하실 수
+            있습니다.(동일 브랜드에 한함)
+            <br />
+            <br />
+            <br /> &nbsp; ※ 코로나19로 인한 지점 이용 및 G.X 운영에 변동 사항이
+            있으므로 자주 묻는 질문에서 꼭 확인해 주세요.
+          </B.BodyContent>
+        </B.BodyWrapper>
+        <B.TableWrapper>
+          <B.BodyTitle>운영시간</B.BodyTitle>
+          <tr>
+            <td>이거 뭐야</td>
+            <td>이거는 뭐야</td>
+            <td>그럼 이거는?</td>
+          </tr>
+        </B.TableWrapper>
+      </B.Body>
     </Inner>
   );
 };

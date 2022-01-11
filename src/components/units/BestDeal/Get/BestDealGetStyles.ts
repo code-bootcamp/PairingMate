@@ -17,6 +17,7 @@ export const Header = styled.div`
 export const BestDealImgWrap = styled.figure`
   width: 50%;
   padding: 0 30px;
+  background-color: blue;
 
   @media all and ${theme.tablet} {
     width: 100%;
@@ -27,7 +28,7 @@ export const HeaderImg = styled.img``;
 export const HeaderTextWrapper = styled.div`
   width: 50%;
   height: 690px;
-  paading: 0 30px;
+  padding: 0 30px;
   /* background-color: skyblue; */
 
   @media all and ${theme.tablet} {
@@ -166,7 +167,6 @@ export const OriginalPrice = styled.span`
 `;
 export const PriceButtonLineWrapper = styled.div`
   height: 45px;
-  margin-top: -46px;
 `;
 export const Price = styled.span`
   height: 41px;
@@ -185,7 +185,66 @@ export const Month = styled.span`
 export const Payment = styled.button`
   width: 150px;
   height: 45px;
+  float: right;
   background-color: #c4c4c4;
-  margin-left: 315px;
   font-size: ${theme.fontsize.fs16};
+`;
+export const TabWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 50px;
+  margin-top: 90px;
+  background-color: Lightyellow;
+`;
+export const TabOn = styled.div`
+  width: 25%;
+  height: 50px;
+  background-color: #efefef;
+  border: 1px solid #dddddd;
+  font-size: ${theme.fontsize.fs18};
+  text-align: center;
+  line-height: 50px;
+  :hover {
+    font-weight: bold;
+    color: #324e86;
+    background-color: white;
+  }
+`;
+export const TabOff = styled.div`
+  width: 25%;
+  height: 50px;
+  background-color: #efefef;
+  border: 1px solid #dddddd;
+  font-size: ${theme.fontsize.fs18};
+  text-align: center;
+  line-height: 50px;
+  :hover {
+    font-weight: bold;
+    color: #324e86;
+    background-color: white;
+  }
+`;
+export const Body = styled.div`
+  width: 100%;
+`;
+export const BodyWrapper = styled.div`
+  width: 100%;
+  margin-top: 90px;
+`;
+export const BodyTitle = styled.h3`
+  font-size: ${theme.fontsize.fs24};
+  font-weight: bold;
+  line-height: 35px;
+  color: #332244;
+`;
+export const BodyContent = styled.div`
+  width: 100%;
+  margin-top: 50px;
+  font-size: ${theme.fontsize.fs16}
+  line-height: 24px;
+`;
+export const TableWrapper = styled.div`
+  width: 100%;
+  margin-top: 70px;
+  background-color: brown;
 `;
