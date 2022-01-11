@@ -168,11 +168,44 @@ const BestDealGetUI = (props: IBestDealGetUIProps) => {
         </B.BodyWrapper>
         <B.TableWrapper>
           <B.BodyTitle>운영시간</B.BodyTitle>
-          <tr>
-            <td>이거 뭐야</td>
-            <td>이거는 뭐야</td>
-            <td>그럼 이거는?</td>
-          </tr>
+          <B.Table>
+            <colgroup>
+              <col width="12.5%" />
+              <col width="12.5%" />
+              <col width="12.5%" />
+              <col width="12.5%" />
+              <col width="12.5%" />
+              <col width="12.5%" />
+              <col width="12.5%" />
+              <col width="12.5%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th colSpan={2}>평일</th>
+                <th colSpan={2}>주말 / 공휴일</th>
+                <th colSpan={2}>휴일</th>
+                <th colSpan={2}>비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OPEN</td>
+                <td>CLOSE</td>
+                <td>OPEN</td>
+                <td>CLOSE</td>
+                <td colSpan={2} rowSpan={2}></td>
+                <td colSpan={2} rowSpan={2}>
+                  코로나 19로 인해 운영시간이 변경될 수 있습니다.
+                </td>
+              </tr>
+              <tr>
+                <td>00:00</td>
+                <td>00:00</td>
+                <td>00:00</td>
+                <td>00:00</td>
+              </tr>
+            </tbody>
+          </B.Table>
         </B.TableWrapper>
       </B.Body>
     </Inner>
