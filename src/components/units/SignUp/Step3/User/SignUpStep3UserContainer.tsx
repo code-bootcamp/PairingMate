@@ -11,15 +11,14 @@ import SignUpStep3UserUI from "./SignUpStep3UserPresenter";
 const SignUpStep3User = () => {
     const fileRef = useRef<HTMLInputElement>(null);
     const [uploadFile] = useMutation(UPLOAD_FILE);
-    // 사용 하지 않는 파라미터는 지울 수 있으나 콤마를 꼭 넣어줘야한다.
     const [profileImage, setProfileImage] = useState<string[]>([]);
     const [name, setName] = useState("");
-
+    const [Tags, setTags] = useState([]);
     const db = getFirestore(app);
     const auth = getAuth();
     const user = auth.currentUser;
 
-    const imgDoc = doc(db, "users", user.uid);
+    const docu = doc(db, "users", user.uid);
   
     const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
       const myFile = event.target.files?.[0];
@@ -38,6 +37,10 @@ const SignUpStep3User = () => {
       fileRef.current?.click();
     };
 
+    const onErrorHandle = (event)=>{
+      event.target.src = ("/images/common/signupProfile.svg");
+  }
+
     const onChangeName = (event) => {
         setName(event.target.value);
     }
@@ -45,10 +48,10 @@ const SignUpStep3User = () => {
     const onClickUpdateDoc = async () => {
         console.log("profileImage : " , profileImage);
       try {
-        await updateDoc(imgDoc, {
+        await updateDoc(docu, {
             name,
-            images: profileImage,
-            // tage
+            image: profileImage,
+            // tage : Tags
         });
         Modal.success({ title: "성공!" , content:"지금 부터 Pairing Mate를 만나보세요!"});
         router.push("/login");
@@ -58,9 +61,12 @@ const SignUpStep3User = () => {
     };
     return (
         <SignUpStep3UserUI 
+            Tags={Tags}
+            setTags={setTags}
             fileRef={fileRef}
             profileImage={profileImage}
             onChangeFile={onChangeFile}
+            onErrorHandle={onErrorHandle}
             onChangeName={onChangeName}
             onClickProfileImage={onClickProfileImage}
             onClickUpdateDoc={onClickUpdateDoc}

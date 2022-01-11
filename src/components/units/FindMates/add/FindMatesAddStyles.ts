@@ -36,7 +36,7 @@ export const TitleInput = styled.input`
 
 export const TagsInput = styled.input`
   display: block;
-  width: 1300px;
+  width:100%;
   font-size: 16px;
   border-bottom: 1px solid #efefef;
 

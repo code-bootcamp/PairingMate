@@ -1,43 +1,29 @@
-import { SignUpStep3UserUiProps } from "./SignUpStep3UserTypes";
+import * as S from './SignUpStep3UserStyles'
+import { SignUpStep3UserUIProps } from "./SignUpStep3UserTypes";
+import TagsAdd from "../../../../commons/tags/add/TagsAddContainer";
 
-const SignUpStep3UserUI = (props: SignUpStep3UserUiProps) => {
-
+const SignUpStep3UserUI = (props: SignUpStep3UserUIProps) => {
     return (
-        <>
-            <h1>PairingMate에서<br />
-            <strong>당신의 Best Mate를 만나보세요</strong>
-            </h1>
-            <div
-                style={{
-                width: "144px",
-                height: "144px",
-                backgroundColor: "lightgray",
-                }}
-                onClick={props.onClickProfileImage}
-            >
-            <img
-                src={`https://storage.googleapis.com/${props.profileImage[0]}`}
-                style={{ width: "144px", height: "144px" }}
-            />
-            </div>
-            <input
-                ref={props.fileRef}
-                style={{
-                    display: "none",
-                    width: "300px",
-                    height: "100px",
-                    backgroundColor:"red"
-                }}
-                type="file"
-                onChange={props.onChangeFile}
-            />
-            <h4>프로필 사진을 등록해주세요</h4>
-            닉네임 : <input type="text" placeholder="닉네임을 입력해주세요." onChange={props.onChangeName}/>
-
-            <h4>관심사 체크하기</h4>
-            
-            <button onClick={props.onClickUpdateDoc}> 등록하기 </button>
-        </>
+        <S.SignupWrapper>
+            <S.SignupWrap>
+                <S.SignupHeadTitle>PairingMate에서<br />
+                <strong>당신의 Best Mate 를 만나보세요</strong>
+                </S.SignupHeadTitle>
+                <S.SignupProfileWrapper>
+                    <S.SignupImgWrapper onClick={props.onClickProfileImage}>
+                        <img src={`https://storage.googleapis.com/${props.profileImage[0]}`} onError={props.onErrorHandle}/>
+                        <input type="file" ref={props.fileRef} onChange={props.onChangeFile} />
+                    </S.SignupImgWrapper>
+                    <h4>프로필 사진을 등록해주세요</h4>
+                </S.SignupProfileWrapper>
+                <S.SignupDisplayName type="text" placeholder="닉네임을 입력해주세요." onChange={props.onChangeName}/>
+                <S.SignupTagsWrapper>
+                    <h4>👀 &nbsp; 관심사 체크하기</h4>
+                    <TagsAdd tags={props.Tags} setTags={props.setTags} />
+                </S.SignupTagsWrapper>
+                <button onClick={props.onClickUpdateDoc}> 등록하기 </button>
+            </S.SignupWrap>
+        </S.SignupWrapper>
     )
 }
 export default SignUpStep3UserUI;

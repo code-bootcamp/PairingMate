@@ -123,7 +123,7 @@ const Login = () => {
                 name: user.displayName,
               });
               // 회원가입 3 폼으로 이동
-              Modal.error({title:"추가 정보 페이지로 이동합니다"});
+              Modal.success({title:"추가 정보 페이지로 이동합니다"});
               router.push("/signup/step-3-user");
             } catch (error) {
               Modal.error({title:error});
