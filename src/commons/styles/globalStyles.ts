@@ -28,7 +28,6 @@ export const globalStyles = css`
   }
 
   html {
-    scroll-behavior: smooth;
     font-size: 100%;
   }
 
