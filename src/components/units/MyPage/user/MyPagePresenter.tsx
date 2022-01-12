@@ -3,6 +3,7 @@ import * as M from "./MyPageStyles";
 import { IMypageProps } from "./MyPageTypes";
 import Tabs from "../../../commons/tabs/Tabs";
 import Tab from "../../../commons/tabs/Tabs.Contents";
+
 const MyPageUI = (props: IMypageProps) => {
   return (
     <>
