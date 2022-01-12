@@ -86,7 +86,7 @@ const BestDealListUI = (props: BestdealListUIProps) => {
           <B.MoreButton onClick={props.onClickGetBestdealList}>
             더보기
           </B.MoreButton>
-          {/* <button onClick={props.onClickMoveToBestdealAddPage}>글쓰기</button> */}
+          <button onClick={props.onClickMoveToBestdealAddPage}>글쓰기</button>
         </B.Wrapper>
       </Inner>
     </>
