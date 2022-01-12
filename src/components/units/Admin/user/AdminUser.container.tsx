@@ -22,7 +22,6 @@ const AdminUser = () => {
   useEffect(() => {
     onLoadGetDocs();
   }, []);
-  console.log("outline : ", data);
 
   return (
     <>

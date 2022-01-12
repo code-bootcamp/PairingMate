@@ -1,7 +1,7 @@
 import { Inner } from "../../../../commons/styles/common";
 import * as P from "./Partner.styles";
 
-const PartnerUI = () => {
+const PartnerUI = (props: any) => {
   return (
     <Inner>
       <P.Title>파트너 문의</P.Title>
@@ -30,29 +30,58 @@ const PartnerUI = () => {
       <P.Grid>
         <div>
           <p>
-            <input type="text" placeholder="회사명 *" />
+            <input
+              type="text"
+              placeholder="회사명 *"
+              name="companyname"
+              onChange={props.onChangeInputs}
+            />
           </p>
           <p>
-            <input type="text" placeholder="이름 *" />
+            <input
+              type="text"
+              placeholder="이름 *"
+              name="name"
+              onChange={props.onChangeInputs}
+            />
           </p>
           <p>
-            <input type="text" placeholder="직급 *" />
+            <input
+              type="text"
+              placeholder="직급 *"
+              name="jobtitle"
+              onChange={props.onChangeInputs}
+            />
           </p>
           <p>
-            <input type="text" placeholder="연락처 *" />
+            <input
+              type="text"
+              placeholder="연락처 *"
+              name="contact"
+              onChange={props.onChangeInputs}
+            />
           </p>
           <p>
-            <input type="text" placeholder="이메일 *" />
+            <input
+              type="text"
+              placeholder="이메일 *"
+              name="email"
+              onChange={props.onChangeInputs}
+            />
           </p>
         </div>
         <div>
           <P.TextArea>
-            <textarea placeholder="문의사항을 입력해주세요 :) " />
+            <textarea
+              placeholder="문의사항을 입력해주세요 :) "
+              name="contents"
+              onChange={props.onChangeInputs}
+            />
           </P.TextArea>
         </div>
       </P.Grid>
       <P.ButtonWrap>
-        <button>문의하기</button>
+        <button onClick={props.onClickSendInquiry}>문의하기</button>
       </P.ButtonWrap>
     </Inner>
   );

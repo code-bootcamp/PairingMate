@@ -2,7 +2,7 @@ import AdminNavigation from "../../../commons/layout/navigation/admin/AdminNavig
 import { Inner } from "../../../../commons/styles/common";
 import * as AI from "./AdminInquiry.styles";
 
-const AdminInquiryUI = () => {
+const AdminInquiryUI = (props: any) => {
   return (
     <>
       <AI.Wrapper>
@@ -12,7 +12,23 @@ const AdminInquiryUI = () => {
             <AI.AdminInquirySection>
               <AI.SectionTitle>파트너 문의 리스트</AI.SectionTitle>
               <AI.CompanyInquiry>
-                <li>
+                {props.data?.map((el, index) => (
+                  <li key={index}>
+                    <div>
+                      <AI.CompanyName>{el.companyName}</AI.CompanyName>
+                      <AI.InquiryContents>
+                        <h2>{el.name}</h2>
+                        <p>{el.jobtitle}</p>
+                        <p>{el.contact}</p>
+                        <p>{el.email}</p>
+                        <AI.CompanyAsk>{el.contents}</AI.CompanyAsk>
+                        <AI.ReplyBtn>답장하기</AI.ReplyBtn>
+                      </AI.InquiryContents>
+                    </div>
+                  </li>
+                ))}
+
+                {/* <li>
                   <div>
                     <AI.CompanyName>스포애니 구로디지털단지점</AI.CompanyName>
                     <AI.InquiryContents>
@@ -40,22 +56,7 @@ const AdminInquiryUI = () => {
                       <AI.ReplyBtn>상세보기</AI.ReplyBtn>
                     </AI.InquiryContents>
                   </div>
-                </li>
-
-                <li>
-                  <div>
-                    <AI.CompanyName>스포애니 구로디지털단지점</AI.CompanyName>
-                    <AI.InquiryContents>
-                      <AI.CompanyAsk>
-                        파트너 문의드립니다. 지속적인 회원 유치를 위해 알아보다
-                        PairingMate를 알게 되었습니다. 파트너쉽 계약 가격과
-                        Premium Best Deal 광고 가격 문의 드립니다. 빠른 연락
-                        부탁드려요
-                      </AI.CompanyAsk>
-                      <AI.ReplyBtn>상세보기</AI.ReplyBtn>
-                    </AI.InquiryContents>
-                  </div>
-                </li>
+                </li> */}
               </AI.CompanyInquiry>
             </AI.AdminInquirySection>
 

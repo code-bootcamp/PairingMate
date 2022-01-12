@@ -19,11 +19,13 @@ export const SectionTitle = styled.h2`
 `;
 
 export const CompanyInquiry = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   margin-top: ${theme.MarginTop.mt30};
 
   li {
-    width: 100%;
+    width: 25%;
     margin-bottom: 20px;
 
     > div {
@@ -49,11 +51,7 @@ export const CompanyName = styled.h6`
   font-size: ${theme.fontsize.fs20};
 `;
 
-export const InquiryContents = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0 !important;
-`;
+export const InquiryContents = styled.div``;
 export const CompanyAsk = styled.p`
   display: inline-block;
   width: calc(100% - 160px);
