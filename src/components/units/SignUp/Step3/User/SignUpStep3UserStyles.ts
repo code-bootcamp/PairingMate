@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import theme from "../../../../../commons/styles/variables";
 
 // Css 작성
 export const SignupWrapper = styled.div`
@@ -37,13 +38,14 @@ export const SignupProfileWrapper = styled.div`
 
     h4{
         margin-top:20px;
-        font-weight:500;
+        font-weight:bold;
         color:#555555;
     }
 `;
 
 export const SignupImgWrapper = styled.div`
     img{
+        border-radius:50%;
         width: 200px;
         height: 200px;
     }
@@ -57,6 +59,9 @@ export const SignupDisplayName = styled.input`
     padding:10px;
     margin-bottom:10px;
     border-bottom: 1px solid #f7f7f7;
+    &::placeholder{
+        color:#dddddd;
+    }
 `
 
 export const SignupTagsWrapper = styled.div`
@@ -73,7 +78,6 @@ export const SignupFooterWrapper = styled.div`
     button{
         width:100px;
         height:30px;
-        border-radius:10px;
         background-color: lightgray;
     }
 `

@@ -27,7 +27,7 @@ const Loginbuttons = styled.button`
 const LoginButton = (props: ButtonsProps) => {
   const router = useRouter();
   const onClickMoveToLoginPage = () => {
-    router.push("./login");
+    router.push("/login");
   };
   return (
     <>

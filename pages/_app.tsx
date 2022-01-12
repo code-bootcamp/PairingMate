@@ -5,7 +5,7 @@ import { Global, ThemeProvider } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import theme from "../src/commons/styles/variables";
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth , onAuthStateChanged } from "firebase/auth";
 import {
   ApolloClient,
   ApolloProvider,
@@ -42,18 +42,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     userInfo: myUserInfo,
     setUserInfo: setMyUserInfo,
   };
+  
   // ApolloClient 셋팅
   const uploadLink = createUploadLink({
     uri: "https://backend04-team.codebootcamp.co.kr/team02",
     headers: { authorization: `Bearer ${myAccessToken}` },
     credentials: "include",
   });
-
-  // useEffect(() => {
-  //   // const accessToken = localStorage.getItem("accessToken") || "";
-  //   // if (accessToken) setMyAccessToken(accessToken);
-  //   if (localStorage.getItem("refreshToken")) getAccessToken(setMyAccessToken);
-  // }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {

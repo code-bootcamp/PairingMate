@@ -27,7 +27,7 @@ export const SignUpHeadTitle = styled.h1`
     line-height: 1.5;
     color: #333333;
     strong{
-        color:#03A9F4;
+        color:#324E86;
         font-weight: bold;
     }
 `;
@@ -45,7 +45,6 @@ export const SignUpButtonWrapper = styled.div`
     justify-content:space-between;
     height:180px;
     margin-top: 30px;
-
 `;
 
 export const SignUpFooterTitle = styled.label`
@@ -62,6 +61,5 @@ export const SignUpButton = styled(Button)`
     margin-top:5px;
     text-align:left;
     line-height:23px;
-
 `;  
 
