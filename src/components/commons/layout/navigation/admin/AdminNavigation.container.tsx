@@ -1,3 +1,4 @@
+import router from "next/router";
 import { useState, useEffect } from "react";
 import AdminNavigationUI from "./AdminNavigation.presenter";
 
@@ -21,13 +22,28 @@ const AdminNavigation = () => {
     console.log(currentTimer);
   };
 
+  const onClickMoveToOverview = () => {
+    router.push("/admin");
+  };
+  const onClickMoveToUser = () => {
+    router.push("/admin/user");
+  };
+  const onClickMoveToInquiry = () => {
+    router.push("/admin/inquiry");
+  };
+
   useEffect(() => {
     getCurrentDate();
     console.log(time);
   });
   return (
     <>
-      <AdminNavigationUI time={time} />
+      <AdminNavigationUI
+        time={time}
+        onClickMoveToOverview={onClickMoveToOverview}
+        onClickMoveToUser={onClickMoveToUser}
+        onClickMoveToInquiry={onClickMoveToInquiry}
+      />
     </>
   );
 };

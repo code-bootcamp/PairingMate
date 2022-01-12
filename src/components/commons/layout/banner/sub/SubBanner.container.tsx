@@ -13,7 +13,7 @@ const PageUrl = [
     images: "/images/sub/bg_sub_visual02.jpg",
   },
   {
-    url: "/best-deal",
+    url: ["/best-deal"],
     title: "Best Deal",
     images: "/images/sub/bg_sub_visual03.jpg",
   },

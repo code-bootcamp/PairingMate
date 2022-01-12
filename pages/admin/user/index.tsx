@@ -1,5 +1,11 @@
+import AdminUser from "../../../src/components/units/Admin/user/AdminUser.container";
+
 const AdminUserPage = () => {
-  return <></>;
+  return (
+    <>
+      <AdminUser />
+    </>
+  );
 };
 
 export default AdminUserPage;

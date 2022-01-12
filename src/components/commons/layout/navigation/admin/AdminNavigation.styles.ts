@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 import theme from "../../../../../commons/styles/variables";
 
 export const AdminNavigationWrap = styled.nav`
-  width: 10%;
+  width: 15%;
   height: 100vh;
   padding: 100px 30px;
   border: 1px solid #ebebeb;
@@ -52,6 +52,7 @@ export const AdminNavigationMenu = styled.ul`
   li {
     position: relative;
     padding: 15px 0;
+    cursor: pointer;
     button {
       margin-left: 35px;
       font-size: ${theme.fontsize.fs18};
