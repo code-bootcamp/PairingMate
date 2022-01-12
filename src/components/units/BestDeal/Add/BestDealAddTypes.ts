@@ -34,6 +34,7 @@ export interface BestdealAddUIProps {
   onChangePrice: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  onChangePhone: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickAddBestdeal: () => void;
   onClickUpdateBestdeal: () => void;
 }
