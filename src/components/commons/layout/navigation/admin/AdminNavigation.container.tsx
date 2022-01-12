@@ -34,7 +34,6 @@ const AdminNavigation = () => {
 
   useEffect(() => {
     getCurrentDate();
-    console.log(time);
   });
   return (
     <>
