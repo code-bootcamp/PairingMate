@@ -1,4 +1,3 @@
-import { OmitProps } from "antd/lib/transfer/ListBody";
 import * as AN from "./AdminNavigation.styles";
 import { AdminNavigationProps } from "./AdminNavigation.types";
 
@@ -25,15 +24,15 @@ const AdminNavigationUI = (props: AdminNavigationProps) => {
         <AN.AdminNavigationMenu>
           <li>
             <AN.OverviewIco />
-            <button>Overview</button>
+            <button onClick={props.onClickMoveToOverview}>Overview</button>
           </li>
           <li>
             <AN.UserIco />
-            <button>회원관리</button>
+            <button onClick={props.onClickMoveToUser}>회원관리</button>
           </li>
           <li>
             <AN.InquiryIco />
-            <button>문의관리</button>
+            <button onClick={props.onClickMoveToInquiry}>문의관리</button>
           </li>
           <li>
             <AN.SalesIco />
