@@ -12,7 +12,6 @@ import Tabs from "../../../commons/tabs/detail-tap/Tabs";
 import { Fragment } from "react";
 
 const BestDealGetUI = (props: IBestDealGetUIProps) => {
-  console.log(props.data?.fetchUseditem.images);
   return (
     <Inner>
       <B.Header>
@@ -132,7 +131,7 @@ const BestDealGetUI = (props: IBestDealGetUIProps) => {
                 {priceToString(props.data?.fetchUseditem?.price)}원
               </B.Price>
               <B.Month>6개월</B.Month>
-              <B.Payment>구매하기</B.Payment>
+              <B.Payment onClick={props.onMoveToPayment}>구매하기</B.Payment>
             </B.PriceButtonLineWrapper>
           </B.PriceWrapper>
         </B.HeaderTextWrapper>
