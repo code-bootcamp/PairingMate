@@ -4,16 +4,26 @@ import theme from "../../../../commons/styles/variables";
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 1400px;
-  padding: 120px 50px 120px 50px;
+  padding: 120px 50px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
   height: auto;
   margin: 0 auto;
 `;
 export const Header = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   height: 50px;
-  select {
+  margin: 0px -50px;
+
+  div {
     width: 50%;
+    height: 50px;
+    padding: 0px 50px;
+  }
+
+  select {
+    width: 100%;
     height: 50px;
     padding-left: 10px;
     outline: none;
@@ -22,7 +32,7 @@ export const Header = styled.div`
   }
 `;
 export const PriceInput = styled.input`
-  width: 50%;
+  width: 100%;
   height: 50px;
   font-size: ${theme.fontsize.fs16};
   line-height: 50px;
@@ -63,10 +73,12 @@ export const FunctionWrapper = styled.div`
   width: 100%;
   height: auto;
   margin-top: 20px;
+  margin: 0px -20px;
 `;
 export const FunctionWrapperLeft = styled.div`
   display: inline-block;
   width: 50%;
+  padding: 0px 20px;
 `;
 export const AddressSearch = styled.div`
   width: 100%;
@@ -84,7 +96,7 @@ export const Phone = styled.div`
   }
   input {
     display: block;
-    width: 628px;
+    width: 100%;
     margin-top: 10px;
     border-bottom: 1px solid #efefef;
 
@@ -96,6 +108,7 @@ export const Phone = styled.div`
 export const ImgUploadBox = styled.div`
   display: inline-block;
   width: 50%;
+  padding: 0px 20px;
 `;
 export const ButtonWrapper = styled.div`
   margin-top: 100px;

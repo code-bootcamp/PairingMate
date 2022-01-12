@@ -42,7 +42,7 @@ export const TextWrapperTitle = styled.h1`
   line-height: 46px;
 `;
 export const Line = styled.div`
-  width: 597px;
+  width: 100%;
   height: 0px;
   margin-top: 31px;
   border: 1px solid #dddddd;
@@ -237,10 +237,18 @@ export const BodyTitle = styled.h3`
   color: #332244;
 `;
 export const BodyContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   margin-top: 50px;
-  font-size: ${theme.fontsize.fs16}
-  line-height: 24px;
+  font-size: ${theme.fontsize.fs16};
+  line-height: 30px;
+`;
+export const BodyTextContent = styled.pre`
+  width: 100%;
+  margin-top: 50px;
+  font-size: ${theme.fontsize.fs16};
+  line-height: 30px;
 `;
 export const TableWrapper = styled.div`
   width: 100%;
@@ -260,7 +268,6 @@ export const Table = styled.table`
       line-height: 45px;
     }
   }
-
   tbody {
     tr {
       td {
@@ -287,4 +294,20 @@ export const MapWrapper = styled.div`
 export const Map = styled.div`
   width: 100%;
   margin-top: 50px;
+`;
+export const ImgWrapper = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: -10px -10px;
+  margin-top: 90px;
+
+  li {
+    width: 20%;
+    padding: 10px 10px;
+  }
+`;
+export const ImgList = styled.img`
+  width: 100%;
+  height: 280px;
 `;

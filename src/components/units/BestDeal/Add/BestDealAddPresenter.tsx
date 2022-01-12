@@ -15,27 +15,31 @@ const BestDealAddUI = (props: BestdealAddUIProps) => {
     <Inner>
       <B.Wrapper>
         <B.Header>
-          <select
-            defaultValue={
-              props.isUpdate
-                ? getCategory(props.data?.fetchUseditem.name || "")
-                : "none"
-            }
-            onChange={props.onChangeCategory}
-          >
-            <option disabled value="none">
-              카테고리
-            </option>
-            <option value="fitness">헬스</option>
-            <option value="yoga">요가</option>
-            <option value="pilates">필라테스</option>
-          </select>
-          <B.PriceInput
-            type="text"
-            placeholder="가격정보를 입력해주세요"
-            onChange={props.onChangePrice}
-            defaultValue={props.data?.fetchUseditem.price}
-          />
+          <div>
+            <select
+              defaultValue={
+                props.isUpdate
+                  ? getCategory(props.data?.fetchUseditem.name || "")
+                  : "none"
+              }
+              onChange={props.onChangeCategory}
+            >
+              <option disabled value="none">
+                카테고리
+              </option>
+              <option value="fitness">헬스</option>
+              <option value="yoga">요가</option>
+              <option value="pilates">필라테스</option>
+            </select>
+          </div>
+          <div>
+            <B.PriceInput
+              type="text"
+              placeholder="가격정보를 입력해주세요"
+              onChange={props.onChangePrice}
+              defaultValue={props.data?.fetchUseditem.price}
+            />
+          </div>
         </B.Header>
         <B.TitleInput
           type="text"
