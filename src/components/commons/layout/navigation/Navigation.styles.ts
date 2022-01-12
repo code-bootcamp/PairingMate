@@ -42,12 +42,33 @@ export const LoginSection = styled.div`
     line-height: 1.5;
     font-size: ${theme.fontsize.fs20};
     color: ${theme.fontColorBase};
-
     span {
       font-weight: bold;
       color: #213358;
     }
   }
+
+  button {
+      position: relative;
+      font-size: 16px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: black;
+        transition: 0.5s;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
 `;
 export const NaviButton = styled.div`
   position: fixed;

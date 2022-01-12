@@ -85,14 +85,12 @@ const Login = () => {
           password
         }
       });
-      console.log("Company user : ", result);
       localStorage.setItem("refreshToken", "true");
       setAccessToken?.(result.data.loginUser.accessToken || "");
       router.push("/");
     } catch (error) {
       Modal.error({content:error.message});
     }
-
   }
 
   const onClickGoogleLogin = () => {
@@ -101,7 +99,6 @@ const Login = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const user = result.user;
-
         const uidRef = doc(db, "users" , user.uid);
         const docSnap = await getDoc(uidRef);
 
