@@ -4,4 +4,5 @@ export interface IBestDealGetUIProps {
   data: Pick<IQuery, "fetchUseditem">;
   onMoveToBestdealUpdate: (bestdealId: string) => () => void;
   onClickDeleteBestdeal: (useditemId: string) => () => void;
+  onMoveToPayment: () => void;
 }

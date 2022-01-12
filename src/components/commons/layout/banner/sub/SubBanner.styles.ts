@@ -3,7 +3,7 @@ import theme from "../../../../../commons/styles/variables";
 
 export const BannerSection = styled.section`
   position: relative;
-  z-index: 2;
+  z-index: 0;
   display: table;
   width: 100%;
   height: 650px;

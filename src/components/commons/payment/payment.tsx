@@ -4,7 +4,7 @@ declare const window: typeof globalThis & {
   IMP: any;
 };
 
-export default function PaymentPage() {
+const PaymentPage = () => {
   function onClickPayment() {
     const IMP = window.IMP;
     IMP.init("imp62063516");
@@ -52,4 +52,4 @@ export default function PaymentPage() {
       <button onClick={onClickPayment}>결제하기</button>
     </>
   );
-}
+};
