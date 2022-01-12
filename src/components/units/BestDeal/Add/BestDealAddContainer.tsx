@@ -10,6 +10,10 @@ import { BestdealAddProps, UpdateUseditemInput } from "./BestDealAddTypes";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
+import {
+  getCategory,
+  getTitle,
+} from "../../../../commons/libraries/utils/utils";
 
 const BestDealAdd = (props: BestdealAddProps) => {
   const [category, setCategory] = useState("");
@@ -20,6 +24,7 @@ const BestDealAdd = (props: BestdealAddProps) => {
   const [boardAddress, setBoardAddress] = useState({
     address: "",
   });
+  const [phone, setPhone] = useState("");
   const [images, setImages] = useState([]);
   const [isUpdateTag, setIsUpdateTag] = useState(false);
   const [isUpdateImages, setIsUpdateImages] = useState(false);
@@ -52,6 +57,10 @@ const BestDealAdd = (props: BestdealAddProps) => {
     setContents(event.target.value);
   };
 
+  const onChangePhone = (event: ChangeEvent<HTMLInputElement>) => {
+    setPhone(event.target.value);
+  };
+
   const onClickAddBestdeal = async () => {
     if (
       category === "" ||
@@ -73,19 +82,19 @@ const BestDealAdd = (props: BestdealAddProps) => {
       const result = await addBestdeal({
         variables: {
           createUseditemInput: {
-            remarks: category,
             price: price,
-            name: title,
+            name: category + "$%$%" + title,
             tags: tags,
             contents: contents,
             useditemAddress: boardAddress,
+            remarks: phone,
             images: images,
           },
         },
       });
       Modal.success({ content: "등록에 성공하였습니다" });
       console.log(result);
-      router.push(`/best-deal/${router.query.bestdealId}`);
+      router.push(`/best-deal/${result.data?.createUseditem._id}`);
     } catch (error) {
       console.log("상품등록 실패");
     }
@@ -93,14 +102,19 @@ const BestDealAdd = (props: BestdealAddProps) => {
 
   const onClickUpdateBestdeal = async () => {
     const updateUseditemInput: UpdateUseditemInput = {};
-    if (category !== "") updateUseditemInput.remarks = category;
-
+    if (category !== "" && title === "")
+      updateUseditemInput.name =
+        category + "$%$%" + getTitle(props.data?.fetchUseditem.name);
+    // 제목만 수정 되었을때
+    if (title !== "" && category === "")
+      updateUseditemInput.name =
+        getCategory(props.data?.fetchUseditem.name) + "$%$%" + title;
+    // 제목 카테고리 둘다 수정 되었을때
+    if (category !== "" && title !== "")
+      updateUseditemInput.name = category + "$%$%" + title;
     if (price !== Number("")) updateUseditemInput.price = price;
-
-    if (title !== "") updateUseditemInput.name = title;
-
+    if (phone !== "") updateUseditemInput.remarks = phone;
     if (contents !== "") updateUseditemInput.contents = contents;
-
     if (isUpdateTag) updateUseditemInput.tags = tags.join[""];
     if (isUpdateImages) updateUseditemInput.images = images;
     if (boardAddress.address !== "")
@@ -133,6 +147,7 @@ const BestDealAdd = (props: BestdealAddProps) => {
       onChangePrice={onChangePrice}
       onChangeTitle={onChangeTitle}
       onChangeContents={onChangeContents}
+      onChangePhone={onChangePhone}
       onClickAddBestdeal={onClickAddBestdeal}
       data={props.data}
       isUpdate={props.isUpdate}

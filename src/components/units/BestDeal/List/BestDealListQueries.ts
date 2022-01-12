@@ -14,7 +14,6 @@ export const FETCH_USED_ITEMS = gql`
       useditemAddress {
         _id
         address
-        addressDetail
       }
       seller {
         _id
@@ -38,23 +37,11 @@ export const FETCH_USED_ITEMS_OF_THE_BEST = gql`
       useditemAddress {
         _id
         address
-        addressDetail
-        createdAt
-        updatedAt
-        deletedAt
       }
       seller {
         _id
         email
-        name
-        picture
-        createdAt
-        updatedAt
       }
-      soldAt
-      createdAt
-      updatedAt
-      deletedAt
     }
   }
 `;

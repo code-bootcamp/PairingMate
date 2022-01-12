@@ -3,11 +3,13 @@ import { IBestDealGetUIProps } from "./BestDealGetTypes";
 import * as B from "./BestDealGetStyles";
 import GetBestdealMapsPage from "../../../commons/maps/get/getBestDeal/getBestdealMaps.container";
 import {
+  getTitle,
   priceToString,
   replaceUrl,
 } from "../../../../commons/libraries/utils/utils";
 
 const BestDealGetUI = (props: IBestDealGetUIProps) => {
+  console.log(props.data);
   return (
     <Inner>
       <B.Header>
@@ -16,7 +18,7 @@ const BestDealGetUI = (props: IBestDealGetUIProps) => {
         </B.BestDealImgWrap>
         <B.HeaderTextWrapper>
           <B.TextWrapperTitle>
-            {props.data?.fetchUseditem?.name}
+            {getTitle(props.data?.fetchUseditem?.name || "")}
           </B.TextWrapperTitle>
           <B.Line></B.Line>
           <B.TextWrapperAddress>

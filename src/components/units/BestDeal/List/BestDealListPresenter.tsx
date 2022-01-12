@@ -2,6 +2,7 @@ import { Inner } from "../../../../commons/styles/common";
 import { BestdealListUIProps } from "./BestDealListTypes";
 import * as B from "./BestDealListStyles";
 import { Fragment } from "react";
+import { getTitle } from "../../../../commons/libraries/utils/utils";
 
 const BestDealListUI = (props: BestdealListUIProps) => {
   console.log(props.bestDealList);
@@ -9,60 +10,84 @@ const BestDealListUI = (props: BestdealListUIProps) => {
     <>
       <Inner>
         <B.Title>PairingMate추천 운동센터</B.Title>
-        <div>
-          {/* <B.Wrapper>
+        <B.Wrapper>
+          <B.BestdealWrapper>
             {props.bestOfBestDealList?.fetchUseditemsOfTheBest.map(
               (el: any) => (
-                <div key={el._id}>
+                <B.BestdealItem key={el._id}>
                   <B.BestdealImg
                     src={`https://storage.googleapis.com/${el.images[0]}`}
                   ></B.BestdealImg>
-                  <B.BestdealTitle
-                    id={el._id}
-                    onClick={props.onClickBestdealGetPage(el._id)}
-                  >
-                    {el.name}
-                  </B.BestdealTitle>
-                  <div>{el.useditemAddress?.address}</div>
-                  <div key={el}>
-                    {el.tags.map((el: any) => (
-                      <div>{el}</div>
-                    ))}
-                  </div>
-                </div>
+                  <B.TextBox>
+                    <B.BestdealTitle
+                      id={el._id}
+                      onClick={props.onClickBestdealGetPage(el._id)}
+                    >
+                      {getTitle(el.name)}
+                    </B.BestdealTitle>
+                    <B.BestdealAddress>
+                      {el.useditemAddress?.address}
+                    </B.BestdealAddress>
+                    <B.TagsWrapper>
+                      {el.tags.map((el: any) => (
+                        <Fragment key={el}>
+                          <B.ProductTags>{el}</B.ProductTags>
+                        </Fragment>
+                      ))}
+                    </B.TagsWrapper>
+                  </B.TextBox>
+                </B.BestdealItem>
               )
             )}
-          </B.Wrapper> */}
-          <B.Wrapper>
+          </B.BestdealWrapper>
+          <B.NavigationList>
+            <li>
+              <button onClick={props.onClickCategory("")}>전체</button>
+            </li>
+            <li>
+              <button onClick={props.onClickCategory("fitness")}>GYM</button>
+            </li>
+            <li>
+              <button onClick={props.onClickCategory("yoga")}>YOGA</button>
+            </li>
+            <li>
+              <button onClick={props.onClickCategory("pilates")}>
+                PILATES
+              </button>
+            </li>
+          </B.NavigationList>
+          <B.ProductWrapper>
             {props.bestDealList?.fetchUseditems.map((el: any) => (
-              <div key={el._id}>
-                <B.BestdealImg
+              <B.ProductItem key={el._id}>
+                <B.ProductImg
                   src={`https://storage.googleapis.com/${el.images[0]}`}
-                ></B.BestdealImg>
-                <B.TextBox>
-                  <B.BestdealTitle
+                ></B.ProductImg>
+                <B.ProductTextBox>
+                  <B.ProductTitle
                     id={el._id}
                     onClick={props.onClickBestdealGetPage(el._id)}
                   >
-                    {el.name}
-                  </B.BestdealTitle>
-                  <B.BestdealAddress>
+                    {getTitle(el.name)}
+                  </B.ProductTitle>
+                  <B.ProductAddress>
                     {el.useditemAddress?.address}
-                  </B.BestdealAddress>
-                  <B.TagsWrapper>
+                  </B.ProductAddress>
+                  <B.ProductTagsWrapper>
                     {el.tags.map((el: any) => (
                       <Fragment key={el}>
-                        <B.BestdealTags>{el}</B.BestdealTags>
+                        <B.ProductTags>{el}</B.ProductTags>
                       </Fragment>
                     ))}
-                  </B.TagsWrapper>
-                </B.TextBox>
-              </div>
+                  </B.ProductTagsWrapper>
+                </B.ProductTextBox>
+              </B.ProductItem>
             ))}
-          </B.Wrapper>
-          <button onClick={props.onClickGetBestdealList}>더보기</button>
-          <button onClick={props.onClickMoveToBestdealAddPage}>글쓰기</button>
-        </div>
+          </B.ProductWrapper>
+          <B.MoreButton onClick={props.onClickGetBestdealList}>
+            더보기
+          </B.MoreButton>
+          {/* <button onClick={props.onClickMoveToBestdealAddPage}>글쓰기</button> */}
+        </B.Wrapper>
       </Inner>
     </>
   );
