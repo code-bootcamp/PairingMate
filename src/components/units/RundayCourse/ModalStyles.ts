@@ -3,11 +3,12 @@ import theme from "../../../commons/styles/variables";
 
 export const ModalWrapper = styled.div`
   position: absolute;
-  top: 90%;
-  right: 36%;
+  top: 50%;
+  left: 50%;
   z-index: 1;
   width: 700px;
   padding: 60px 30px 60px 30px;
+  transform: translate(-50%, -50%);
   border: none;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
   background-color: white;
@@ -41,6 +42,43 @@ export const ModalWrapper = styled.div`
     display: inline-block;
     margin-top: 20px;
     margin-right: 20px;
+  }
+
+  @media screen and ${theme.laptop} {
+    top: 50%;
+    width: 450px;
+    padding: 35px 20px 30px 20px;
+
+    div {
+      width: 100%;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 10px 0px 10px 0px;
+      font-size: ${theme.fontsize.fs14};
+      line-height: 15px;
+    }
+
+    ul {
+      margin-top: 0px;
+    }
+  }
+
+  @media screen and (max-width: 610px) {
+    width: 230px;
+    height: 280px;
+
+    div {
+      display: none;
+    }
+
+    ul {
+      display: none;
+    }
   }
 `;
 

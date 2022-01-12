@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
+import theme from "../../../../commons/styles/variables";
 
 export const FindmatesAddWrapper = styled.div`
-  width: 1400px;
+  width: 100%;
   padding: 120px 50px 120px 50px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
 
   select {
-    width: 150px;
+    width: 100%;
     height: 50px;
     padding-left: 10px;
     outline: none;
@@ -21,11 +22,15 @@ export const FindmatesAddWrapper = styled.div`
     outline: none;
     line-height: 35px;
   }
+
+  @media screen and ${theme.mobile} {
+    font-size: ${theme.fontsize.fs16};
+  }
 `;
 
 export const TitleInput = styled.input`
   display: block;
-  width: 1300px;
+  width: 100%;
   font-size: 36px;
   border-bottom: 1px solid #efefef;
 
@@ -36,7 +41,7 @@ export const TitleInput = styled.input`
 
 export const TagsInput = styled.input`
   display: block;
-  width:100%;
+  width: 100%;
   font-size: 16px;
   border-bottom: 1px solid #efefef;
   outline: none;
@@ -50,7 +55,7 @@ export const TagsWrapper = styled.div`
   height: auto;
   padding: 10px 0px 10px 10px;
   margin-top: 20px;
-  word-break:break-all;
+  word-break: break-all;
   span {
     margin-right: 5px;
     color: #324e86;
@@ -58,7 +63,7 @@ export const TagsWrapper = styled.div`
 `;
 
 export const ContentsInput = styled.textarea`
-  width: 1300px;
+  width: 100%;
   height: 500px;
   resize: none;
   font-size: 24px;
@@ -66,21 +71,30 @@ export const ContentsInput = styled.textarea`
   &::placeholder {
     color: #dddddd;
   }
+
+  @media screen and ${theme.laptop} {
+    height: 300px;
+  }
 `;
 
 export const FindmatesInputFooter = styled.div`
   display: flex;
   width: 100%;
   margin-top: 20px;
+
+  @media screen and ${theme.laptop} {
+    flex-direction: column;
+  }
 `;
 
 export const FindmatesSearchWrapper = styled.div`
   position: relative;
+  width: 45%;
   margin-right: 50px;
 
   input {
     display: block;
-    width: 628px;
+    width: 100%;
     border-bottom: 1px solid #efefef;
 
     &::placeholder {
@@ -93,10 +107,25 @@ export const FindmatesSearchWrapper = styled.div`
     top: 5px;
     left: 25px;
   }
+
+  @media screen and ${theme.laptop} {
+    width: 100%;
+    input {
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+    @media screen and ${theme.mobile} {
+      input {
+        margin-top: 5px;
+        height: 40px;
+      }
+    }
+  }
 `;
 
 export const FindmatesUploadsWrapper = styled.div`
   position: relative;
+  width: 45%;
 
   button {
     position: absolute;
@@ -109,10 +138,18 @@ export const FindmatesUploadsWrapper = styled.div`
     top: 5px;
     left: 30px;
   }
+
+  @media screen and ${theme.laptop} {
+    width: 100%;
+  }
 `;
 
 export const UploadImageWrapper = styled.div`
   display: flex;
+
+  @media screen and ${theme.tablet} {
+    flex-direction: column;
+  }
 `;
 
 export const UploadImageIcon = styled.div`
@@ -139,6 +176,9 @@ export const UploadImage = styled.img`
   width: 20px;
   height: 20px;
   margin: 30px 20px 0px 0px;
+
+  @media screen {
+  }
 `;
 
 export const FindmatesButtonWrapper = styled.div`

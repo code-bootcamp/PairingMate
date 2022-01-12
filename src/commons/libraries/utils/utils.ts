@@ -57,3 +57,8 @@ export const replaceCourseImage = (area: string) => {
 export const priceToString = (price: number) => {
   return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
+
+// 작성자 : 우형래
+export function getTemp(temp: string) {
+  return (Number(temp) - 273.15).toFixed(1);
+}

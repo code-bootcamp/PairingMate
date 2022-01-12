@@ -1,14 +1,36 @@
 import { Modal } from "antd";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RundayCourseUI from "./RundayCoursePresenter";
 import { GU_COURSE_NAME } from "../../../commons/data/seoulGill";
+import { IWeatherInfo } from "./RundayCourseTypes";
+import { getTemp } from "../../../commons/libraries/utils/utils";
 
 const RundayCourse = () => {
   let newData = [];
   const [data, setData] = useState([]);
+  const [weatherInfo, setWeatherInfo] = useState<IWeatherInfo>({});
   const [pointData, setPointData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    fetchWeather();
+  }, []);
+
+  const fetchWeather = async () => {
+    const result = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=Seoul,kr&appid=de43835420dc373a9c635d81f90469e3`
+    );
+
+    setWeatherInfo({
+      cityName: result.data.name,
+      src: `http://openweathermap.org/img/w/${result.data.weather[0].icon}.png`,
+      humidity: result.data.main.humidity,
+      temp: getTemp(result.data.main.temp),
+      wind: result.data.wind.speed,
+      weather: result.data.weather[0].description,
+    });
+  };
 
   const onClickGetCourseInfo =
     (courseName: string, pointName: string) => async () => {
@@ -45,6 +67,7 @@ const RundayCourse = () => {
 
   return (
     <RundayCourseUI
+      weatherInfo={weatherInfo}
       data={data}
       pointData={pointData}
       isOpen={isOpen}

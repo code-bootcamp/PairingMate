@@ -16,14 +16,7 @@ const FindMatesAddUI = (props: FindmatesAddUIProps) => {
     <>
       <Inner>
         <S.FindmatesAddWrapper>
-          <select
-            defaultValue={
-              props.isUpdate
-                ? getCategory(props.data?.fetchBoard.title || "")
-                : "none"
-            }
-            onChange={props.onChangeCategory}
-          >
+          <select defaultValue="none" onChange={props.onChangeCategory}>
             <option disabled value="none">
               카테고리
             </option>
