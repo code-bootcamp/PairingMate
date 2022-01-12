@@ -3,7 +3,7 @@ import { Modal } from "antd";
 import { getAuth } from "firebase/auth";
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
 import router from "next/router";
-import { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import { app } from "../../../../../../pages/_app";
 import { UPLOAD_FILE } from "../../../../commons/uploads/UploadsQueries";
 import { checkValidationImage } from "../../../../commons/uploads/UploadsValidation";
@@ -13,8 +13,8 @@ const SignUpStep3User = () => {
     const fileRef = useRef<HTMLInputElement>(null);
     const [uploadFile] = useMutation(UPLOAD_FILE);
     const [profileImage, setProfileImage] = useState<string[]>([]);
-    const [name, setName] = useState("");
-    const [Tags, setTags] = useState([]);
+    const [name, setName] = useState<string>("");
+    const [Tags, setTags] = useState<string[]>();
     const db = getFirestore(app);
     const auth = getAuth();
     const user = auth.currentUser;
@@ -40,11 +40,11 @@ const SignUpStep3User = () => {
       fileRef.current?.click();
     };
 
-    const onErrorHandle = (event)=>{
-      event.target.src = ("/images/common/signupProfile.svg");
+    const onErrorHandle = (event:React.SyntheticEvent<HTMLImageElement, Event>)=>{
+      event.currentTarget.src = ("/images/common/signupProfile.svg");
   }
 
-    const onChangeName = (event) => {
+    const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     }
   
