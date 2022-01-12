@@ -6,4 +6,5 @@ export interface IFindmateGetUIProps {
   onMoveToFindmatesUpdate: (findmateId: string) => () => void;
   onClickDeleteFindmates: (boardId: string) => () => Promise<void>;
   onClickLikeFindmates: (boardId: string) => () => Promise<void>;
+  onClickChatting: () => void;
 }

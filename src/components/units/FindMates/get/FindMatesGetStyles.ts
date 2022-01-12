@@ -2,14 +2,14 @@ import styled from "@emotion/styled";
 
 export const FindmatesGetWrapper = styled.div`
   display: flex;
-  width: 1400px;
+  width: 100%;
 `;
 
 export const FindmatesUserInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 440px;
+  width: 40%;
   background: #fcfcfc;
 
   hr {
@@ -78,12 +78,17 @@ export const SubIcon = styled.div`
   width: 20px;
   height: 20px;
   margin-bottom: 6px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const FindmatesContentsInfo = styled.div`
   width: 960px;
   padding: 60px 95px 60px 95px;
   border: 1px solid #dddddd;
+  border-bottom: 0px;
 
   h1 {
     margin: 10px 0px 70px 0px;

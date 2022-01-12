@@ -25,7 +25,7 @@ const settings = {
 const FindmatesGetUI = (props: IFindmateGetUIProps) => {
   return (
     <>
-      <Inner>
+      <Inner style={{ paddingBottom: "0px" }}>
         <S.FindmatesGetWrapper>
           <S.FindmatesUserInfo>
             <S.UserProfile>
@@ -48,7 +48,7 @@ const FindmatesGetUI = (props: IFindmateGetUIProps) => {
                 <span>{props.data?.fetchBoard.likeCount}</span>
               </div>
               <div>
-                <S.SubIcon>
+                <S.SubIcon onClick={props.onClickChatting}>
                   <img src="/images/common/chatting-icon.png" alt="" />
                 </S.SubIcon>
                 <span>채팅</span>

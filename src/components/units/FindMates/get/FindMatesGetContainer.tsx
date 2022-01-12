@@ -10,6 +10,7 @@ import {
   IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
 import { Modal } from "antd";
+import { getTitle } from "../../../../commons/libraries/utils/utils";
 
 const FindmatesGet = () => {
   const router = useRouter();
@@ -52,6 +53,16 @@ const FindmatesGet = () => {
     }
   };
 
+  const onClickChatting = () => {
+    const user = "woo"; // 로그인한 유저 닉네임
+    const room = encodeURIComponent(getTitle(data?.fetchBoard.title));
+    window.open(
+      `https://pairingmates-chatting.herokuapp.com?user=${user}&room=${room}`,
+      "ParingMate-chatting",
+      "width=500px,height=550px,scrollbars=yes,resizable=no,left=100px,top=250px"
+    );
+  };
+
   return (
     <FindmatesGetUI
       data={data}
@@ -59,6 +70,7 @@ const FindmatesGet = () => {
       onMoveToFindmatesUpdate={onMoveToFindmatesUpdate}
       onClickDeleteFindmates={onClickDeleteFindmates}
       onClickLikeFindmates={onClickLikeFindmates}
+      onClickChatting={onClickChatting}
     />
   );
 };

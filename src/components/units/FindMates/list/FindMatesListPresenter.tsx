@@ -2,6 +2,7 @@ import * as S from "./FindMatesListStyles";
 import {
   getDate,
   getTitle,
+  replaceAddr,
   replaceTags,
   replaceUrl,
 } from "../../../../commons/libraries/utils/utils";
@@ -64,7 +65,7 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
                       <S.FindmatesLocationIcon>
                         <img src="/images/common/location.png" alt="" />
                       </S.FindmatesLocationIcon>
-                      <span>{el.boardAddress?.address}</span>
+                      <span>{replaceAddr(el.boardAddress?.address)}</span>
                     </S.FindmatesInfoAddr>
                   </S.FindmatesInfo>
                   <S.FindmatesContents>
