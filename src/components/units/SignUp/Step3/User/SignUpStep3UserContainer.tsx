@@ -6,6 +6,7 @@ import router from "next/router";
 import { ChangeEvent, useRef, useState } from "react";
 import { app } from "../../../../../../pages/_app";
 import { UPLOAD_FILE } from "../../../../commons/uploads/UploadsQueries";
+import { checkValidationImage } from "../../../../commons/uploads/UploadsValidation";
 import SignUpStep3UserUI from "./SignUpStep3UserPresenter";
 
 const SignUpStep3User = () => {
@@ -21,16 +22,18 @@ const SignUpStep3User = () => {
     const docu = doc(db, "users", user.uid);
   
     const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-      const myFile = event.target.files?.[0];
+      const myFile = checkValidationImage(event.target.files?.[0]);
       console.log(myFile);
   
-      const result = await uploadFile({
-        variables: {
-          file: myFile,
-        },
-      });
-      console.log(result.data.uploadFile.url);
-      setProfileImage([result.data.uploadFile.url]);
+      if(myFile){
+        const result = await uploadFile({
+          variables: {
+            file: myFile,
+          },
+        });
+        console.log(result.data.uploadFile.url);
+        setProfileImage([result.data.uploadFile.url]);
+      }
     };
   
     const onClickProfileImage = () => {
