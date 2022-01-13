@@ -97,6 +97,8 @@ const FitnessCenters = () => {
     };
     const map = new window.kakao.maps.Map(mapContainer, mapOption);
     map.setZoomable(false);
+    const zoomControl = new window.kakao.maps.ZoomControl();
+    map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
     const markerPosition = new window.kakao.maps.LatLng(
       myKeyword[index].y,
       myKeyword[index].x
