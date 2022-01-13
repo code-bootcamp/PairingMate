@@ -37,6 +37,10 @@ export const TitleInput = styled.input`
   &::placeholder {
     color: #dddddd;
   }
+
+  @media screen and ${theme.mobile} {
+    font-size: ${theme.fontsize.fs24};
+  }
 `;
 
 export const TagsInput = styled.input`

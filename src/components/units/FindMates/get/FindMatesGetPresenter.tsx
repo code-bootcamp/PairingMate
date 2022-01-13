@@ -26,16 +26,18 @@ const FindmatesGetUI = (props: IFindmateGetUIProps) => {
   console.log(props.isWriter);
   return (
     <>
-      <Inner style={{ paddingBottom: "0px" }}>
+      <Inner style={{ paddingBottom: "0px", position: "relative" }}>
         <S.FindmatesGetWrapper>
           <S.FindmatesUserInfo>
-            <S.UserProfile>
-              <img src="/images/common/user-default-2.png" alt="" />
-            </S.UserProfile>
-            <S.UserName>{props.data?.fetchBoard.writer}</S.UserName>
-            <S.CreateDate>
-              {getDate(props.data?.fetchBoard.createdAt)}
-            </S.CreateDate>
+            <S.UserProfileWrapper>
+              <S.UserProfile>
+                <img src="/images/common/user-default-2.png" alt="" />
+              </S.UserProfile>
+              <S.UserName>{props.data?.fetchBoard.writer}</S.UserName>
+              <S.CreateDate>
+                {getDate(props.data?.fetchBoard.createdAt)}
+              </S.CreateDate>
+            </S.UserProfileWrapper>
             <hr />
             <S.IconWrapper>
               <div>
@@ -55,31 +57,28 @@ const FindmatesGetUI = (props: IFindmateGetUIProps) => {
                 <span>채팅</span>
               </div>
             </S.IconWrapper>
-            <footer>
-              {props.isWriter && (
-                <>
-                  <button
-                    onClick={props.onMoveToFindmatesUpdate(
-                      props.data?.fetchBoard._id
-                    )}
-                  >
-                    수정하기
-                  </button>
-                  <button
-                    onClick={props.onClickDeleteFindmates(
-                      props.data?.fetchBoard._id
-                    )}
-                  >
-                    삭제하기
-                  </button>
-                </>
-              )}
-            </footer>
+            {props.isWriter && (
+              <footer>
+                <button
+                  onClick={props.onMoveToFindmatesUpdate(
+                    props.data?.fetchBoard._id
+                  )}
+                >
+                  수정하기
+                </button>
+                <button
+                  onClick={props.onClickDeleteFindmates(
+                    props.data?.fetchBoard._id
+                  )}
+                >
+                  삭제하기
+                </button>
+              </footer>
+            )}
           </S.FindmatesUserInfo>
           <S.FindmatesContentsInfo>
             <S.ContentsInfoHeader>
               <h3>{getCategory(props.data?.fetchBoard.title || "")}</h3>
-
               <span>
                 <div>
                   <img src="/images/common/location.png" alt="" />

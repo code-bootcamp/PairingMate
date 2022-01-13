@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import theme from "../../../commons/styles/variables";
 
+interface InfoTagProps {
+  line: string;
+}
+
 export const ModalWrapper = styled.div`
   position: absolute;
   top: 50%;
@@ -70,7 +74,7 @@ export const ModalWrapper = styled.div`
 
   @media screen and (max-width: 610px) {
     width: 230px;
-    height: 280px;
+    height: auto;
 
     div {
       display: none;
@@ -94,7 +98,7 @@ export const InfoTag = styled.span`
   margin-right: 5px;
   padding: 3px;
   border-radius: 7px;
-  background-color: ${theme.SubWayColor.line1};
+  background-color: ${(props: InfoTagProps) => theme.SubWayColor[props.line]};
   color: white;
   font-size: 15px;
 `;
