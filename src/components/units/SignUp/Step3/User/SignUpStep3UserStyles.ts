@@ -13,6 +13,11 @@ export const SignupWrapper = styled.div`
     border: 1px solid #DDDDDD;
     box-sizing: border-box;
     box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.25);
+
+    @media all and ${theme.mobile}{
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 export const SignupWrap = styled.div`
@@ -27,7 +32,7 @@ export const SignupHeadTitle = styled.h1`
     line-height: 1.5;
     color: #333333;
     strong{
-        color:#333333;
+        color:#324E86;
         font-weight: bold;
     }
 `;
@@ -35,11 +40,13 @@ export const SignupHeadTitle = styled.h1`
 export const SignupProfileWrapper = styled.div`
     margin:20px 0;    
     text-align:center;
-
     h4{
         margin-top:20px;
         font-weight:bold;
         color:#555555;
+    }
+    @media all and ${theme.mobile}{
+        
     }
 `;
 
@@ -48,6 +55,10 @@ export const SignupImgWrapper = styled.div`
         border-radius:50%;
         width: 200px;
         height: 200px;
+        @media all and ${theme.mobile}{
+            width:150px;
+            height:150px;
+        }
     }
     input{
         display: none;
@@ -60,6 +71,7 @@ export const SignupDisplayName = styled.input`
     margin-bottom:10px;
     border-bottom: 1px solid #f7f7f7;
     &::placeholder{
+        font-size: ${theme.fontsize.fs16};
         color:#dddddd;
     }
 `
@@ -70,6 +82,9 @@ export const SignupTagsWrapper = styled.div`
     max-height:200px;
     h4{
         margin-bottom:15px;
+    }
+    @media all and ${theme.mobile}{
+        height:150px;
     }
 `;
 

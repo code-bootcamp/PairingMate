@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Button } from 'antd';
+import theme from "../../../commons/styles/variables";
 
 // Css 작성
 export const SignUpWrapper = styled.div`
@@ -12,6 +13,12 @@ export const SignUpWrapper = styled.div`
     border: 1px solid #DDDDDD;
     box-sizing: border-box;
     box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.25);
+    
+    @media all and ${theme.mobile}{
+        width:100%;
+        box-shadow: none;
+        border:none;
+    }
 `;
 
 export const SignUpWrap = styled.div`

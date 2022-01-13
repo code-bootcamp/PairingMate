@@ -7,7 +7,7 @@ const SignUpStep3UserUI = (props: SignUpStep3UserUIProps) => {
         <S.SignupWrapper>
             <S.SignupWrap>
                 <S.SignupHeadTitle>PairingMate에서<br />
-                <strong>당신의 Best Mate 를 만나보세요</strong>
+                당신의 <strong>Best Mate</strong> 를 만나보세요
                 </S.SignupHeadTitle>
                 <S.SignupProfileWrapper>
                     <S.SignupImgWrapper onClick={props.onClickProfileImage}>

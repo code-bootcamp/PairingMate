@@ -50,6 +50,7 @@ const LogoutButton = (props: ButtonsProps) => {
           localStorage.removeItem("refreshToken");
           localStorage.removeItem("email");
           localStorage.removeItem("name");
+          localStorage.removeItem("image");
           router.push("/");
           setTimeout(() => location.reload(), 1000);
         })
@@ -59,7 +60,10 @@ const LogoutButton = (props: ButtonsProps) => {
     } else {
       try {
         await logoutUser();
-        localStorage.setItem("refreshToken","false");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("email");
+        localStorage.removeItem("name");
+        localStorage.removeItem("image");
         alert("로그아웃 되었습니다.");
       } catch (error) {
         Modal.error({content:error.message});
