@@ -1,22 +1,30 @@
 import LoginUI from "./LoginPresenter";
 import { Modal } from 'antd'
 import { ChangeEvent, useContext, useState } from "react";
-import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import {
   getFirestore,
   getDoc,
   setDoc,
   doc,
+  collection,
+  query,
+  where,
+  getDocs,
 } from "firebase/firestore";
 import { app, GlobalContext } from "../../../../pages/_app";
 import { useRouter } from "next/router";
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "./LoginQueries";
+import { useMutation, useQuery } from "@apollo/client";
+import { FETCH_USER_LOGGED_IN, LOGIN_USER } from "./LoginQueries";
+import { IQuery } from "../../../commons/types/generated/types";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loginUser] = useMutation(LOGIN_USER);
+  const { data: companyLoginUser } =
+    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
+
   const { setAccessToken } = useContext(GlobalContext);
   const router = useRouter();
   const auth = getAuth();
@@ -43,6 +51,19 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+
+          // // 로그인 정보 가져오기
+          onAuthStateChanged(auth, async (user) => {
+            if (user) {
+              const uid = user.uid;
+              // 현재 로그인 한 유저의 uid 값으로 문서 가져오기
+              const userRef = collection(db, "users");
+              const q = query(userRef , where("uid" , "==" , uid));
+              const querySnapshot = await getDocs(q);
+              querySnapshot.docs.map((el) => localStorage.setItem("email" , el.data().email))
+              querySnapshot.docs.map((el) => localStorage.setItem("name" , el.data().name))
+            }
+          })
         localStorage.setItem("refreshToken","true");
         router.push("/");
       })
@@ -87,6 +108,8 @@ const Login = () => {
       });
       localStorage.setItem("refreshToken", "true");
       setAccessToken?.(result.data.loginUser.accessToken || "");
+      localStorage.setItem("email" , companyLoginUser?.fetchUserLoggedIn.email);
+      localStorage.setItem("name" , companyLoginUser?.fetchUserLoggedIn.name);
       router.push("/");
     } catch (error) {
       Modal.error({content:error.message});
@@ -103,6 +126,18 @@ const Login = () => {
         const docSnap = await getDoc(uidRef);
 
         if(docSnap.exists()){
+          // // 로그인 정보 가져오기
+          onAuthStateChanged(auth, async (user) => {
+            if (user) {
+              const uid = user.uid;
+              // 현재 로그인 한 유저의 uid 값으로 문서 가져오기
+              const userRef = collection(db, "users");
+              const q = query(userRef , where("uid" , "==" , uid));
+              const querySnapshot = await getDocs(q);
+              querySnapshot.docs.map((el) => localStorage.setItem("email" , el.data().email))
+              querySnapshot.docs.map((el) => localStorage.setItem("name" , el.data().name))
+            }
+          })
           localStorage.setItem("refreshToken","true");
           router.push("/")
         } else {

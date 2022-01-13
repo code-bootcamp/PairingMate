@@ -9,7 +9,6 @@ export const LoginWrapper = styled.div`
     background-size: cover;
     background-repeat : no-repeat;
     background-position : center center;
-    
 `;
 
 export const LoginWrap = styled.form`
@@ -28,12 +27,11 @@ export const LoginWrap = styled.form`
         height:500px;
         margin-top:${theme.MarginTop.mt60};
         transform: translate(0, 0);
-    }  
+    }
 `
 
 export const LoginFildset = styled.fieldset`
-    padding: 60px 50px;
-    /* background-color: red; */
+    padding: 60px 50px;  
     input {
         height:30px;
         padding: 5px;
