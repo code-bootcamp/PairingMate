@@ -22,7 +22,7 @@ const TagsAdd = (props: TagsProps) => {
   const onChangeTags = (event: KeyboardEvent) => {
     const target = event.target as HTMLInputElement;
     if (event.key === "Enter") {
-      props.setTags((prev) => [...prev, "#" + target.value]);
+      props.setTags((prev) => [...prev || [] , "#" + target.value]);
       setInputTag("");
     }
   };
@@ -41,7 +41,7 @@ const TagsAdd = (props: TagsProps) => {
         onKeyPress={onChangeTags}
       />
       <S.TagsWrapper>
-        {props.tags.map((tag, index) => (
+        {props.tags?.map((tag, index) => (
           <span
             onClick={onClickDelteTags(tag)}
             style={{ margin: "5px" }}
