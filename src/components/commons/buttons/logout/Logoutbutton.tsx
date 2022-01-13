@@ -47,12 +47,13 @@ const LogoutButton = (props: ButtonsProps) => {
             title: "로그아웃",
             content: "메인 페이지로 이동 합니다.",
           });
-          localStorage.setItem("refreshToken","false");
+          localStorage.removeItem("refreshToken");
+          localStorage.removeItem("email");
+          localStorage.removeItem("name");
           router.push("/");
           setTimeout(() => location.reload(), 1000);
         })
         .catch((error) => {
-          // An error happened.
           console.log(error);
         });
     } else {
@@ -60,7 +61,6 @@ const LogoutButton = (props: ButtonsProps) => {
         await logoutUser();
         localStorage.setItem("refreshToken","false");
         alert("로그아웃 되었습니다.");
-        
       } catch (error) {
         Modal.error({content:error.message});
       }
