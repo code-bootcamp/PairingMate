@@ -9,7 +9,7 @@ import {
 } from "../../../../commons/libraries/utils/utils";
 import Tab from "../../../commons/tabs/detail-tap/Tabs.Contents";
 import Tabs from "../../../commons/tabs/detail-tap/Tabs";
-import { Fragment } from "react";
+import Comments from "../../../commons/comment/CommentContainer";
 
 const BestDealGetUI = (props: IBestDealGetUIProps) => {
   return (
@@ -245,7 +245,9 @@ const BestDealGetUI = (props: IBestDealGetUIProps) => {
         <Tab title="후기">
           <B.BodyWrapper>
             <B.BodyTitle>이용후기</B.BodyTitle>
-            <B.BodyContent>댓글기능 들어갈것</B.BodyContent>
+            <B.CommentWrapper>
+              <Comments data={props.data} />
+            </B.CommentWrapper>
           </B.BodyWrapper>
         </Tab>
       </Tabs>

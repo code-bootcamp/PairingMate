@@ -300,7 +300,7 @@ export const ImgWrapper = styled.ul`
   flex-wrap: wrap;
   width: 100%;
   margin: -10px -10px;
-  margin-top: 90px;
+  margin-top: 50px;
 
   li {
     width: 20%;
@@ -310,4 +310,8 @@ export const ImgWrapper = styled.ul`
 export const ImgList = styled.img`
   width: 100%;
   height: 280px;
+`;
+export const CommentWrapper = styled.div`
+  width: 100%;
+  margin-top: 50px;
 `;
