@@ -11,9 +11,20 @@ import {
 } from "../../../../commons/types/generated/types";
 import { Modal } from "antd";
 import { getTitle } from "../../../../commons/libraries/utils/utils";
+import { useEffect, useState } from "react";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
+import { app } from "../../../../../pages/_app";
 
 const FindmatesGet = () => {
+  const db = getFirestore(app);
   const router = useRouter();
+  const [isWriter, setIsWriter] = useState(false);
 
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoard">,
@@ -29,6 +40,24 @@ const FindmatesGet = () => {
     Pick<IMutation, "likeBoard">,
     IMutationLikeBoardArgs
   >(LIKE_BOARD);
+
+  const getFireBaseData = async () => {
+    const boardRef = collection(db, "findmatesBoard");
+    const q = query(
+      boardRef,
+      where("writer.name", "==", localStorage.getItem("name"))
+    );
+    const result = await getDocs(q);
+    let boardOfMine = [];
+    result?.docs.map(
+      (el) => (boardOfMine = [...boardOfMine, el.data().boardId])
+    );
+    boardOfMine.includes(data?.fetchBoard._id) && setIsWriter(true);
+  };
+
+  useEffect(() => {
+    getFireBaseData();
+  });
 
   const onMoveToFindmatesUpdate = (findmateId: string) => () => {
     router.push(`/find-mates/${findmateId}/update/`);
@@ -54,7 +83,7 @@ const FindmatesGet = () => {
   };
 
   const onClickChatting = () => {
-    const user = "woo"; // 로그인한 유저 닉네임
+    const user = encodeURIComponent(localStorage.getItem("name"));
     const room = encodeURIComponent(getTitle(data?.fetchBoard.title));
     window.open(
       `https://pairingmates-chatting.herokuapp.com?user=${user}&room=${room}`,
@@ -66,6 +95,7 @@ const FindmatesGet = () => {
   return (
     <FindmatesGetUI
       data={data}
+      isWriter={isWriter}
       onMoveToFindmatesList={() => router.push("/find-mates")}
       onMoveToFindmatesUpdate={onMoveToFindmatesUpdate}
       onClickDeleteFindmates={onClickDeleteFindmates}

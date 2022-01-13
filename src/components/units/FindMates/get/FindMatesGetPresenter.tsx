@@ -23,6 +23,7 @@ const settings = {
 };
 
 const FindmatesGetUI = (props: IFindmateGetUIProps) => {
+  console.log(props.isWriter);
   return (
     <>
       <Inner style={{ paddingBottom: "0px" }}>
@@ -55,20 +56,24 @@ const FindmatesGetUI = (props: IFindmateGetUIProps) => {
               </div>
             </S.IconWrapper>
             <footer>
-              <button
-                onClick={props.onMoveToFindmatesUpdate(
-                  props.data?.fetchBoard._id
-                )}
-              >
-                수정하기
-              </button>
-              <button
-                onClick={props.onClickDeleteFindmates(
-                  props.data?.fetchBoard._id
-                )}
-              >
-                삭제하기
-              </button>
+              {props.isWriter && (
+                <>
+                  <button
+                    onClick={props.onMoveToFindmatesUpdate(
+                      props.data?.fetchBoard._id
+                    )}
+                  >
+                    수정하기
+                  </button>
+                  <button
+                    onClick={props.onClickDeleteFindmates(
+                      props.data?.fetchBoard._id
+                    )}
+                  >
+                    삭제하기
+                  </button>
+                </>
+              )}
             </footer>
           </S.FindmatesUserInfo>
           <S.FindmatesContentsInfo>

@@ -14,8 +14,11 @@ import {
   getCategory,
   getTitle,
 } from "../../../../commons/libraries/utils/utils";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { app } from "../../../../../pages/_app";
 
 const FindMatesAdd = (props: FindmatesAddProps) => {
+  const db = getFirestore(app);
   const [isUpdateTag, setIsUpdateTag] = useState(false);
   const [isUpdateImages, setIsUpdateImages] = useState(false);
   const [category, setCategory] = useState("");
@@ -70,7 +73,7 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
       const result = await addFindmate({
         variables: {
           createBoardInput: {
-            writer: "user",
+            writer: localStorage.getItem("name"),
             password: "1234",
             title: category + "$%$%" + title,
             contents,
@@ -79,6 +82,14 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
             boardAddress,
           },
         },
+      });
+
+      const docRef = await addDoc(collection(db, "findmatesBoard"), {
+        writer: {
+          email: localStorage.getItem("email"),
+          name: localStorage.getItem("name"),
+        },
+        boardId: result.data?.createBoard._id,
       });
       router.push(`/find-mates/${result.data.createBoard._id}/`);
     } catch (error) {

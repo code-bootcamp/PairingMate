@@ -11,7 +11,6 @@ import TagsUpdate from "../../../commons/tags/update/TagsUpdateContainer";
 import Uploads from "../../../commons/uploads/UploadsContainer";
 
 const FindMatesAddUI = (props: FindmatesAddUIProps) => {
-  console.log(getCategory(props.data?.fetchBoard.title || ""));
   return (
     <>
       <Inner>
