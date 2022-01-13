@@ -9,6 +9,10 @@ export const LoginWrapper = styled.div`
     background-size: cover;
     background-repeat : no-repeat;
     background-position : center center;
+
+    @media all and ${theme.mobile}{
+        height: 100vh;
+    }
 `;
 
 export const LoginWrap = styled.form`
@@ -31,7 +35,7 @@ export const LoginWrap = styled.form`
 `
 
 export const LoginFildset = styled.fieldset`
-    padding: 60px 50px;  
+    padding: 60px 50px;
     input {
         height:30px;
         padding: 5px;
@@ -43,6 +47,10 @@ export const LoginFildset = styled.fieldset`
         &::placeholder{
             color:white;
         }
+    }
+    @media all and ${theme.mobile}{
+        padding: 30px 20px;
+        height:500px;
     }
 `;
 
@@ -61,6 +69,10 @@ export const LoginFildsetInfo = styled.div`
     flex-direction: column;
     justify-content: space-between;
     margin-top:65px;
+
+    @media all and ${theme.mobile}{
+        margin-top:25px;
+    }   
 `;
 
 export const LoginButton = styled.button`
@@ -70,6 +82,11 @@ export const LoginButton = styled.button`
     background: #213358;
     border-radius: 15px;
     color:white;
+
+    @media all and ${theme.mobile}{
+        height:35px;
+        margin:5px 0;
+    }     
 `;
 
 export const SignupWrapper = styled.div`
@@ -83,10 +100,13 @@ export const SignupTitle = styled.label`
 export const SignupButton = styled.button`
     width:100%;
     height: 50px;
-    margin-top:7px;
     background: white;
     border-radius: 15px;
     color:#213358;
+
+    @media all and ${theme.mobile}{
+        height:30px;
+    }         
 `;
 export const EmptyArea = styled.p`
     padding: 20px 0;
@@ -107,4 +127,10 @@ export const GoogleBtn = styled.button`
         /* font-style:italic; */
         color:white;
     }
+
+    @media all and ${theme.mobile}{
+        height:35px;
+        font-size: ${theme.fontsize.fs16};
+        /* margin:5px 0; */
+
 `;

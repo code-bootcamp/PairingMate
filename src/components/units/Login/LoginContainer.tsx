@@ -62,6 +62,7 @@ const Login = () => {
               const querySnapshot = await getDocs(q);
               querySnapshot.docs.map((el) => localStorage.setItem("email" , el.data().email))
               querySnapshot.docs.map((el) => localStorage.setItem("name" , el.data().name))
+              querySnapshot.docs.map((el) => localStorage.setItem("image" , el.data().image[0]))
             }
           })
         localStorage.setItem("refreshToken","true");
@@ -110,6 +111,7 @@ const Login = () => {
       setAccessToken?.(result.data.loginUser.accessToken || "");
       localStorage.setItem("email" , companyLoginUser?.fetchUserLoggedIn.email);
       localStorage.setItem("name" , companyLoginUser?.fetchUserLoggedIn.name);
+      localStorage.setItem("image" , companyLoginUser?.fetchUserLoggedIn.picture);
       router.push("/");
     } catch (error) {
       Modal.error({content:error.message});
@@ -136,6 +138,7 @@ const Login = () => {
               const querySnapshot = await getDocs(q);
               querySnapshot.docs.map((el) => localStorage.setItem("email" , el.data().email))
               querySnapshot.docs.map((el) => localStorage.setItem("name" , el.data().name))
+              querySnapshot.docs.map((el) => localStorage.setItem("image" , el.data().image[0]))
             }
           })
           localStorage.setItem("refreshToken","true");

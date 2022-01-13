@@ -8,7 +8,7 @@ const SignUpStep2UserUI = (props: SignUpStep2UserUIProps) => {
         <S.SignUpWrapper>
             <S.SignUpWrap>
                 <S.SignUpHeadTitle> PairingMate 에서 <br />
-                <strong> 당신의 Best Mate를 만나보세요! </strong>
+                당신의 <strong>Best Mate</strong>를 만나보세요!
                 </S.SignUpHeadTitle>
                 <S.SignUpInfoWrapper>
                     <S.SignUpInfoWrap>

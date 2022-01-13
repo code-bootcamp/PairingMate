@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import theme from "../../../../../commons/styles/variables";
 
 // Css 작성
 export const SignUpWrapper = styled.div`
@@ -12,6 +13,13 @@ export const SignUpWrapper = styled.div`
     border: 1px solid #DDDDDD;
     box-sizing: border-box;
     box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.25);
+
+    @media all and ${theme.mobile}{
+        width: 100%;
+        height: auto 0;
+        box-shadow: none;
+        border:none;
+    }
 `;
 
 export const SignUpWrap = styled.div`
@@ -73,19 +81,25 @@ export const SignUpInput = styled.input`
 `;
 
 export const SignUpButton = styled.button`
-    margin: 0 auto;
+    margin: 30px auto;
     position: relative;
     width: 150px;
     height: 40px;
     background: #C4C4C4;
-
     font-family: Noto Sans KR;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 40px;
     text-align: center;
-
     color: #555555;
+
+    @media all and ${theme.mobile}{
+        margin : 40px auto;
+    }
+
+    @media all and ${theme.tablet}{
+        margin : 30px auto;
+    }
 `;
 

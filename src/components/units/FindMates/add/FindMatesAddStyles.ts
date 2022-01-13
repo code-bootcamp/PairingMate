@@ -42,10 +42,12 @@ export const TitleInput = styled.input`
 export const TagsInput = styled.input`
   display: block;
   width: 100%;
-  font-size: 16px;
+  padding: 0 0 5px 8px;
+  font-size: ${theme.fontsize.fs14};
   border-bottom: 1px solid #efefef;
   outline: none;
   &::placeholder {
+    font-size:${theme.fontsize.fs14};
     color: #dddddd;
   }
 `;
