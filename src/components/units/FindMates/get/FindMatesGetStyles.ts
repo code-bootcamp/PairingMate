@@ -1,19 +1,24 @@
 import styled from "@emotion/styled";
+import theme from "../../../../commons/styles/variables";
 
 export const FindmatesGetWrapper = styled.div`
   display: flex;
   width: 100%;
+  @media screen and ${theme.tablet} {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
 `;
 
 export const FindmatesUserInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
+  width: 30%;
   background: #fcfcfc;
 
   hr {
-    width: 190px;
+    width: 50%;
     margin: 30px 30px;
     border: 1px solid #dddddd;
   }
@@ -21,17 +26,51 @@ export const FindmatesUserInfo = styled.div`
   footer {
     display: flex;
     justify-content: space-between;
-    width: 220px;
+    width: 45%;
     margin-top: 50px;
+
+    @media screen and ${theme.tablet} {
+      margin-top: 0px;
+    }
   }
 
   button {
-    width: 100px;
+    width: 45%;
     height: 30px;
     background: #c4c4c4;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: ${theme.fontsize.fs14};
     color: white;
+  }
+
+  @media screen and ${theme.tablet} {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0px 30px 20px 30px;
+    background-color: white;
+    border-bottom: 1px solid #dddddd;
+    hr {
+      display: none;
+    }
+  }
+
+  @media screen and ${theme.mobile} {
+    flex-direction: column;
+    height: auto;
+  }
+`;
+
+export const UserProfileWrapper = styled.div`
+  span {
+    display: block;
+    text-align: center;
+  }
+  @media screen and ${theme.tablet} {
+    display: flex;
+    margin-bottom: 25px;
+    align-items: center;
   }
 `;
 
@@ -42,6 +81,12 @@ export const UserProfile = styled.div`
 
   img {
     width: 100%;
+  }
+
+  @media screen and ${theme.tablet} {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
   }
 `;
 
@@ -59,7 +104,7 @@ export const CreateDate = styled.span`
 export const IconWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
-  width: 190px;
+  width: 37%;
 
   div {
     display: flex;
@@ -71,6 +116,12 @@ export const IconWrapper = styled.div`
   span {
     font-size: 14px;
     color: #324e86;
+  }
+
+  @media screen and ${theme.tablet} {
+    position: absolute;
+    bottom: 17px;
+    right: 18px;
   }
 `;
 
@@ -85,17 +136,18 @@ export const SubIcon = styled.div`
 `;
 
 export const FindmatesContentsInfo = styled.div`
-  width: 960px;
+  width: 70%;
   padding: 60px 95px 60px 95px;
   border: 1px solid #dddddd;
   border-bottom: 0px;
 
   h1 {
-    margin: 10px 0px 70px 0px;
+    margin: 20px 0px 70px 0px;
   }
 
   p {
     margin: 100px 0px 200px 0px;
+    line-height: 20px;
   }
 
   span {
@@ -104,14 +156,26 @@ export const FindmatesContentsInfo = styled.div`
     color: #324e86;
   }
 
-  /* .slick-track {
-    margin-bottom: 50px;
-  } */
-
   footer {
     margin-top: 32px;
     font-size: 14px;
     color: #dddddd;
+  }
+
+  @media screen and ${theme.tablet} {
+    width: 100%;
+    padding: 20px 30px 20px 30px;
+    border: none;
+
+    h1 {
+      font-size: ${theme.fontsize.fs24};
+      margin: 20px 0px 20px 0px;
+    }
+
+    p {
+      margin: 60px 0px 60px 0px;
+      line-height: 20px;
+    }
   }
 `;
 
@@ -145,11 +209,24 @@ export const ContentsInfoHeader = styled.header`
     right: 90px;
     display: inline-block;
   }
+
+  @media screen and ${theme.tablet} {
+    h3 {
+      font-size: ${theme.fontsize.fs24};
+    }
+  }
+
+  @media screen and ${theme.mobile} {
+    span {
+      bottom: 2px;
+      left: 3px;
+    }
+  }
 `;
 
 export const ContentsInfoImage = styled.div`
-  width: 768px;
-  height: 290px;
+  width: 40%;
+  height: 20%;
   background: #c4c4c4;
 
   img {

@@ -74,17 +74,19 @@ const PaddingBottom = {
 };
 
 const SubWayColor = {
-  line1: "#0052A4",
-  line2: "#009D3E",
-  line3: "#EF7C1C",
-  line4: "#00A5DE",
-  line5: "#996CAC",
-  line6: "#CD7C2F",
-  line7: "#747F00",
-  line8: "#EA545D",
-  line9: "#BB8336",
-  Bundang: "#DBA829",
-  SinBundang: "971F2D",
+  "1호선": "#0052A4",
+  "2호선": "#009D3E",
+  "3호선": "#EF7C1C",
+  "4호선": "#00A5DE",
+  "5호선": "#996CAC",
+  "6호선": "#CD7C2F",
+  "7호선": "#747F00",
+  "8호선": "#EA545D",
+  "9호선": "#BB8336",
+  분당선: "#DBA829",
+  신분당선: "#971F2D",
+  중앙선: "#77C4A3",
+  공항철도: "#0065B3",
 };
 
 const theme = {

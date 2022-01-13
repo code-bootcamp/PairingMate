@@ -31,59 +31,49 @@ export const WeahterInfo = styled.div`
   top: 0px;
   left: 40px;
   width: 20%;
-  height: auto;
-  padding: 10px 10px 0px 10px;
-  background-color: #d3d1ce;
+  height: 23%;
+  padding: 10px 20px 0px 40px;
+  background-color: #f8f8f8;
   border-radius: 10px;
 
-  img {
-    position: absolute;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-  }
-
   div {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-  }
+    width: 50%;
+    height: 45%;
+    margin: 0% 0% 20% 50%;
+    background-color: transparent;
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
   }
 
   h1 {
-    margin-bottom: 30px;
-    color: white;
+    margin-bottom: 5px;
+    font-size: ${theme.fontsize.fs45};
+    color: ${theme.fontColorLight};
   }
 
-  li {
-    margin-bottom: 20px;
+  span {
+    color: ${theme.fontColorLight};
+  }
 
+  @media screen and ${theme.laptop} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    background-color: transparent;
+
+    div {
+      margin: 0px;
+    }
+
+    h1,
     span {
-      color: white;
+      display: none;
     }
-  }
-
-  @media screen and ${theme.tablet} {
-    h1 {
-      font-size: ${theme.fontsize.fs16};
-      margin-bottom: 10px;
-    }
-    li {
-      margin-bottom: 5px;
-
-      span {
-        font-size: ${theme.fontsize.fs14};
-      }
-    }
-  }
-
-  @media screen and (max-width: 619px) {
-    display: none;
   }
 `;
 
@@ -183,9 +173,16 @@ export const SliderInnerDiv = styled.div`
     h4 {
       display: inline-block;
       margin-right: 4px;
-      color: ${theme.colorPoint};
     }
   }
+`;
+
+interface SubwayProps {
+  line: string;
+}
+
+export const Subway = styled.h4`
+  color: ${(props: SubwayProps) => theme.SubWayColor[props.line]};
 `;
 
 export const PointName = styled.span`

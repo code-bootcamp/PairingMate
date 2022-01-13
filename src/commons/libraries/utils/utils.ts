@@ -62,3 +62,20 @@ export const priceToString = (price: number) => {
 export function getTemp(temp: string) {
   return (Number(temp) - 273.15).toFixed(1);
 }
+
+// 작성자 : 우형래
+export const getWeaterIcon = (weater: string) => {
+  if (weater.includes("clear")) {
+    return "/images/sub/runday-course/clear-weather.png";
+  } else if (weater.includes("rain")) {
+    return "/images/sub/runday-course/rain-weather.png";
+  } else if (weater.includes("sonw")) {
+    return "/images/sub/runday-course/sonw-weather.png";
+  } else if (weater.includes("mist")) {
+    return "/images/sub/runday-course/mist-weather.png";
+  } else if (weater.includes("thunderstorm") || weater.includes("storm")) {
+    return "/images/sub/runday-course/storm-weather.png";
+  } else {
+    return "/images/sub/runday-course/cloud-weather.png";
+  }
+};

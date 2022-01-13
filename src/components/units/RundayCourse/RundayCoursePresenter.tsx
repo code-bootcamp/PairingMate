@@ -4,7 +4,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SeoulMap from "../../commons/seoulMap/mapContainer";
-import { replaceSubway } from "../../../commons/libraries/utils/utils";
+import {
+  getWeaterIcon,
+  replaceSubway,
+} from "../../../commons/libraries/utils/utils";
 import { RundayCourseUIProps } from "./RundayCourseTypes";
 import ModalUI from "./ModalContainer";
 
@@ -54,37 +57,14 @@ const RundayCourseUI = (props: RundayCourseUIProps) => {
           )}
           <SeoulMap onClickSearchList={props.onClickSearchList} />
           <S.WeahterInfo>
-            <h1>Seoul</h1>
             <div>
-              <ul>
-                <li>
-                  <span>weather</span>
-                </li>
-                <li>
-                  <span>temp</span>
-                </li>
-                <li>
-                  <span>humidity</span>
-                </li>
-                <li>
-                  <span>wind</span>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <span>{props.weatherInfo.weather}</span>
-                </li>
-                <li>
-                  <span>{props.weatherInfo.temp} ℃</span>
-                </li>
-                <li>
-                  <span>{props.weatherInfo.humidity} %</span>
-                </li>
-                <li>
-                  <span>{props.weatherInfo.wind} m/s</span>
-                </li>
-              </ul>
+              <img
+                src={getWeaterIcon(props.weatherInfo.weather || "")}
+                alt=""
+              />
             </div>
+            <h1>{props.weatherInfo.temp} º</h1>
+            <span>{props.weatherInfo.cityName}</span>
           </S.WeahterInfo>
         </S.MapWrapper>
         <S.ListWrapper>
@@ -129,7 +109,13 @@ const RundayCourseUI = (props: RundayCourseUIProps) => {
                           </S.IconWrapper>
                           <span>
                             {replaceSubway(el.RELATE_SUBWAY || "").map((el) =>
-                              el.length !== 0 ? <h4 key={el}>{el}</h4> : "없음"
+                              el.length !== 0 ? (
+                                <S.Subway line={el} key={el}>
+                                  {el}
+                                </S.Subway>
+                              ) : (
+                                "없음"
+                              )
                             )}
                           </span>
                         </li>

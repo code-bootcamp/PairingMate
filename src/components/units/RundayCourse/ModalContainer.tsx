@@ -34,7 +34,12 @@ const ModalUI = (props: Props) => {
           </li>
           <li>
             {replaceSubway(props.pointData[0]?.RELATE_SUBWAY || "").map(
-              (el) => el.length !== 0 && <S.InfoTag key={el}>{el}</S.InfoTag>
+              (el) =>
+                el.length !== 0 && (
+                  <S.InfoTag line={el} key={el}>
+                    {el}
+                  </S.InfoTag>
+                )
             )}
           </li>
         </ul>
