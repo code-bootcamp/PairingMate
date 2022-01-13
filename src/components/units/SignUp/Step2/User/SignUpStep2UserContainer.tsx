@@ -2,29 +2,29 @@ import { Modal } from "antd";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { doc, collection, getDocs, getFirestore, query, setDoc, where } from "firebase/firestore";
 import router from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { app } from "../../../../../../pages/_app";
 import { emailRegExp } from "../../../../../commons/libraries/utils/utils";
 import SignUpStep2UserUI from "./SignUpStep2UserPresenter";
+import { userInputsProps } from "./SignUpStep2UserTypes";
 
 const SignUpStep2User = () => {
-    const [signUserInputs , setSignCompanyInputs] = useState({
+    const [signUserInputs , setSignCompanyInputs] = useState<userInputsProps>({
         email:"",
         password:"",
     });
-
     const [passwordChk, setPasswordChk] = useState<string>("");
     const db = getFirestore(app);
     const auth = getAuth();
     
-    const onChangeInputs = (event) => {
+    const onChangeInputs = (event:ChangeEvent<HTMLInputElement>) => {
         setSignCompanyInputs({
             ...signUserInputs,
             [event.target.name] : event.target.value
         });
     }; 
 
-    const onChangePasswordChk = (event) => {
+    const onChangePasswordChk = (event:ChangeEvent<HTMLInputElement>) => {
         setPasswordChk(event.target.value);
     }
 
