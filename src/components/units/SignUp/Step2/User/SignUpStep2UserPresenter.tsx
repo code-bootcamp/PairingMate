@@ -20,7 +20,7 @@ const SignUpStep2UserUI = (props: SignUpStep2UserUIProps) => {
                     <S.SignUpInfoWrap>
                         <S.SignUpInfoTitle>비밀번호<label>*</label></S.SignUpInfoTitle>
                         <S.SignUpInputWrap>
-                            <S.SignUpInput type="password" name="password" placeholder="비밀번호를 입력해주세요" onChange={props.onChangeInputs}/>
+                            <S.SignUpInput type="password" name="password" placeholder="비밀번호는 6자리 이상입니다" onChange={props.onChangeInputs}/>
                         </S.SignUpInputWrap>
                     </S.SignUpInfoWrap>
                     <S.SignUpInfoWrap>

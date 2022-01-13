@@ -49,6 +49,14 @@ const SignUpStep3User = () => {
     }
   
     const onClickUpdateDoc = async () => {
+      if(profileImage.length === 0) {
+        Modal.error({title:"프로필 사진을 등록해주세요!"});
+        return;
+      } else if(!name){
+        Modal.error({title: "닉네임을 입력해주세요!"});
+        return;
+      }
+
       try {
         await updateDoc(docu, {
             name,

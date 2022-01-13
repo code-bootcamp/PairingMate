@@ -1,14 +1,16 @@
 import SignUpStep2CompanyUI from "./SignUpStep2CompanyPresenter";
 import { CREATE_USER } from "./SignUpStep2CompanyQueries"
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Modal } from "antd";
 import { emailRegExp } from "../../../../../commons/libraries/utils/utils";
 import router from "next/router";
+import { companyInputsProps } from "./SignUpStep2CompanyTypes";
+import { IMutationCreateUserArgs } from "../../../../../commons/types/generated/types";
 
 const SignUpStep2Company = () => {
-    const [createUser] = useMutation(CREATE_USER);
-    const [signCompanyInputs , setSignCompanyInputs] = useState({
+    const [createUser] = useMutation<IMutationCreateUserArgs>(CREATE_USER);
+    const [signCompanyInputs , setSignCompanyInputs] = useState<companyInputsProps>({
         email:"",
         name:"",
         password:"",
@@ -16,14 +18,14 @@ const SignUpStep2Company = () => {
 
     const [passwordChk, setPasswordChk] = useState<string>("");
 
-    const onChangeInputs = (event) => {
+    const onChangeInputs = (event:ChangeEvent<HTMLInputElement>) => {
         setSignCompanyInputs({
             ...signCompanyInputs,
             [event.target.name] : event.target.value
         });
     }; 
 
-    const onChangePasswordChk = (event) => {
+    const onChangePasswordChk = (event:ChangeEvent<HTMLInputElement>) => {
         setPasswordChk(event.target.value);
     }
 
