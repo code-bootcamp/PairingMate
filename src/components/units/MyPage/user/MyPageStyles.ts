@@ -21,7 +21,7 @@ export const UserInfoHeader = styled.figure`
 
   figcaption {
     position: relative;
-    padding-top: ${theme.PaddingTop.pt10};
+    padding-top: ${theme.PaddingTop.pt20};
   }
 
   &::after {
@@ -46,18 +46,37 @@ export const UserName = styled.h6`
 
 export const ReportButton = styled.button`
   position: absolute;
-  top: 2px;
+  top: -1px;
   right: -10px;
 `;
+
+export const UserProfileWrap = styled.div`
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+`;
+
 export const UserProfileImg = styled.p`
   position: relative;
   display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50%;
   text-align: center;
-  button {
-    position: absolute;
-    bottom: 0;
-    right: 0px;
+  overflow: hidden;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
+`;
+
+export const OptionButton = styled.button`
+  position: absolute;
+  bottom: 0;
+  right: 0px;
 `;
 
 export const FollowInfo = styled.div`
@@ -129,50 +148,6 @@ export const MyPageArticle = styled.article`
   width: 70%;
   padding: 50px;
   border: 1px solid #ebebeb;
-`;
-
-export const MypageTabList = styled.ul`
-  width: 100%;
-  padding: 20px 0;
-
-  li {
-    display: inline-block;
-
-    &.on {
-      button {
-        &::after {
-          width: 80%;
-        }
-      }
-    }
-
-    button {
-      position: relative;
-      padding: 10px 15px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0%;
-        height: 2px;
-        background: ${theme.colorBase};
-        transform: translateX(-50%);
-        transition: 0.5s;
-      }
-    }
-    &:hover {
-      button {
-        &::after {
-          left: 50%;
-          width: 80%;
-          transform: translateX(-50%);
-          transition: 0.5s;
-        }
-      }
-    }
-  }
 `;
 
 export const MypageContents = styled.div`
