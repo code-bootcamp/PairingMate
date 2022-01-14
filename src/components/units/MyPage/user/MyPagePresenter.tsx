@@ -3,6 +3,11 @@ import * as M from "./MyPageStyles";
 import { IMypageProps } from "./MyPageTypes";
 import Tabs from "../../../commons/tabs/Tabs";
 import Tab from "../../../commons/tabs/Tabs.Contents";
+import {
+  getCategory,
+  getTitle,
+  replaceTags,
+} from "../../../../commons/libraries/utils/utils";
 
 const MyPageUI = (props: IMypageProps) => {
   return (
@@ -11,22 +16,27 @@ const MyPageUI = (props: IMypageProps) => {
         <M.MypageSection>
           <M.MyPageUserInfo>
             <M.UserInfoHeader>
-              <M.UserProfileImg>
-                <img src="/images/common/user-default-2.png" alt="" />
-                <button>
+              <M.UserProfileWrap>
+                <M.UserProfileImg>
+                  <img
+                    src={`https://storage.googleapis.com/${props.firedata.image}`}
+                    alt=""
+                  />
+                </M.UserProfileImg>
+                <M.OptionButton>
                   <img src="/images/sub/mypage/ico_user_settings.png" alt="" />
-                </button>
-              </M.UserProfileImg>
+                </M.OptionButton>
+              </M.UserProfileWrap>
               <figcaption>
                 <M.UserName>
-                  PairingMate
+                  {props.firedata.name}
                   <M.ReportButton>
                     <img src="/images/sub/mypage/ico_report_user.png" alt="" />
                   </M.ReportButton>
                 </M.UserName>
               </figcaption>
             </M.UserInfoHeader>
-            <M.FollowInfo>
+            {/* <M.FollowInfo>
               <dl>
                 <dt>팔로워</dt>
                 <dd>25</dd>
@@ -35,30 +45,20 @@ const MyPageUI = (props: IMypageProps) => {
                 <dt>팔로잉</dt>
                 <dd>14</dd>
               </dl>
-            </M.FollowInfo>
-            <M.FollowButtonWrap>
+            </M.FollowInfo> */}
+            {/* <M.FollowButtonWrap>
               <M.FollowButton>Follow</M.FollowButton>
-            </M.FollowButtonWrap>
+            </M.FollowButtonWrap> */}
             <M.UserInterestedWrap>
               <h5>
-                <span>PairingMate</span>님의 관심사
+                <span>{props.firedata.name}</span>님의 관심사
               </h5>
               <M.HashTagList>
-                <li>
-                  <span>#런데이</span>
-                </li>
-                <li>
-                  <span>#라이딩</span>
-                </li>
-                <li>
-                  <span>#락클라이밍</span>
-                </li>
-                <li>
-                  <span>#필라테스</span>
-                </li>
-                <li>
-                  <span>#배드민턴</span>
-                </li>
+                {props.firedata.tags?.map((el, index) => (
+                  <li key={index}>
+                    <span>{el}</span>
+                  </li>
+                ))}
               </M.HashTagList>
             </M.UserInterestedWrap>
           </M.MyPageUserInfo>
@@ -71,7 +71,10 @@ const MyPageUI = (props: IMypageProps) => {
                     <M.MypageFindMatesPostWrap>
                       <ul>
                         {props.data?.fetchBoards.map((el) => (
-                          <li key={el._id}>{el.title}</li>
+                          <li key={el._id}>
+                            {getCategory(el.title)}
+                            {getTitle(el.title)}
+                          </li>
                         ))}
                       </ul>
                     </M.MypageFindMatesPostWrap>
@@ -87,7 +90,7 @@ const MyPageUI = (props: IMypageProps) => {
                         </colgroup>
                         <thead>
                           <tr>
-                            <th>결제번호</th>
+                            <th>판매자</th>
                             <th>결제품목</th>
                             <th>결제금액</th>
                             <th>결제일</th>
@@ -130,7 +133,16 @@ const MyPageUI = (props: IMypageProps) => {
                   </M.MypageContents>
                 </Tab>
                 <Tab title="내가 쓴 글">
-                  <M.MypageContents>내가쓴거쥐</M.MypageContents>
+                  <M.MypageContents>
+                    <ul>
+                      {props.data?.fetchBoards.map((el) => (
+                        <li key={el._id}>
+                          {getCategory(el.title)}
+                          {getTitle(el.title)}
+                        </li>
+                      ))}
+                    </ul>
+                  </M.MypageContents>
                 </Tab>
                 <Tab title="결제내역">
                   <M.MypageContents>내가 결제한거쥐</M.MypageContents>
