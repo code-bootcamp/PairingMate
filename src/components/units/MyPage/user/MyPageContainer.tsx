@@ -8,13 +8,9 @@ import {
 } from "../../../../commons/types/generated/types";
 import {
   collection,
-  CollectionReference,
-  DocumentData,
   getDocs,
   getFirestore,
-  Query,
   query,
-  QueryDocumentSnapshot,
   where,
 } from "@firebase/firestore";
 import { app, auth } from "../../../../../pages/_app";

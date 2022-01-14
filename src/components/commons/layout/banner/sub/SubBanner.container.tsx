@@ -48,7 +48,6 @@ const SubBanner = () => {
     const userId = auth?.currentUser?.uid;
     const myPageUser = "/mypage/user" + "/" + userId;
     const myPageCompany = "/mypage/company" + "/" + userId;
-    console.log(myPageUser);
     PageUrl.forEach((el) => {
       if (el.url.includes(window.location.pathname)) {
         setSectionName(el.title);
