@@ -1,4 +1,4 @@
-import MyPage from "../../../../src/components/units/MyPage/user/MyPageContainer";
+import MyPage from "../../../../src/components/units/MyPage/company/MyPageContainer";
 
 const mypage = () => {
   return <MyPage />;
