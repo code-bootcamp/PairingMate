@@ -1,7 +1,13 @@
 import LoginUI from "./LoginPresenter";
-import { Modal } from 'antd'
+import { Modal } from "antd";
 import { ChangeEvent, useContext, useState } from "react";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import {
   getFirestore,
   getDoc,
@@ -31,20 +37,26 @@ const Login = () => {
   const provider = new GoogleAuthProvider();
   const db = getFirestore(app);
 
-  const onChangeEmail = (event:ChangeEvent<HTMLInputElement>) => {
+  const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const onChangePassword = (event:ChangeEvent<HTMLInputElement>) => {
+  const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
   const onClickUserLogin = () => {
-    if( !email && !password ){
-      Modal.error({title: "Empty Information!", content: "로그인 정보를 입력 해주세요"})
+    if (!email && !password) {
+      Modal.error({
+        title: "Empty Information!",
+        content: "로그인 정보를 입력 해주세요",
+      });
       return;
-    } else if (!password ){
-      Modal.error({title: "Empty Information!", content: "비밀번호가 입력되지 않았습니다."})
+    } else if (!password) {
+      Modal.error({
+        title: "Empty Information!",
+        content: "비밀번호가 입력되지 않았습니다.",
+      });
       return;
     }
 
@@ -52,20 +64,29 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
 
-          // // 로그인 정보 가져오기
-          onAuthStateChanged(auth, async (user) => {
-            if (user) {
-              const uid = user.uid;
-              // 현재 로그인 한 유저의 uid 값으로 문서 가져오기
-              const userRef = collection(db, "users");
-              const q = query(userRef , where("uid" , "==" , uid));
-              const querySnapshot = await getDocs(q);
-              querySnapshot.docs.map((el) => localStorage.setItem("email" , el.data().email))
-              querySnapshot.docs.map((el) => localStorage.setItem("name" , el.data().name))
-              querySnapshot.docs.map((el) => localStorage.setItem("image" , el.data().image[0]))
-            }
-          })
-        localStorage.setItem("refreshToken","true");
+        // // 로그인 정보 가져오기
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            const uid = user.uid;
+            // 현재 로그인 한 유저의 uid 값으로 문서 가져오기
+            const userRef = collection(db, "users");
+            const q = query(userRef, where("uid", "==", uid));
+            const querySnapshot = await getDocs(q);
+            querySnapshot.docs.map((el) =>
+              localStorage.setItem("uid", el.data().uid)
+            );
+            querySnapshot.docs.map((el) =>
+              localStorage.setItem("email", el.data().email)
+            );
+            querySnapshot.docs.map((el) =>
+              localStorage.setItem("name", el.data().name)
+            );
+            querySnapshot.docs.map((el) =>
+              localStorage.setItem("image", el.data().image[0])
+            );
+          }
+        });
+        localStorage.setItem("refreshToken", "true");
         router.push("/");
       })
       .catch((error) => {
@@ -77,10 +98,10 @@ const Login = () => {
             content: "비밀번호는 6자리 이상으로 설정 해주세요",
           });
           return;
-        } else if ( errorCode === "auth/wrong-password"){
+        } else if (errorCode === "auth/wrong-password") {
           Modal.error({
-            title: "Wrong Password!" , 
-            content:"비밀번호가 틀립니다"
+            title: "Wrong Password!",
+            content: "비밀번호가 틀립니다",
           });
           return;
         } else if (errorCode === "auth/invalid-email") {
@@ -89,10 +110,10 @@ const Login = () => {
             content: "Email 형식이 틀립니다",
           });
           return;
-        } else if ( errorCode === "auth/user-not-found"){
+        } else if (errorCode === "auth/user-not-found") {
           Modal.error({
-            title: "User Not Found!" , 
-            content:"유저 정보가 없습니다"
+            title: "User Not Found!",
+            content: "유저 정보가 없습니다",
           });
           return;
         }
@@ -102,59 +123,68 @@ const Login = () => {
   const onClickCompanyLogin = async () => {
     try {
       const result = await loginUser({
-        variables : {
+        variables: {
           email,
-          password
-        }
+          password,
+        },
       });
       localStorage.setItem("refreshToken", "true");
       setAccessToken?.(result.data.loginUser.accessToken || "");
-      localStorage.setItem("email" , companyLoginUser?.fetchUserLoggedIn.email);
-      localStorage.setItem("name" , companyLoginUser?.fetchUserLoggedIn.name);
-      localStorage.setItem("image" , companyLoginUser?.fetchUserLoggedIn.picture);
+      localStorage.setItem("email", companyLoginUser?.fetchUserLoggedIn.email);
+      localStorage.setItem("name", companyLoginUser?.fetchUserLoggedIn.name);
+      localStorage.setItem(
+        "image",
+        companyLoginUser?.fetchUserLoggedIn.picture
+      );
       router.push("/");
     } catch (error) {
-      Modal.error({content:error.message});
+      Modal.error({ content: error.message });
     }
-  }
+  };
 
   const onClickGoogleLogin = () => {
     signInWithPopup(auth, provider)
-      .then( async (result) => {
+      .then(async (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const user = result.user;
-        const uidRef = doc(db, "users" , user.uid);
+        const uidRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(uidRef);
 
-        if(docSnap.exists()){
+        if (docSnap.exists()) {
           // // 로그인 정보 가져오기
           onAuthStateChanged(auth, async (user) => {
             if (user) {
               const uid = user.uid;
               // 현재 로그인 한 유저의 uid 값으로 문서 가져오기
               const userRef = collection(db, "users");
-              const q = query(userRef , where("uid" , "==" , uid));
+              const q = query(userRef, where("uid", "==", uid));
               const querySnapshot = await getDocs(q);
-              querySnapshot.docs.map((el) => localStorage.setItem("email" , el.data().email))
-              querySnapshot.docs.map((el) => localStorage.setItem("name" , el.data().name))
-              querySnapshot.docs.map((el) => localStorage.setItem("image" , el.data().image[0]))
+              querySnapshot.docs.map((el) =>
+                localStorage.setItem("email", el.data().email)
+              );
+              querySnapshot.docs.map((el) =>
+                localStorage.setItem("name", el.data().name)
+              );
+              querySnapshot.docs.map((el) =>
+                localStorage.setItem("image", el.data().image[0])
+              );
             }
-          })
-          localStorage.setItem("refreshToken","true");
-          router.push("/")
+          });
+          localStorage.setItem("refreshToken", "true");
+          router.push("/");
         } else {
           try {
-              await setDoc(doc(db, "users", user.uid), {
-                uid: user.uid,
-                email: user.email,
-                name: user.displayName,
-              });
-              Modal.success({title:"추가 정보 페이지로 이동합니다"});
-              router.push("/signup/step-3-user");
-            } catch (error) {
-              Modal.error({title:error});
-            }
+            await setDoc(doc(db, "users", user.uid), {
+              uid: user.uid,
+              email: user.email,
+              name: user.displayName,
+            });
+            Modal.success({ title: "추가 정보 페이지로 이동합니다" });
+            router.push("/signup/step-3-user");
+          } catch (error) {
+            Modal.error({ title: error });
+          }
         }
       })
       .catch((error) => {
@@ -172,18 +202,18 @@ const Login = () => {
 
   const onClickSignup = () => {
     router.push("/signup");
-  }
+  };
 
-  return(
-      <LoginUI 
-          onChangeEmail={onChangeEmail}
-          onChangePassword = {onChangePassword}
-          onClickUserLogin={onClickUserLogin}
-          onClickCompanyLogin={onClickCompanyLogin}
-          onClickGoogleLogin={onClickGoogleLogin}
-          onClickSignup={onClickSignup}
-      />
-  )
-}
+  return (
+    <LoginUI
+      onChangeEmail={onChangeEmail}
+      onChangePassword={onChangePassword}
+      onClickUserLogin={onClickUserLogin}
+      onClickCompanyLogin={onClickCompanyLogin}
+      onClickGoogleLogin={onClickGoogleLogin}
+      onClickSignup={onClickSignup}
+    />
+  );
+};
 
 export default Login;
