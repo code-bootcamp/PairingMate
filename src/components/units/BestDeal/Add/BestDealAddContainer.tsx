@@ -93,10 +93,10 @@ const BestDealAdd = (props: BestdealAddProps) => {
         },
       });
       Modal.success({ content: "등록에 성공하였습니다" });
-      console.log(result);
+
       router.push(`/best-deal/${result.data?.createUseditem._id}`);
     } catch (error) {
-      console.log("상품등록 실패");
+      Modal.error({ content: "상품등록 실패" });
     }
   };
 
@@ -134,7 +134,7 @@ const BestDealAdd = (props: BestdealAddProps) => {
       Modal.success({ content: "수정되었습니다" });
       router.push(`/best-deal/${router.query.bestdealId}`);
     } catch (error) {
-      console.log("수정에 실패하였습니다");
+      Modal.error({ content: "수정에 실패 하였습니다" });
     }
   };
 
