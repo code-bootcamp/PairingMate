@@ -12,6 +12,7 @@ import Tabs from "../../../commons/tabs/detail-tap/Tabs";
 import Comments from "../../../commons/comment/CommentContainer";
 
 const BestDealGetUI = (props: IBestDealGetUIProps) => {
+  console.log("zzz");
   return (
     <Inner>
       <B.Header>
@@ -246,7 +247,11 @@ const BestDealGetUI = (props: IBestDealGetUIProps) => {
           <B.BodyWrapper>
             <B.BodyTitle>이용후기</B.BodyTitle>
             <B.CommentWrapper>
-              <Comments data={props.data} />
+              <Comments
+                data={props.data}
+                userName={props.userName}
+                userEmail={props.userEmail}
+              />
             </B.CommentWrapper>
           </B.BodyWrapper>
         </Tab>

@@ -5,4 +5,6 @@ export interface IBestDealGetUIProps {
   onMoveToBestdealUpdate: (bestdealId: string) => () => void;
   onClickDeleteBestdeal: (useditemId: string) => () => void;
   onMoveToPayment: () => void;
+  userName: string;
+  userEmail: string;
 }
