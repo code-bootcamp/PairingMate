@@ -1,8 +1,20 @@
 import AdminNavigation from "../../../commons/layout/navigation/admin/AdminNavigation.container";
 import { Inner } from "../../../../commons/styles/common";
 import * as AI from "./AdminInquiry.styles";
+import { useState } from "react";
+import CommonModal from "../../../commons/modal/commonModal.presenter";
 
 const AdminInquiryUI = (props: any) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClickOpenModal = () => {
+    setIsOpen(true);
+  };
+
+  const onClickCloseModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <AI.Wrapper>
@@ -22,41 +34,13 @@ const AdminInquiryUI = (props: any) => {
                         <p>{el.contact}</p>
                         <p>{el.email}</p>
                         <AI.CompanyAsk>{el.contents}</AI.CompanyAsk>
-                        <AI.ReplyBtn>답장하기</AI.ReplyBtn>
+                        <AI.ReplyBtn onClick={onClickOpenModal}>
+                          상세보기
+                        </AI.ReplyBtn>
                       </AI.InquiryContents>
                     </div>
                   </li>
                 ))}
-
-                {/* <li>
-                  <div>
-                    <AI.CompanyName>스포애니 구로디지털단지점</AI.CompanyName>
-                    <AI.InquiryContents>
-                      <AI.CompanyAsk>
-                        파트너 문의드립니다. 지속적인 회원 유치를 위해 알아보다
-                        PairingMate를 알게 되었습니다. 파트너쉽 계약 가격과
-                        Premium Best Deal 광고 가격 문의 드립니다. 빠른 연락
-                        부탁드려요
-                      </AI.CompanyAsk>
-                      <AI.ReplyBtn>상세보기</AI.ReplyBtn>
-                    </AI.InquiryContents>
-                  </div>
-                </li>
-
-                <li>
-                  <div>
-                    <AI.CompanyName>스포애니 구로디지털단지점</AI.CompanyName>
-                    <AI.InquiryContents>
-                      <AI.CompanyAsk>
-                        파트너 문의드립니다. 지속적인 회원 유치를 위해 알아보다
-                        PairingMate를 알게 되었습니다. 파트너쉽 계약 가격과
-                        Premium Best Deal 광고 가격 문의 드립니다. 빠른 연락
-                        부탁드려요
-                      </AI.CompanyAsk>
-                      <AI.ReplyBtn>상세보기</AI.ReplyBtn>
-                    </AI.InquiryContents>
-                  </div>
-                </li> */}
               </AI.CompanyInquiry>
             </AI.AdminInquirySection>
 
