@@ -64,8 +64,7 @@ const MyPage = () => {
           file: myFile,
         },
       });
-      console.log(result.data.uploadFile.url);
-      setProfileImage([result.data.uploadFile.url]);
+      setProfileImage(result.data?.uploadFile.url);
       setIsChanged(true);
     }
   };
