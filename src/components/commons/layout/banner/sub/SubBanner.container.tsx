@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { auth } from "../../../../../../pages/_app";
 import SubBannerUI from "./SubBannaer.presenter";
 
 const PageUrl = [
@@ -33,7 +34,7 @@ const PageUrl = [
     images: "/images/sub/bg_sub_visual05.jpg",
   },
   {
-    url: ["/mypage/user", "mypage/company"],
+    url: ["mypage/user/", "mypage/company"],
     title: "Mypage",
     images: "/images/sub/bg_sub_visual06.jpg",
   },
@@ -44,12 +45,20 @@ const SubBanner = () => {
   const [bgUrl, setBgUrl] = useState("");
 
   useEffect(() => {
+    const userId = auth?.currentUser?.uid;
+    const myPageUser = "/mypage/user" + "/" + userId;
+    const myPageCompany = "/mypage/company" + "/" + userId;
+    console.log(myPageUser);
     PageUrl.forEach((el) => {
       if (el.url.includes(window.location.pathname)) {
         setSectionName(el.title);
         setBgUrl(el.images);
       }
     });
+    if (window.location.pathname === myPageUser) {
+      setSectionName("Mypage");
+      setBgUrl("/images/sub/bg_sub_visual06.jpg");
+    }
   });
 
   return (
