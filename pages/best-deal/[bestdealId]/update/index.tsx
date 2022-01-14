@@ -4,6 +4,7 @@ import {
   IQuery,
   IQueryFetchUseditemArgs,
 } from "../../../../src/commons/types/generated/types";
+import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
 import BestDealAdd from "../../../../src/components/units/BestDeal/Add/BestDealAddContainer";
 
 const FETCH_USED_ITEM = gql`
@@ -40,4 +41,4 @@ const BestDealUpdatePage = () => {
   return <BestDealAdd data={data} isUpdate={true} />;
 };
 
-export default BestDealUpdatePage;
+export default withAuth(BestDealUpdatePage);
