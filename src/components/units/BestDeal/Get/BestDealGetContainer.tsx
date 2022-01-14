@@ -74,6 +74,7 @@ const BestDealGet = () => {
       // querySnapshot.docs.map((el) => console.log(el.data().email));
       querySnapshot.docs.map((el) => setUserName(el.data().name));
       querySnapshot.docs.map((el) => setUserEmail(el.data().email));
+      // querySnapshot.docs.map((el) => setUserimage(el.data().image));
     }
   });
   // 아임포트 페이먼트 실행 시키기
@@ -138,6 +139,8 @@ const BestDealGet = () => {
         onMoveToBestdealUpdate={onMoveToBestdealUpdate}
         onClickDeleteBestdeal={onClickDeleteBestdeal}
         onMoveToPayment={onMoveToPayment}
+        userName={userName}
+        userEmail={userEmail}
       />
     </>
   );

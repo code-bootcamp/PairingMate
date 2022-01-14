@@ -14,10 +14,12 @@ export const BestdealWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  padding: 0 -10px;
 `;
 export const BestdealItem = styled.div`
   width: 25%;
   height: 375px;
+  margin: 0 10px;
   background-color: #dddddd;
 `;
 export const BestdealImg = styled.img`
@@ -96,11 +98,14 @@ export const ProductWrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   margin-top: 30px;
+  padding: 0 -10px;
+  border: 1px solid black;
 `;
 export const ProductItem = styled.div`
   width: 25%;
   height: 375px;
   background-color: #dddddd;
+  margin: 0 10px;
 `;
 export const ProductImg = styled.img`
   width: 100%;
