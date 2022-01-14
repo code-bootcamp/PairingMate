@@ -5,7 +5,6 @@ import { Fragment } from "react";
 import { getTitle } from "../../../../commons/libraries/utils/utils";
 
 const BestDealListUI = (props: BestdealListUIProps) => {
-  console.log(props.bestDealList);
   return (
     <>
       <Inner>

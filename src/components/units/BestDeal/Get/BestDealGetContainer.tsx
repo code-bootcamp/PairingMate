@@ -57,7 +57,7 @@ const BestDealGet = () => {
       Modal.success({ content: "삭제되었습니다" });
       router.push("/best-deal");
     } catch (error) {
-      console.log("삭제실패하였습니다");
+      Modal.error({ content: "삭제실패하였습니다" });
     }
   };
 
@@ -99,8 +99,8 @@ const BestDealGet = () => {
         // callback
         if (rsp.success) {
           // 결제 성공시
-          console.log(rsp);
-          const result = await addDoc(collection(db, "payment"), {
+          // console.log(rsp);
+          const result = await addDoc(collection(db, "payments"), {
             seller: {
               name: data?.fetchUseditem.seller.name,
               email: data?.fetchUseditem.seller.email,
@@ -111,12 +111,16 @@ const BestDealGet = () => {
             },
             price: data?.fetchUseditem.price,
             productName: getTitle(data?.fetchUseditem.name),
+            buyNo: rsp.imp_uid,
+            buyAt: new Date(),
           });
-          console.log("result: ", result);
+          // console.log("result: ", result);
+          // console.log("buyNum:", rsp.imp_uid);
+          // console.log("buyAt:", new Date());
 
           // createPointTransactionsOfLoading 뮤테이션 실행하기(impUid 인자로 넘기기!!!)
         } else {
-          console.log("결제 실패");
+          Modal.error({ content: "결제 실패" });
         }
       }
     );

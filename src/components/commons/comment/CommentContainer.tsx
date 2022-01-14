@@ -30,9 +30,13 @@ const Comments = (props: any) => {
   const db = getFirestore(app);
   // 댓글에 필요한 값과 현재 접속중인 유저의 이미지 값을 가져온다.
   useEffect(() => {
-    getComments();
     setUserImage(localStorage.getItem("image"));
   }, []);
+
+  useEffect(() => {
+    getComments();
+  }, []);
+  console.log("리로드");
   // 가져오는 로직
   const getComments = async () => {
     const userRef = collection(db, "comments");
@@ -70,7 +74,7 @@ const Comments = (props: any) => {
         createdAt: String(new Date()),
       });
       Modal.success({ content: "댓글등록에 성공하였습니다" });
-      router.reload();
+      // location.reload();
     } catch (error) {
       Modal.error({ content: "댓글등록에 성공하였습니다" });
     }
