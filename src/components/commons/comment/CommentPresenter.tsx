@@ -1,9 +1,9 @@
 import { Rate } from "antd";
-import { replaceUrl } from "../../../commons/libraries/utils/utils";
+import { getDate, replaceUrl } from "../../../commons/libraries/utils/utils";
 import * as C from "./CommentStyles";
 
 const CommentsUI = (props: any) => {
-  console.log(props.value);
+  // console.log(props.value);
   return (
     <>
       <C.Wrapper>
@@ -20,7 +20,7 @@ const CommentsUI = (props: any) => {
             <C.ContentsHeader>
               <C.NameDateWrapper>
                 <C.Name>{el.writer.name}</C.Name>
-                <C.Date>2022.01.13</C.Date>
+                <C.Date>{getDate(props.seconds)}</C.Date>
               </C.NameDateWrapper>
               <C.ContentsBody>
                 <pre>{el.content}</pre>
