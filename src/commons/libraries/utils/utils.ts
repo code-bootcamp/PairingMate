@@ -79,3 +79,12 @@ export const getWeaterIcon = (weater: string) => {
     return "/images/sub/runday-course/cloud-weather.png";
   }
 };
+
+// 작성자 : 우형래
+export const getWriter = (writer: string) => {
+  return writer.split("$%$%")[0];
+};
+
+export const getWriterImag = (writer: string) => {
+  return replaceUrl(writer.split("$%$%")[1]);
+};

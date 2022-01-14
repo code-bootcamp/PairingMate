@@ -2,6 +2,8 @@ import * as S from "./FindMatesListStyles";
 import {
   getDate,
   getTitle,
+  getWriter,
+  getWriterImag,
   replaceAddr,
   replaceTags,
   replaceUrl,
@@ -20,7 +22,10 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
           </S.FindMateAddButtonWrap>
           <S.FindmatesListHead>
             <S.UserProfile>
-              <img src="/images/common/user-default.png" alt="user-profile" />
+              <img
+                src={replaceUrl(props.profileImg || "")}
+                alt="user-profile"
+              />
             </S.UserProfile>
             <S.FindmatesAddButton onClick={props.onClickMoveToFindmateAddPage}>
               <S.FindmatesAddButtonIcon>
@@ -53,11 +58,13 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
                   <S.FindmatesInfo>
                     <S.UserProfile>
                       <img
-                        src="/images/common/user-default.png"
+                        src={getWriterImag(el.writer || "")}
                         alt="user-profile"
                       />
                     </S.UserProfile>
-                    <S.FindmatesInfoName>{el.writer}</S.FindmatesInfoName>
+                    <S.FindmatesInfoName>
+                      {getWriter(el.writer || "")}
+                    </S.FindmatesInfoName>
                     <S.FindmatesInfoDate>
                       {getDate(el.createdAt)}
                     </S.FindmatesInfoDate>
@@ -74,12 +81,14 @@ const FindmatesListUI = (props: FindmateListUIProps) => {
                     {replaceTags(el.youtubeUrl).map((tag) => (
                       <span key={tag}>{tag}</span>
                     ))}
-                    <div>
-                      <img src="/images/common/like-icon.png" alt="" />
-                    </div>
-                    <S.FindmatesInfoLikeCount>
-                      {el.likeCount}
-                    </S.FindmatesInfoLikeCount>
+                    <nav>
+                      <div>
+                        <img src="/images/common/like-icon.png" alt="" />
+                      </div>
+                      <S.FindmatesInfoLikeCount>
+                        {el.likeCount}
+                      </S.FindmatesInfoLikeCount>
+                    </nav>
                   </S.FindmatesContents>
                 </S.ContentsWrapper>
                 <S.FindmatesImg>

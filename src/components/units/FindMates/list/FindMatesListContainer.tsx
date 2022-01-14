@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
@@ -14,6 +15,11 @@ const FindmatesList = () => {
     IQueryFetchBoardsArgs
   >(FETCH_BOARDS);
   const router = useRouter();
+  const [profileImg, setProfileImg] = useState("");
+
+  useEffect(() => {
+    setProfileImg(localStorage.getItem("image"));
+  }, []);
 
   const { data: findmatesCount, refetch: refetchCount } = useQuery<
     Pick<IQuery, "fetchBoardsCount">,
@@ -49,6 +55,7 @@ const FindmatesList = () => {
     <FindmatesListUI
       data={data}
       findmatesCount={findmatesCount}
+      profileImg={profileImg}
       onClickCategory={onClickCategory}
       onClickFindmateGetPage={onClickFindmateGetPage}
       onClickLoadMore={onClickLoadMore}

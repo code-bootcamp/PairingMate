@@ -114,6 +114,9 @@ export const SliderInnerDiv = styled.div`
     border: none;
     border-radius: 20px;
     box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     h5 {
       text-align: center;
@@ -124,6 +127,11 @@ export const SliderInnerDiv = styled.div`
       @media screen and ${theme.laptop} {
         margin-top: 20px;
       }
+    }
+
+    :hover {
+      background-color: #f4f5f5;
+      cursor: pointer;
     }
   }
 
