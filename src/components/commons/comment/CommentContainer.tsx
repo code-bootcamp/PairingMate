@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, reload } from "firebase/auth";
 import {
   addDoc,
   collection,
@@ -12,17 +12,18 @@ import {
   Timestamp,
   where,
 } from "firebase/firestore";
+import router, { Router } from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
 import { app, auth } from "../../../../pages/_app";
 import { getDate } from "../../../commons/libraries/utils/utils";
 import CommentsUI from "./CommentPresenter";
+import onClickTabTitie from "./../tabs/Tabs.Title";
 
 const Comments = (props: any) => {
   const [content, setContent] = useState("");
   const [userImage, setUserImage] = useState("");
   const [value, setValue] = useState([]);
   const [seconds, setSeconds] = useState(0);
-
   const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
   };
@@ -69,6 +70,7 @@ const Comments = (props: any) => {
         createdAt: String(new Date()),
       });
       Modal.success({ content: "댓글등록에 성공하였습니다" });
+      router.reload();
     } catch (error) {
       Modal.error({ content: "댓글등록에 성공하였습니다" });
     }

@@ -3,7 +3,7 @@ import { getDate, replaceUrl } from "../../../commons/libraries/utils/utils";
 import * as C from "./CommentStyles";
 
 const CommentsUI = (props: any) => {
-  // console.log(props.value);
+
   return (
     <>
       <C.Wrapper>
