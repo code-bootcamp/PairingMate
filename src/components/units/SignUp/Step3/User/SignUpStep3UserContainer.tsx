@@ -19,11 +19,10 @@ const SignUpStep3User = () => {
     const auth = getAuth();
     const user = auth.currentUser;
 
-    const docu = doc(db, "users", user.uid);
+    const docu = doc(db, "users", user.email);
   
     const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
       const myFile = checkValidationImage(event.target.files?.[0]);
-      console.log(myFile);
   
       if(myFile){
         const result = await uploadFile({
