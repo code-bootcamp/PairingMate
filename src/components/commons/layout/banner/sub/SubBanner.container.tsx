@@ -4,37 +4,32 @@ import SubBannerUI from "./SubBannaer.presenter";
 
 const PageUrl = [
   {
-    url: "/find-mates",
+    url: "find-mates",
     title: "FindMates",
     images: "/images/sub/bg_sub_visual01.jpg",
   },
   {
-    url: "/fitness-centers",
+    url: "fitness-centers",
     title: "Fitness Center",
     images: "/images/sub/bg_sub_visual02.jpg",
   },
   {
-    url: ["/best-deal"],
+    url: "best-deal",
     title: "Best Deal",
     images: "/images/sub/bg_sub_visual03.jpg",
   },
   {
-    url: "/runday-course",
+    url: "runday-course",
     title: "Runday Course",
     images: "/images/sub/bg_sub_visual04.jpg",
   },
   {
-    url: [
-      "/cs-center",
-      "/cs-center/partner",
-      "/cs-center/policy/email",
-      "/cs-center/policy/privacy-policy",
-    ],
+    url: "cs-center",
     title: "고객센터",
     images: "/images/sub/bg_sub_visual05.jpg",
   },
   {
-    url: ["mypage/user/", "mypage/company"],
+    url: "mypage",
     title: "Mypage",
     images: "/images/sub/bg_sub_visual06.jpg",
   },
@@ -44,20 +39,17 @@ const SubBanner = () => {
   const [sectionName, setSectionName] = useState("");
   const [bgUrl, setBgUrl] = useState("");
 
-  useEffect(() => {
-    const userId = auth?.currentUser?.uid;
-    const myPageUser = "/mypage/user" + "/" + userId;
-    const myPageCompany = "/mypage/company" + "/" + userId;
+  const onLoadBanner = () => {
     PageUrl.forEach((el) => {
-      if (el.url.includes(window.location.pathname)) {
+      if (window.location.pathname.includes(el.url)) {
         setSectionName(el.title);
         setBgUrl(el.images);
       }
     });
-    if (window.location.pathname === myPageUser) {
-      setSectionName("Mypage");
-      setBgUrl("/images/sub/bg_sub_visual06.jpg");
-    }
+  };
+
+  useEffect(() => {
+    onLoadBanner();
   });
 
   return (

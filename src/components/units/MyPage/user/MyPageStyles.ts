@@ -55,6 +55,13 @@ export const UserProfileWrap = styled.div`
   width: 150px;
   height: 150px;
   margin: 0 auto;
+
+  label {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+  }
 `;
 
 export const UserProfileImg = styled.p`
@@ -73,10 +80,14 @@ export const UserProfileImg = styled.p`
   }
 `;
 
-export const OptionButton = styled.button`
+export const OptionButton = styled.input`
   position: absolute;
+  width: 25px;
+  height: 25px;
   bottom: 0;
   right: 0px;
+  background-image: url("/images/sub/mypage/ico_user_settings.png");
+  opacity: 0;
 `;
 
 export const FollowInfo = styled.div`
@@ -100,6 +111,7 @@ export const FollowInfo = styled.div`
 `;
 
 export const FollowButtonWrap = styled.p`
+  margin-top: ${theme.MarginTop.mt20};
   text-align: center;
 `;
 export const FollowButton = styled.button`
