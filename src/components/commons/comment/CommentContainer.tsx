@@ -1,24 +1,29 @@
 import { Modal } from "antd";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, reload } from "firebase/auth";
 import {
   addDoc,
   collection,
   DocumentData,
   getDocs,
   getFirestore,
+  limit,
+  orderBy,
   query,
   Timestamp,
   where,
 } from "firebase/firestore";
+import router, { Router } from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
 import { app, auth } from "../../../../pages/_app";
+import { getDate } from "../../../commons/libraries/utils/utils";
 import CommentsUI from "./CommentPresenter";
+import onClickTabTitie from "./../tabs/Tabs.Title";
 
 const Comments = (props: any) => {
   const [content, setContent] = useState("");
   const [userImage, setUserImage] = useState("");
   const [value, setValue] = useState([]);
-
+  const [seconds, setSeconds] = useState(0);
   const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
   };
@@ -33,16 +38,19 @@ const Comments = (props: any) => {
     const userRef = collection(db, "comments");
     const q = query(
       userRef,
-      where("productId", "==", props.data?.fetchUseditem._id)
+      where("productId", "==", props.data?.fetchUseditem._id),
+      orderBy("createdAt", "desc"),
+      limit(10)
     );
     const querySnapshot = await getDocs(q);
     // console.log(querySnapshot.docs);
-    // querySnapshot.docs.map((el) => setValue(el.data()));
+    querySnapshot.docs.map((el) => setSeconds(el.data().createdAt));
     // querySnapshot.docs.map((el) => console.log(el.data()));
     const newValue = [];
     querySnapshot.docs.map((el) => newValue.push(el.data()));
     setValue(newValue);
   };
+  // console.log(new Date());
   // getComments();
   // console.log(value);
   const onClickAddComment = async () => {
@@ -59,9 +67,10 @@ const Comments = (props: any) => {
           image: userImage,
         },
         content: content,
-        createdAt: Timestamp.fromDate(new Date()),
+        createdAt: String(new Date()),
       });
       Modal.success({ content: "댓글등록에 성공하였습니다" });
+      router.reload();
     } catch (error) {
       Modal.error({ content: "댓글등록에 성공하였습니다" });
     }
@@ -73,6 +82,7 @@ const Comments = (props: any) => {
         onClickAddComment={onClickAddComment}
         onChangeContent={onChangeContent}
         value={value}
+        seconds={seconds}
       />
     </>
   );

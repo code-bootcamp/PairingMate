@@ -12,7 +12,6 @@ import Tabs from "../../../commons/tabs/detail-tap/Tabs";
 import Comments from "../../../commons/comment/CommentContainer";
 
 const BestDealGetUI = (props: IBestDealGetUIProps) => {
-  console.log("zzz");
   return (
     <Inner>
       <B.Header>
