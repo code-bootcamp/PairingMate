@@ -1,3 +1,4 @@
+import { withAuth } from "../../../src/components/commons/hocs/withAuth";
 import BestDealGet from "../../../src/components/units/BestDeal/Get/BestDealGetContainer";
 
 const BestDealGetPage = () => {
@@ -8,4 +9,4 @@ const BestDealGetPage = () => {
   );
 };
 
-export default BestDealGetPage;
+export default withAuth(BestDealGetPage);

@@ -5,6 +5,7 @@ import {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../../src/commons/types/generated/types";
+import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
 
 const FETCH_BOARD = gql`
   query fetchBoard($boardId: ID!) {
@@ -36,4 +37,4 @@ const FindmatesUpdatePage = () => {
   return <FindMatesAdd data={data} isUpdate={true} />;
 };
 
-export default FindmatesUpdatePage;
+export default withAuth(FindmatesUpdatePage);

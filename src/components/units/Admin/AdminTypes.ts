@@ -1,1 +1,0 @@
-// Typeseciprt 작성
