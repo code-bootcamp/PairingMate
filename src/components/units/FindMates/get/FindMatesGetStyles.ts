@@ -78,9 +78,12 @@ export const UserProfile = styled.div`
   width: 120px;
   height: 120px;
   margin-top: 57px;
+  border-radius: 50%;
+  overflow: hidden;
 
   img {
     width: 100%;
+    height: 100%;
   }
 
   @media screen and ${theme.tablet} {
@@ -119,6 +122,7 @@ export const IconWrapper = styled.div`
   }
 
   @media screen and ${theme.tablet} {
+    width: 20%;
     position: absolute;
     bottom: 17px;
     right: 18px;
@@ -164,7 +168,7 @@ export const FindmatesContentsInfo = styled.div`
 
   @media screen and ${theme.tablet} {
     width: 100%;
-    padding: 20px 30px 20px 30px;
+    padding: 0px 30px 20px 30px;
     border: none;
 
     h1 {
@@ -212,7 +216,10 @@ export const ContentsInfoHeader = styled.header`
 
   @media screen and ${theme.tablet} {
     h3 {
+      background-color: transparent;
+      color: ${theme.colorPoint};
       font-size: ${theme.fontsize.fs24};
+      text-align: left;
     }
   }
 

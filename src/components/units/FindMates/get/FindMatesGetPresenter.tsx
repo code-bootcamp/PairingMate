@@ -8,6 +8,8 @@ import {
   getCategory,
   getDate,
   getTitle,
+  getWriter,
+  getWriterImag,
   replaceAddr,
   replaceTags,
   replaceUrl,
@@ -23,7 +25,6 @@ const settings = {
 };
 
 const FindmatesGetUI = (props: IFindmateGetUIProps) => {
-  console.log(props.isWriter);
   return (
     <>
       <Inner style={{ paddingBottom: "0px", position: "relative" }}>
@@ -31,9 +32,14 @@ const FindmatesGetUI = (props: IFindmateGetUIProps) => {
           <S.FindmatesUserInfo>
             <S.UserProfileWrapper>
               <S.UserProfile>
-                <img src="/images/common/user-default-2.png" alt="" />
+                <img
+                  src={getWriterImag(props.data?.fetchBoard.writer || "")}
+                  alt=""
+                />
               </S.UserProfile>
-              <S.UserName>{props.data?.fetchBoard.writer}</S.UserName>
+              <S.UserName>
+                {getWriter(props.data?.fetchBoard.writer || "")}
+              </S.UserName>
               <S.CreateDate>
                 {getDate(props.data?.fetchBoard.createdAt)}
               </S.CreateDate>

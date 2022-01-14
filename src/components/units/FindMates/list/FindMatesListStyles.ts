@@ -46,10 +46,12 @@ export const FindmatesListHead = styled.div`
 export const UserProfile = styled.div`
   width: 40px;
   height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
 
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 
   @media screen and ${theme.tablet} {
@@ -150,6 +152,11 @@ export const FindmatesList = styled.div`
   padding: 50px 0px 50px 0px;
   border-bottom: 1px solid #dddddd;
 
+  :hover {
+    background-color: #f4f5f5;
+    cursor: pointer;
+  }
+
   @media screen and ${theme.tablet} {
     display: flex;
     flex-direction: column-reverse;
@@ -234,8 +241,7 @@ export const FindmatesInfoAddr = styled.span`
 `;
 
 export const FindmatesInfoLikeCount = styled.span`
-  padding-left: 5px;
-
+  margin-top: 3px;
   @media screen and ${theme.tablet} {
     position: absolute;
     bottom: 1px;
@@ -281,13 +287,35 @@ export const FindmatesContents = styled.div`
   }
 
   span {
-    margin-right: 5px;
-    font-size: 14px;
+    font-size: 16px;
     color: #324e86;
+
+    @media screen and ${theme.tablet} {
+      margin-right: 5px;
+    }
   }
 
   div {
+    width: 20px;
+    height: 20px;
     margin-top: 30px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 5%;
+    text-align: center;
+
+    @media screen and ${theme.tablet} {
+      align-items: flex-start;
+    }
   }
 
   @media screen and ${theme.tablet} {
@@ -350,11 +378,4 @@ export const FindmatesFooter = styled.footer`
     width: 100%;
     height: 100%;
   }
-  /* 
-  button {
-    width: 180px;
-    height: 50px;
-    border: 1px solid #dddddd;
-    border-radius: 15px;
-  } */
 `;

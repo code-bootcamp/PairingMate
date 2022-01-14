@@ -10,7 +10,10 @@ import {
   IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
 import { Modal } from "antd";
-import { getTitle } from "../../../../commons/libraries/utils/utils";
+import {
+  getTitle,
+  replaceUrl,
+} from "../../../../commons/libraries/utils/utils";
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -85,8 +88,9 @@ const FindmatesGet = () => {
   const onClickChatting = () => {
     const user = encodeURIComponent(localStorage.getItem("name"));
     const room = encodeURIComponent(getTitle(data?.fetchBoard.title));
+    const image = encodeURIComponent(localStorage.getItem("image"));
     window.open(
-      `https://pairingmates-chatting.herokuapp.com?user=${user}&room=${room}`,
+      `https://pairingmates-chatting.herokuapp.com?user=${user}&room=${room}&img=${image}`,
       "ParingMate-chatting",
       "width=500px,height=550px,scrollbars=yes,resizable=no,left=100px,top=250px"
     );

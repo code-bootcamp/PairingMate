@@ -73,7 +73,10 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
       const result = await addFindmate({
         variables: {
           createBoardInput: {
-            writer: localStorage.getItem("name"),
+            writer:
+              localStorage.getItem("name") +
+              "$%$%" +
+              localStorage.getItem("image"),
             password: "1234",
             title: category + "$%$%" + title,
             contents,

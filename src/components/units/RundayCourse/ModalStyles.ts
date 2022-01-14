@@ -107,4 +107,8 @@ export const CloseIcon = styled.img`
   position: absolute;
   top: 10px;
   right: 10px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
