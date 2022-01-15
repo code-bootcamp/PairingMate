@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 `;
 export const Header = styled.div`
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   height: 50px;
   margin: 0px -50px;
@@ -30,6 +29,9 @@ export const Header = styled.div`
     border: 1px solid #efefef;
     color: #555555;
   }
+  @media screen and ${theme.tablet} {
+    flex-direction: column;
+  }
 `;
 export const PriceInput = styled.input`
   width: 100%;
@@ -42,15 +44,21 @@ export const PriceInput = styled.input`
     color: #dddddd;
   }
 `;
+export const BodyWrapper = styled.div`
+  width: 100%;
+`;
 export const TitleInput = styled.input`
-  display: block;
-  width: 1300px;
+  /* display: block; */
+  width: 100%;
   margin-top: 45px;
   font-size: ${theme.fontsize.fs35};
   border-bottom: 1px solid #efefef;
 
   &::placeholder {
     color: #dddddd;
+  }
+  @media screen and ${theme.mobile} {
+    font-size: ${theme.fontsize.fs24};
   }
 `;
 export const TagsWrapper = styled.div`
@@ -59,10 +67,10 @@ export const TagsWrapper = styled.div`
   margin-top: 30px;
 `;
 export const ContentsInput = styled.textarea`
-  width: 1300px;
+  width: 100%;
   height: 500px;
   resize: none;
-  font-size: 24px;
+  font-size: ${theme.fontsize.fs24};
 
   &::placeholder {
     color: #dddddd;
@@ -74,6 +82,9 @@ export const FunctionWrapper = styled.div`
   height: auto;
   margin-top: 20px;
   margin: 0px -20px;
+  @media screen and ${theme.tablet} {
+    flex-direction: column;
+  }
 `;
 export const FunctionWrapperLeft = styled.div`
   display: inline-block;
@@ -109,6 +120,9 @@ export const ImgUploadBox = styled.div`
   display: inline-block;
   width: 50%;
   padding: 0px 20px;
+  @media screen and ${theme.tablet} {
+    margin-top: 20px;
+  }
 `;
 export const ButtonWrapper = styled.div`
   margin-top: 100px;

@@ -6,10 +6,28 @@ export const Wrapper = styled.div`
   width: 100%;
   height: auto;
   padding-top: ${theme.PaddingTop.pt100};
+  @media screen and ${theme.laptop} {
+    flex-direction: column;
+  }
+`;
+export const MapsWrapper = styled.div`
+  width: 80%;
+  @media screen and ${theme.laptop} {
+    width: 100%;
+  }
 `;
 export const GetMap = styled.div`
-  width: 80%;
+  width: 100%;
   height: 1080px;
+  @media screen and ${theme.laptop} {
+    height: 1024px;
+  }
+  @media screen and ${theme.tablet} {
+    height: 767px;
+  }
+  @media screen and ${theme.mobile} {
+    height: 475px;
+  }
 `;
 export const Body = styled.div`
   width: 20%;

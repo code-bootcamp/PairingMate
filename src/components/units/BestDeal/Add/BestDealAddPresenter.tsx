@@ -41,29 +41,31 @@ const BestDealAddUI = (props: BestdealAddUIProps) => {
             />
           </div>
         </B.Header>
-        <B.TitleInput
-          type="text"
-          placeholder="매장정보를 입력하세요."
-          onChange={props.onChangeTitle}
-          defaultValue={getTitle(props.data?.fetchUseditem.name || "")}
-        />
-        <B.TagsWrapper>
-          {props.isUpdate ? (
-            <TagsUpdate
-              data={props.data?.fetchUseditem.tags}
-              tags={props.tags}
-              setTags={props.setTags}
-              setIsUpdateTag={props.setIsUpdateTag}
-            />
-          ) : (
-            <TagsAdd tags={props.tags} setTags={props.setTags} />
-          )}
-        </B.TagsWrapper>
-        <B.ContentsInput
-          placeholder="시설정보를 입력하세요"
-          onChange={props.onChangeContents}
-          defaultValue={props.data?.fetchUseditem.contents}
-        />
+        <B.BodyWrapper>
+          <B.TitleInput
+            type="text"
+            placeholder="매장정보를 입력하세요."
+            onChange={props.onChangeTitle}
+            defaultValue={getTitle(props.data?.fetchUseditem.name || "")}
+          />
+          <B.TagsWrapper>
+            {props.isUpdate ? (
+              <TagsUpdate
+                data={props.data?.fetchUseditem.tags}
+                tags={props.tags}
+                setTags={props.setTags}
+                setIsUpdateTag={props.setIsUpdateTag}
+              />
+            ) : (
+              <TagsAdd tags={props.tags} setTags={props.setTags} />
+            )}
+          </B.TagsWrapper>
+          <B.ContentsInput
+            placeholder="시설정보를 입력하세요"
+            onChange={props.onChangeContents}
+            defaultValue={props.data?.fetchUseditem.contents}
+          />
+        </B.BodyWrapper>
         <B.FunctionWrapper>
           <B.FunctionWrapperLeft>
             <B.AddressSearch>

@@ -5,7 +5,7 @@ export const Header = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 690px;
+  /* height: 690px; */
 
   @media all and ${theme.tablet} {
     margin: 0;
@@ -76,7 +76,6 @@ export const Phone = styled.span`
   line-height: 23px;
 `;
 export const ServiceWrapper = styled.div`
-  height: 147px;
   padding-top: 20px;
 `;
 export const ServiceTitle = styled.div`
@@ -106,7 +105,6 @@ export const ServiceContentsTitle = styled.span`
   line-height: 20px;
 `;
 export const ConvenienceWrapper = styled.div`
-  height: 147px;
   padding-top: 30px;
 `;
 export const ConvenienceTitle = styled.div`
@@ -136,7 +134,6 @@ export const ConvenienceContentsTitle = styled.span`
   line-height: 20px;
 `;
 export const PriceWrapper = styled.div`
-  height: 103px;
   margin-top: 30px;
 `;
 export const PriceTitle = styled.div`
@@ -314,4 +311,7 @@ export const ImgList = styled.img`
 export const CommentWrapper = styled.div`
   width: 100%;
   margin-top: 50px;
+`;
+export const TabsWrapper = styled.div`
+  width: 100%;
 `;
