@@ -12,6 +12,13 @@ export const MyPageUserInfo = styled.aside`
   width: 30%;
   padding: 70px 50px;
   background-color: #fcfcfc;
+
+  @media all and ${theme.tablet} {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 35px 25px;
+  }
 `;
 
 export const UserInfoHeader = styled.figure`
@@ -33,6 +40,10 @@ export const UserInfoHeader = styled.figure`
     height: 1px;
     transform: translateX(-50%);
     background-color: #ebebeb;
+  }
+
+  @media all and ${theme.tablet} {
+    width: 100%;
   }
 `;
 
@@ -137,6 +148,11 @@ export const UserInterestedWrap = styled.div`
       color: ${theme.colorPoint};
     }
   }
+
+  @media all and ${theme.tablet} {
+    width: 100%;
+    padding-top: ${theme.PaddingTop.pt50};
+  }
 `;
 
 export const HashTagList = styled.ul`
@@ -160,6 +176,11 @@ export const MyPageArticle = styled.article`
   width: 70%;
   padding: 50px;
   border: 1px solid #ebebeb;
+
+  @media all and ${theme.tablet} {
+    width: 100%;
+    padding: 25px;
+  }
 `;
 
 export const MypageContents = styled.div`
@@ -168,13 +189,38 @@ export const MypageContents = styled.div`
 
 export const MypageFindMatesPostWrap = styled.div`
   padding: 20px 0;
+
+  ul {
+    li {
+      padding: 12px 0;
+      border-bottom: 1px solid #ebebeb;
+      font-size: ${theme.fontsize.fs16};
+      font-weight: 600;
+      span {
+        margin-right: 10px;
+        padding: 3px 10px;
+        border-radius: 15px;
+        background-color: ${theme.colorBase};
+        font-weight: bold;
+        font-size: ${theme.fontsize.fs14};
+        color: #fff;
+      }
+    }
+  }
 `;
 
 export const MypageTableWrap = styled.div`
   padding: 30px 0;
+  @media all and ${theme.tablet} {
+    overflow-x: scroll;
+  }
 `;
 export const MypageTable = styled.table`
   width: 100%;
+
+  @media all and ${theme.tablet} {
+    width: 700px;
+  }
 
   thead {
     tr {
@@ -191,6 +237,10 @@ export const MypageTable = styled.table`
         border: 1px solid #ebebeb;
         border-width: 1px 0px 1px 1px;
         text-align: center;
+
+        &:last-child {
+          border-right: 1px solid #ebebeb;
+        }
       }
     }
   }

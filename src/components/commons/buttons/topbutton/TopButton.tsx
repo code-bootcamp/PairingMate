@@ -14,6 +14,10 @@ const TopButton = styled.button`
   opacity: 1;
   font-size: 12px;
   color: #fff;
+
+  @media all and ${theme.tablet} {
+    right: 30px;
+  }
 `;
 const TopButtonIco = styled(AngleUp)`
   width: 40%;

@@ -49,26 +49,26 @@ export const LoginSection = styled.div`
   }
 
   button {
-      position: relative;
-      font-size: 16px;
+    position: relative;
+    font-size: 16px;
 
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: black;
+      transition: 0.5s;
+    }
+
+    &:hover {
       &::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0%;
-        height: 2px;
-        background-color: black;
-        transition: 0.5s;
-      }
-
-      &:hover {
-        &::after {
-          width: 100%;
-        }
+        width: 100%;
       }
     }
+  }
 `;
 export const NaviButton = styled.div`
   position: fixed;
@@ -114,6 +114,11 @@ export const NaviButton = styled.div`
     width: 100%;
     transform: ${(props: NaviButtonProps) =>
       !props.isOpen ? "rotate(0deg)" : "rotate(-45deg)"};
+  }
+
+  @media all and ${theme.laptop} {
+    top: 23px;
+    right: 30px;
   }
 `;
 
