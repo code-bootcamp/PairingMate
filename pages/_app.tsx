@@ -5,7 +5,7 @@ import { Global, ThemeProvider } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import theme from "../src/commons/styles/variables";
 import { initializeApp } from "firebase/app";
-import { getAuth , onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   ApolloClient,
   ApolloProvider,
@@ -17,6 +17,7 @@ import Layout from "../src/components/commons/layout";
 import { createContext, useEffect, useState } from "react";
 import { getAccessToken } from "../src/commons/libraries/token/getAccessToken";
 import { onError } from "@apollo/client/link/error";
+import Topbutton from "../src/components/commons/buttons/topbutton/TopButton";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDgy7AmFAGZ5FPmsm3MhmgJvoNvyZApn7Y",
@@ -42,7 +43,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     userInfo: myUserInfo,
     setUserInfo: setMyUserInfo,
   };
-  
+
   // ApolloClient 셋팅
   const uploadLink = createUploadLink({
     uri: "https://backend04-team.codebootcamp.co.kr/team02",
@@ -82,6 +83,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <Layout>
             <Component {...pageProps} />
           </Layout>
+          <Topbutton />
         </ThemeProvider>
       </ApolloProvider>
     </GlobalContext.Provider>
