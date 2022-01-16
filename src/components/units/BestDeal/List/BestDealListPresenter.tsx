@@ -82,10 +82,12 @@ const BestDealListUI = (props: BestdealListUIProps) => {
               </B.ProductItem>
             ))}
           </B.ProductWrapper>
-          <B.MoreButton onClick={props.onClickGetBestdealList}>
-            더보기
-          </B.MoreButton>
-          <button onClick={props.onClickMoveToBestdealAddPage}>글쓰기</button>
+          <B.ButtonWrapper>
+            <B.MoreButton onClick={props.onClickGetBestdealList}>
+              더보기
+            </B.MoreButton>
+            {/* <button onClick={props.onClickMoveToBestdealAddPage}>글쓰기</button> */}
+          </B.ButtonWrapper>
         </B.Wrapper>
       </Inner>
     </>

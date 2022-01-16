@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
+import theme from "../../../../commons/styles/variables";
 
 export const Title = styled.h2`
-  font-size: 36px;
+  font-size: ${theme.fontsize.fs35};
   font-weight: 500;
   line-height: 52px;
   text-align: center;
+  /* border: 1px solid; */
+  @media screen and ${theme.tablet} {
+    font-size: ${theme.fontsize.fs24};
+  }
 `;
 export const Wrapper = styled.div`
   width: 100%;
@@ -12,9 +17,11 @@ export const Wrapper = styled.div`
 `;
 export const BestdealWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  flex-flow: row wrap;
   width: 100%;
   padding: 0 -10px;
+  /* border: 1px solid; */
 `;
 export const BestdealItem = styled.div`
   width: 25%;
@@ -35,14 +42,14 @@ export const BestdealTitle = styled.h4`
   height: 23px;
   margin-top: 14px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: ${theme.fontsize.fs16};
   line-height: 23px;
 `;
 export const BestdealAddress = styled.h4`
   height: 23px;
   margin-top: 14px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: ${theme.fontsize.fs14};
   line-height: 20px;
 `;
 export const TagsWrapper = styled.div`
@@ -57,13 +64,14 @@ export const BestdealTags = styled.span`
   margin-right: 10px;
   border-radius: 30px;
   font-weight: 500;
-  font-size: 15px;
+  font-size: ${theme.fontsize.fs14};
   line-height: 22px;
   background-color: #c4c4c4;
 `;
 export const NavigationList = styled.ul`
   width: 100%;
   margin-top: 115px;
+  /* border: 1px solid; */
 
   li {
     display: inline-block;
@@ -95,11 +103,11 @@ export const NavigationList = styled.ul`
 `;
 export const ProductWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
   margin-top: 30px;
   padding: 0 -10px;
-  border: 1px solid black;
+  /* border: 1px solid; */
 `;
 export const ProductItem = styled.div`
   width: 25%;
@@ -129,6 +137,7 @@ export const ProductAddress = styled.h4`
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  /* border: 1px solid; */
 `;
 export const ProductTagsWrapper = styled.div`
   height: 25px;
@@ -146,9 +155,16 @@ export const ProductTags = styled.span`
   line-height: 22px;
   background-color: #c4c4c4;
 `;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 90px;
+  justify-content: center;
+`;
 export const MoreButton = styled.button`
   width: 180px;
   height: 50px;
-  margin-top: 300px;
-  margin-left: 610px;
+
+  /* border: 1px solid; */
 `;

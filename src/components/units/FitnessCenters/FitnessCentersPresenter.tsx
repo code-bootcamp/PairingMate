@@ -4,7 +4,9 @@ const FitnessCentersUI = (props) => {
   return (
     <>
       <F.Wrapper>
-        <F.GetMap id="map" />
+        <F.MapsWrapper>
+          <F.GetMap id="map" />
+        </F.MapsWrapper>
         <F.Body>
           <F.TitleBox>
             <F.Title>내 주변 피트니스 센터</F.Title>
