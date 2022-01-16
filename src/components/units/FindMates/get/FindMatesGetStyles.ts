@@ -49,7 +49,6 @@ export const FindmatesUserInfo = styled.div`
     width: 100%;
     margin-bottom: 20px;
     padding: 0px 30px 20px 30px;
-    background-color: white;
     border-bottom: 1px solid #dddddd;
     hr {
       display: none;
@@ -58,6 +57,7 @@ export const FindmatesUserInfo = styled.div`
 
   @media screen and ${theme.mobile} {
     flex-direction: column;
+    align-items: flex-start;
     height: auto;
   }
 `;
@@ -108,6 +108,7 @@ export const IconWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 37%;
+  height: auto;
 
   div {
     display: flex;
@@ -119,6 +120,9 @@ export const IconWrapper = styled.div`
   span {
     font-size: 14px;
     color: #324e86;
+    @media screen and ${theme.mobile} {
+      font-size: 10px;
+    }
   }
 
   @media screen and ${theme.tablet} {
@@ -134,8 +138,18 @@ export const SubIcon = styled.div`
   height: 20px;
   margin-bottom: 6px;
 
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
   :hover {
     cursor: pointer;
+  }
+
+  @media screen and ${theme.mobile} {
+    width: 15px;
+    height: 15px;
   }
 `;
 
