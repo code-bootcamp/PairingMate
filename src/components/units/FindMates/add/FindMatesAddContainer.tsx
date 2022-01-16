@@ -1,13 +1,15 @@
 import FindMatesAddUI from "./FindMatesAddPresenter";
 import { FindmatesAddProps, UpdateBoardInput } from "./FindMatesAddTypes";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { ChangeEvent, useState } from "react";
 import {
   IMutation,
   IMutationCreateBoardArgs,
   IMutationUpdateBoardArgs,
+  IQuery,
+  IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
-import { CREATEBOARD, UPDATE_BOARD } from "./FindMatesAddQueries";
+import { CREATEBOARD, UPDATE_BOARD, FETCH_BOARD } from "./FindMatesAddQueries";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import {
@@ -18,6 +20,7 @@ import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { app } from "../../../../../pages/_app";
 
 const FindMatesAdd = (props: FindmatesAddProps) => {
+  const router = useRouter();
   const db = getFirestore(app);
   const [isUpdateTag, setIsUpdateTag] = useState(false);
   const [isUpdateImages, setIsUpdateImages] = useState(false);
@@ -39,8 +42,10 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
     Pick<IMutation, "updateBoard">,
     IMutationUpdateBoardArgs
   >(UPDATE_BOARD);
-
-  const router = useRouter();
+  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
+    FETCH_BOARD,
+    { variables: { boardId: String(router.query.findmateId) } }
+  );
 
   const onChangeCategory = (event: ChangeEvent<HTMLSelectElement>) => {
     setCategory(event.target.value);
@@ -105,12 +110,12 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
     // 카테고리만 수정 되었을때
     if (category !== "" && title === "")
       updateBoardInput.title =
-        category + "$%$%" + getTitle(props.data?.fetchBoard.title);
+        category + "$%$%" + getTitle(data?.fetchBoard.title);
 
     // 제목만 수정 되었을때
     if (title !== "" && category === "")
       updateBoardInput.title =
-        getCategory(props.data?.fetchBoard.title) + "$%$%" + title;
+        getCategory(data?.fetchBoard.title) + "$%$%" + title;
 
     // 제목 카테고리 둘다 수정 되었을때
     if (category !== "" && title !== "")
@@ -150,7 +155,7 @@ const FindMatesAdd = (props: FindmatesAddProps) => {
       tags={tags}
       setTags={setTags}
       setIsUpdateTag={setIsUpdateTag}
-      data={props.data}
+      data={data}
       isUpdate={props.isUpdate}
       setImages={setImages}
       setIsUpdateImages={setIsUpdateImages}

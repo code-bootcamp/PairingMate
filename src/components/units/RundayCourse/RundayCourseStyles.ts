@@ -4,6 +4,7 @@ import theme from "../../../commons/styles/variables";
 export const MapWrapper = styled.div`
   position: relative;
   width: 100%;
+  height: auto;
   margin-bottom: 50px;
   padding: 50px;
 
@@ -23,6 +24,11 @@ export const MapWrapper = styled.div`
         fill: white;
       }
     }
+  }
+
+  @media screen and ${theme.tablet} {
+    margin-bottom: 30px;
+    padding: 0px;
   }
 `;
 
@@ -79,21 +85,21 @@ export const WeahterInfo = styled.div`
 
 export const ListWrapper = styled.div`
   width: 100%;
-  height: 300px;
+  height: auto;
   padding: 0px 50px 0px 50px;
 
   .slick-prev {
-    left: -45px;
-    width: 50px;
-    height: 50px;
+    left: -30px;
+    width: 25px;
+    height: 25px;
     background-image: url("/images/sub/runday-course/prev.png");
     background-size: cover;
   }
 
   .slick-next {
-    right: -45px;
-    width: 50px;
-    height: 50px;
+    right: -30px;
+    width: 25px;
+    height: 25px;
     background-image: url("/images/sub/runday-course/next.png");
     background-size: cover;
   }

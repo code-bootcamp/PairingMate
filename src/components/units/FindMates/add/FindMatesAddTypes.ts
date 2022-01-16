@@ -2,7 +2,6 @@ import { ChangeEvent, KeyboardEvent, Dispatch, SetStateAction } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface FindmatesAddProps {
-  data?: Pick<IQuery, "fetchBoard">;
   isUpdate?: boolean;
 }
 
