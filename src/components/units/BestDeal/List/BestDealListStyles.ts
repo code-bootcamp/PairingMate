@@ -103,17 +103,28 @@ export const NavigationList = styled.ul`
 `;
 export const ProductWrapper = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
-  margin-top: 30px;
-  padding: 0 -10px;
-  /* border: 1px solid; */
+  margin: 30px -10px 0 -10px;
 `;
 export const ProductItem = styled.div`
   width: 25%;
   height: 375px;
   background-color: #dddddd;
-  margin: 0 10px;
+  padding: 0 10px;
+
+  @media all and ${theme.laptop} {
+    width: 33.3333%;
+  }
+
+  @media all and ${theme.tablet} {
+    width: 50%;
+  }
+
+  @media all and (max-width: 400px) {
+    width: 100%;
+    margin-bottom: 25px;
+  }
 `;
 export const ProductImg = styled.img`
   width: 100%;

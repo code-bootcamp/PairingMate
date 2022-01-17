@@ -19,7 +19,6 @@ const AdminNavigation = () => {
       `${currentTime.year}년 ${currentTime.month}월 ${currentTime.date}일 ${currentTime.hours}시 ${currentTime.minutes}분`
     );
     setTime(currentTimer);
-    console.log(currentTimer);
   };
 
   const onClickMoveToOverview = () => {
@@ -32,6 +31,10 @@ const AdminNavigation = () => {
     router.push("/admin/inquiry");
   };
 
+  const onClickMoveToSales = () => {
+    router.push("/admin/sales");
+  };
+
   useEffect(() => {
     getCurrentDate();
   });
@@ -42,6 +45,7 @@ const AdminNavigation = () => {
         onClickMoveToOverview={onClickMoveToOverview}
         onClickMoveToUser={onClickMoveToUser}
         onClickMoveToInquiry={onClickMoveToInquiry}
+        onClickMoveToSales={onClickMoveToSales}
       />
     </>
   );

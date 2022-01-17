@@ -21,10 +21,12 @@ export const AdminUserProfile = styled.div`
 
   p {
     width: 100%;
-    padding: 15px;
+    padding: 35px;
+    text-align: center;
     img {
-      display: block;
+      display: inline-block;
       width: 100%;
+      max-width: 200px;
     }
   }
   figcaption {

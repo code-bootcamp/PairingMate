@@ -100,7 +100,6 @@ const MyPage = () => {
     onLoadGetDocs();
     onLoadGetBuyList();
   }, []);
-  // console.log(getDate(new Date(buylist?.buyAt?.seconds * 1000)));
 
   const { data } = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
     FETCH_BOARDS

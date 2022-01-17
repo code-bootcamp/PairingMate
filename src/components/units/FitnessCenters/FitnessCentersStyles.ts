@@ -33,6 +33,12 @@ export const Body = styled.div`
   width: 20%;
   height: 1080px;
   border: 1px solid #eeeeee;
+
+  @media all and ${theme.laptop} {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+  }
 `;
 export const TitleBox = styled.div`
   width: 100%;
@@ -46,15 +52,30 @@ export const Title = styled.h2`
   font-weight: 500;
   line-height: 26px;
 `;
+
+export const GetListWrap = styled.div`
+  width: 100%;
+  overflow: scroll;
+`;
 export const GetList = styled.div`
   width: 100%;
   height: 1010px;
   overflow: scroll;
+  @media all and ${theme.laptop} {
+    display: flex;
+    width: 5000px;
+    height: 200px;
+  }
 `;
 export const List = styled.div`
   width: 100%;
   height: 180px;
   border-bottom: 1px solid #eeeeee;
+  @media all and ${theme.laptop} {
+    width: 25%;
+    height: 100%;
+    padding: 15px 0;
+  }
 `;
 export const PlaceName = styled.h3`
   width: 100%;

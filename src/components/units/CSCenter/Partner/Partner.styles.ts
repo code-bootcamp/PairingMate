@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import theme from "../../../../commons/styles/variables";
+import { IButtonActiveProps } from "./Partner.types";
 
 export const InquiryHeader = styled.div`
   display: flex;
@@ -118,6 +119,11 @@ export const ButtonWrap = styled.p`
   button {
     width: 250px;
     height: 45px;
-    background-color: #ebebeb;
+    background: ${(props: IButtonActiveProps) =>
+      props.isChanged ? `${theme.colorBase}` : "#ebebeb"};
+    pointer-events: ${(props: IButtonActiveProps) =>
+      props.isChanged ? "cursor" : "none"};
+    color: ${(props: IButtonActiveProps) =>
+      props.isChanged ? "#fff" : "#333"};
   }
 `;

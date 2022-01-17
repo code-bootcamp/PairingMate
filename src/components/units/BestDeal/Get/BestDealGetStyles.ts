@@ -5,7 +5,6 @@ export const Header = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  /* height: 690px; */
 
   @media all and ${theme.tablet} {
     margin: 0;
@@ -17,7 +16,7 @@ export const BestDealImgWrap = styled.figure`
 
   @media all and ${theme.tablet} {
     width: 100%;
-    padding: 0 30px;
+    padding: 0;
   }
 `;
 export const HeaderImg = styled.img`
@@ -28,10 +27,11 @@ export const HeaderTextWrapper = styled.div`
   width: 50%;
   height: 690px;
   padding: 0 30px;
-  /* background-color: skyblue; */
 
   @media all and ${theme.tablet} {
     width: 100%;
+    height: 100%;
+    padding: 0;
   }
 `;
 export const TextWrapperTitle = styled.h1`
@@ -84,15 +84,14 @@ export const ServiceTitle = styled.div`
   line-height: 23px;
 `;
 export const ServiceFigureWrapper = styled.div`
-  display: flex
+  display: flex;
   flex-wrap: wrap;
   width: 100%;
+  padding-top: ${theme.PaddingTop.pt20};
 `;
 export const ServiceContents = styled.figure`
-  display: inline-block;
+  width: 20%;
   height: 79px;
-  padding-top: 24px;
-  padding-right: 50px;
   text-align: center;
 `;
 export const ServiceContentsIcon = styled.img`
@@ -113,15 +112,14 @@ export const ConvenienceTitle = styled.div`
   line-height: 23px;
 `;
 export const ConvenienceFigureWrapper = styled.div`
-  display: flex
+  display: flex;
   flex-wrap: wrap;
   width: 100%;
 `;
 export const ConvenienceContents = styled.figure`
-  display: inline-block;
+  width: 20%;
   height: 79px;
-  padding-top: 24px;
-  padding-right: 50px;
+  padding-top: ${theme.PaddingTop.pt20};
   text-align: center;
 `;
 export const ConvenienceContentsIcon = styled.img`
@@ -302,6 +300,14 @@ export const ImgWrapper = styled.ul`
   li {
     width: 20%;
     padding: 10px 10px;
+
+    @media all and ${theme.tablet} {
+      width: 33.3333%;
+    }
+
+    @media all and ${theme.mobile} {
+      width: 50%;
+    }
   }
 `;
 export const ImgList = styled.img`

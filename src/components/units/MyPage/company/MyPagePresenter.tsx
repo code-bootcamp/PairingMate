@@ -42,20 +42,7 @@ const MyPageUI = (props: IMypageProps) => {
               </h5>
             </M.UserInterestedWrap>
           </M.MyPageUserInfo>
-          <M.MyPageArticle>
-            <M.MypageTabList className="tab">
-              <li onClick={props.onClickTabActive}>
-                <button>전체</button>
-              </li>
-              <li onClick={props.onClickTabActive}>
-                <button>게시글</button>
-              </li>
-              <li onClick={props.onClickTabActive}>
-                <button>결제내역</button>
-              </li>
-            </M.MypageTabList>
-            <div></div>
-          </M.MyPageArticle>
+          <M.MyPageArticle></M.MyPageArticle>
         </M.MypageSection>
       </Inner>
     </>

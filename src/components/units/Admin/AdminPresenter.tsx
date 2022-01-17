@@ -1,8 +1,12 @@
 import AdminNavigation from "../../commons/layout/navigation/admin/AdminNavigation.container";
 import { Inner } from "../../../commons/styles/common";
 import * as A from "./AdminStyles";
+import * as AI from "../Admin/inquiry/AdminInquiry.styles";
+import { IAdminProps } from "./Admin.types";
+import ToggleContent from "../../commons/modal/toggleContents";
+import CommonModal from "../../commons/modal/Modal";
 
-const AdminPageUI = () => {
+const AdminPageUI = (props: IAdminProps) => {
   return (
     <>
       <A.Wrapper>
@@ -53,50 +57,60 @@ const AdminPageUI = () => {
               <article>
                 <h3>최근 파트너 문의사항</h3>
                 <A.CompanyInquiry>
-                  <li>
-                    <div>
-                      <A.CompanyName>스포애니 구로디지털단지점</A.CompanyName>
-                      <A.InquiryContents>
-                        <A.CompanyAsk>
-                          파트너 문의드립니다. 지속적인 회원 유치를 위해
-                          알아보다 PairingMate를 알게 되었습니다. 파트너쉽 계약
-                          가격과 Premium Best Deal 광고 가격 문의 드립니다. 빠른
-                          연락 부탁드려요
-                        </A.CompanyAsk>
-                        <A.ReplyBtn>답장하기</A.ReplyBtn>
-                      </A.InquiryContents>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div>
-                      <A.CompanyName>스포애니 구로디지털단지점</A.CompanyName>
-                      <A.InquiryContents>
-                        <A.CompanyAsk>
-                          파트너 문의드립니다. 지속적인 회원 유치를 위해
-                          알아보다 PairingMate를 알게 되었습니다. 파트너쉽 계약
-                          가격과 Premium Best Deal 광고 가격 문의 드립니다. 빠른
-                          연락 부탁드려요
-                        </A.CompanyAsk>
-                        <A.ReplyBtn>답장하기</A.ReplyBtn>
-                      </A.InquiryContents>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div>
-                      <A.CompanyName>스포애니 구로디지털단지점</A.CompanyName>
-                      <A.InquiryContents>
-                        <A.CompanyAsk>
-                          파트너 문의드립니다. 지속적인 회원 유치를 위해
-                          알아보다 PairingMate를 알게 되었습니다. 파트너쉽 계약
-                          가격과 Premium Best Deal 광고 가격 문의 드립니다. 빠른
-                          연락 부탁드려요
-                        </A.CompanyAsk>
-                        <A.ReplyBtn>답장하기</A.ReplyBtn>
-                      </A.InquiryContents>
-                    </div>
-                  </li>
+                  {props.data?.map((el, index) => (
+                    <li key={index}>
+                      <div>
+                        <A.CompanyName>{el.companyName}</A.CompanyName>
+                        <A.InquiryContents>
+                          <A.CompanyAsk>{el.contents}</A.CompanyAsk>
+                          <ToggleContent
+                            toggle={(show) => (
+                              <AI.ReplyBtn onClick={show}>상세보기</AI.ReplyBtn>
+                            )}
+                            content={(hide) => (
+                              <CommonModal>
+                                <AI.CompanyInquiryModal>
+                                  <AI.ModalCompanyName>
+                                    {el.companyName}
+                                  </AI.ModalCompanyName>
+                                  <AI.JobTitle>
+                                    <strong>{el.jobtitle}</strong>
+                                    <span>{el.name}</span>
+                                  </AI.JobTitle>
+                                  <AI.ContactInfo>
+                                    <p>
+                                      <span>이메일 주소 : </span>
+                                      {el.email}
+                                    </p>
+                                  </AI.ContactInfo>
+                                  <AI.ContactInfo>
+                                    <p>
+                                      <span>연락처 : </span>
+                                      {el.contact}
+                                    </p>
+                                  </AI.ContactInfo>
+                                  <h3
+                                    style={{
+                                      padding: "20px 0",
+                                      fontWeight: "bold",
+                                    }}
+                                  >
+                                    문의내용
+                                  </h3>
+                                  <AI.ModalInquiryContents>
+                                    <p>{el.contents}</p>
+                                  </AI.ModalInquiryContents>
+                                </AI.CompanyInquiryModal>
+                                <AI.CloseButton onClick={hide}>
+                                  <AI.CloseIco />
+                                </AI.CloseButton>
+                              </CommonModal>
+                            )}
+                          />
+                        </A.InquiryContents>
+                      </div>
+                    </li>
+                  ))}
                 </A.CompanyInquiry>
               </article>
             </A.InquirySection>

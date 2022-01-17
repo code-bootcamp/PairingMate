@@ -108,6 +108,10 @@ export const CompanyInquiry = styled.ul`
     width: 100%;
     margin-bottom: 20px;
 
+    &:nth-of-type(n + 6) {
+      display: none;
+    }
+
     > div {
       position: relative;
       height: 100%;
