@@ -80,7 +80,7 @@ const PartnerUI = (props: any) => {
           </P.TextArea>
         </div>
       </P.Grid>
-      <P.ButtonWrap>
+      <P.ButtonWrap isChanged={props.isChanged}>
         <button onClick={props.onClickSendInquiry}>문의하기</button>
       </P.ButtonWrap>
     </Inner>

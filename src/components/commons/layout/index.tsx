@@ -14,6 +14,7 @@ const HIDDEN_HEADERS = [
   "/admin/",
   "/admin/user/",
   "/admin/inquiry/",
+  "/admin/sales/",
   "/signup/step-3-user/",
 ];
 const HIDDEN_FOOTERS = [
@@ -24,9 +25,10 @@ const HIDDEN_FOOTERS = [
   "/admin/",
   "/admin/user/",
   "/admin/inquiry/",
+  "/admin/sales/",
   "/signup/step-3-user/",
 ];
-const CSCENTER_ONLY = ["/cs-center", "/cs-center/partner"];
+const CSCENTER_ONLY = ["/cs-center/", "/cs-center/partner/"];
 const Layout = (props: ILayoutProps) => {
   const router = useRouter();
   const isMainOnly = MAIN_ONLY.includes(router.asPath);

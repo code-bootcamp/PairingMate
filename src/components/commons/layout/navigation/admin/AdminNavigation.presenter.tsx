@@ -36,7 +36,7 @@ const AdminNavigationUI = (props: AdminNavigationProps) => {
           </li>
           <li>
             <AN.SalesIco />
-            <button>매출관리</button>
+            <button onClick={props.onClickMoveToSales}>매출관리</button>
           </li>
         </AN.AdminNavigationMenu>
       </AN.AdminNavigationWrap>

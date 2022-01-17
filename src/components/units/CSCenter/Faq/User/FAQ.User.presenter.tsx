@@ -8,7 +8,14 @@ const FAQUserUI = (props: IFAQProps) => {
       <Inner>
         <F.Title>자주 묻는 질문</F.Title>
         <F.AccodianList className="accodian">
-          <li onClick={props.onClickToggleAccodian}>
+          {props.faqResultData?.map((el, index) => (
+            <li key={index} onClick={props.onClickToggleAccodian}>
+              <F.Arrow />
+              <h3>{el.title}</h3>
+              <div>{el.contents}</div>
+            </li>
+          ))}
+          {/* <li onClick={props.onClickToggleAccodian}>
             <F.Arrow />
             <h3>회원 탈퇴는 어떻게 하나요?</h3>
             <div>
@@ -30,7 +37,7 @@ const FAQUserUI = (props: IFAQProps) => {
             <F.Arrow />
             <h3>회원 탈퇴는 어떻게 하나요?2</h3>
             <div>안녕하세요 Mate님! 탈퇴하지말아주세요 ㅠㅠ</div>
-          </li>
+          </li> */}
         </F.AccodianList>
       </Inner>
     </>
