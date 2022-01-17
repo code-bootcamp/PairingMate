@@ -36,6 +36,13 @@ const MyPageUI = (props: IMypageProps) => {
                     <img src="/images/sub/mypage/ico_report_user.png" alt="" />
                   </M.ReportButton>
                 </M.UserName>
+                <M.FollowButtonWrap onClick={props.onClickUpdateProfileImg}>
+                  {props.isChanged && (
+                    <>
+                      <M.FollowButton>프로필 수정하기</M.FollowButton>
+                    </>
+                  )}
+                </M.FollowButtonWrap>
               </figcaption>
             </M.UserInfoHeader>
             {/* <M.FollowInfo>
@@ -48,13 +55,7 @@ const MyPageUI = (props: IMypageProps) => {
                 <dd>14</dd>
               </dl>
             </M.FollowInfo> */}
-            <M.FollowButtonWrap onClick={props.onClickUpdateProfileImg}>
-              {props.isChanged && (
-                <>
-                  <M.FollowButton>프로필 수정하기</M.FollowButton>
-                </>
-              )}
-            </M.FollowButtonWrap>
+
             <M.UserInterestedWrap>
               <h5>
                 <span>{props.firedata.name}</span>님의 관심사
@@ -78,7 +79,7 @@ const MyPageUI = (props: IMypageProps) => {
                       <ul>
                         {props.data?.fetchBoards.map((el) => (
                           <li key={el._id}>
-                            {getCategory(el.title)}
+                            <span>{getCategory(el.title)}</span>
                             {getTitle(el.title)}
                           </li>
                         ))}
@@ -121,14 +122,16 @@ const MyPageUI = (props: IMypageProps) => {
                 <Tab title="내가 쓴 글">
                   <M.MypageContents>
                     <h3>내가 쓴 게시글</h3>
-                    <ul>
-                      {props.data?.fetchBoards.map((el) => (
-                        <li key={el._id}>
-                          {getCategory(el.title)}
-                          {getTitle(el.title)}
-                        </li>
-                      ))}
-                    </ul>
+                    <M.MypageFindMatesPostWrap>
+                      <ul>
+                        {props.data?.fetchBoards.map((el) => (
+                          <li key={el._id}>
+                            <span>{getCategory(el.title)}</span>
+                            {getTitle(el.title)}
+                          </li>
+                        ))}
+                      </ul>
+                    </M.MypageFindMatesPostWrap>
                   </M.MypageContents>
                 </Tab>
                 <Tab title="결제내역">
