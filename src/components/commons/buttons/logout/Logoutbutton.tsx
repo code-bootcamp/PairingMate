@@ -3,9 +3,12 @@ import styled from "@emotion/styled";
 import router from "next/router";
 import { getAuth, GoogleAuthProvider, signOut } from "firebase/auth";
 import { Modal } from "antd";
-import { useMutation } from "@apollo/client";
-import { IMutation } from "../../../../commons/types/generated/types";
+import { useMutation, useQuery } from "@apollo/client";
+import { IMutation, IQuery } from "../../../../commons/types/generated/types";
 import { LOGOUT_USER } from "./LogoutbuttonQueries";
+import { Cookie } from "@emotion-icons/fa-solid";
+import { FETCH_USER_LOGGED_IN } from "../../../units/Login/LoginQueries";
+import { getCookieParser } from "next/dist/server/api-utils";
 
 const Logoutbuttons = styled.button`
   position: relative;
@@ -33,16 +36,16 @@ const Logoutbuttons = styled.button`
 
 const LogoutButton = (props: ButtonsProps) => {
   const auth = getAuth();
-  const provider = new GoogleAuthProvider().providerId;
+  // const provider = new GoogleAuthProvider().providerId;
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
+  const { data: companyLoginUser } =
+  useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
 
   const onClickLogout = async () => {
-    // console.log("Provider : " , provider);
-
-    if(provider === "google.com" || provider === "password") {
+    const companyInfo = companyLoginUser?.fetchUserLoggedIn.email;
+    if(!companyInfo) {
       await signOut(auth)
         .then(() => {
-          // Sign-out successful.
           Modal.success({
             title: "로그아웃",
             content: "메인 페이지로 이동 합니다.",
@@ -51,6 +54,7 @@ const LogoutButton = (props: ButtonsProps) => {
           localStorage.removeItem("email");
           localStorage.removeItem("name");
           localStorage.removeItem("image");
+          localStorage.removeItem("uid");
           router.push("/");
           setTimeout(() => location.reload(), 1000);
         })
@@ -64,7 +68,10 @@ const LogoutButton = (props: ButtonsProps) => {
         localStorage.removeItem("email");
         localStorage.removeItem("name");
         localStorage.removeItem("image");
-        alert("로그아웃 되었습니다.");
+        localStorage.removeItem("uid");
+        Modal.success({title:"로그아웃 되었습니다."});
+        router.push("/");
+        setTimeout(() => location.reload(), 1000);
       } catch (error) {
         Modal.error({content:error.message});
       }

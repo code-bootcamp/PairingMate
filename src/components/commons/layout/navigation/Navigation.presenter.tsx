@@ -54,7 +54,7 @@ const NavigationUI = (props: NavigationProps) => {
             </button>
           </li>
           <li>
-            <button onClick={props.onClickMoveToCSCenter}>고객센터</button>
+            <button onClick={props.onClickMoveToCSCenter}>Customer Service</button>
           </li>
         </N.NavigationList>
       </N.Navigation>

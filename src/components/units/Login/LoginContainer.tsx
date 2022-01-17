@@ -129,13 +129,14 @@ const Login = () => {
         },
       });
       localStorage.setItem("refreshToken", "true");
-      setAccessToken?.(result.data.loginUser.accessToken || "");
       localStorage.setItem("email", companyLoginUser?.fetchUserLoggedIn.email);
       localStorage.setItem("name", companyLoginUser?.fetchUserLoggedIn.name);
+      localStorage.setItem("uid" , (result.data.loginUser.accessToken || ""));
       localStorage.setItem(
         "image",
         companyLoginUser?.fetchUserLoggedIn.picture
-      );
+        );
+      setAccessToken?.(result.data.loginUser.accessToken || "");
       router.push("/");
     } catch (error) {
       Modal.error({ content: error.message });
@@ -168,6 +169,9 @@ const Login = () => {
               );
               querySnapshot.docs.map((el) =>
                 localStorage.setItem("image", el.data().image[0])
+              );
+              querySnapshot.docs.map((el) =>
+                localStorage.setItem("uid", el.data().uid)
               );
             }
           });
