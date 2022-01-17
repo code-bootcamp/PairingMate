@@ -119,6 +119,14 @@ const BestDealGet = () => {
           // console.log("buyAt:", new Date());
 
           // createPointTransactionsOfLoading 뮤테이션 실행하기(impUid 인자로 넘기기!!!)
+          
+          // ========================================
+          // 일자  : 2022-01-17
+          // 작성자 : 권태욱
+          // 내용  : 결제 완료 후 Best deal 메인 페이지 이동 
+          // ========================================
+          Modal.success({title: "성공!" , content:"결제가 완료 되었습니다."})
+          router.push("/best-deal");
         } else {
           Modal.error({ content: "결제 실패" });
         }

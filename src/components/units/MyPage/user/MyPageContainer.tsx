@@ -92,9 +92,11 @@ const MyPage = () => {
     }
   };
 
+  // 현재 접속한 유저 정보 파이어 베이스에서 가져오기
+
+
   useEffect(() => {
     setProfileImage(localStorage.getItem("image"));
-    const db = getFirestore(app);
     const user = localStorage.getItem("uid");
     setDocu(doc(db, "users", user));
     onLoadGetDocs();
