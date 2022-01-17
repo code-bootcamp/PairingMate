@@ -10,16 +10,18 @@ import {
 } from "../../../../commons/libraries/utils/utils";
 import { FindmateListUIProps } from "./FindMatesListTypes";
 import { Inner } from "../../../../commons/styles/common";
+import FindMatesAddButton from "../../../commons/buttons/add/FindMatesAddButton";
 const FindmatesListUI = (props: FindmateListUIProps) => {
   return (
     <>
       <Inner>
         <S.FindmatesListWrapper>
-          <S.FindMateAddButtonWrap>
+          {/* <S.FindMateAddButtonWrap>
             <S.FindmateAddButton
               onClick={props.onClickMoveToFindmateAddPage}
             ></S.FindmateAddButton>
-          </S.FindMateAddButtonWrap>
+          </S.FindMateAddButtonWrap> */}
+          <FindMatesAddButton />
           <S.FindmatesListHead>
             <S.UserProfile>
               <img
