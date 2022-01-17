@@ -16,7 +16,13 @@
 함께 운동할수 있는 친구를 매칭해주고, 내 주변의 운동할수 있는 장소들을 추천해주기로 했습니다.
 
 운동친구가 필요하신가요? 오늘은 어디서 운동을 할지 고민이신가요?    
-**페이링메이트**가 여러분의 고민을 해결해 드리겠습니다.
+**페이링메이트**가 여러분의 고민을 해결해 드리겠습니다
+
+URL: [PairingMate](http://pairingmate.com) 
+
+<a href="https://readevenote.notion.site/Pairing-Mate-71ba3d8645bf4a36988f888f9bb4f87b"><img src="https://img.shields.io/badge/Team Notion-skyblue?style=flat&logo=Notion&logoColor=000000"/>
+  <a href="https://www.figma.com/file/izaSLfkHfQrgPC3coSfHgN/ParingMate"><img src="https://img.shields.io/badge/Team Figma-green?style=flat&logo=Figma&logoColor=F24E1E"/>
+
 
 팀원소개
 --------
@@ -27,7 +33,15 @@
 
 기술스택
 --------
-ppt 이미지 들어갈것
+![스크린샷 2022-01-18 오전 12 32 59](https://user-images.githubusercontent.com/93374891/149798316-d97dfbca-cb47-482c-9c4a-2e4e2fe45822.png)
+
+
+
+협업툴
+-----
+![스크린샷 2022-01-18 오전 12 34 13](https://user-images.githubusercontent.com/93374891/149798504-711f49bc-da5d-4a45-b447-5168a6b78683.png)
+
+
 
 플로우차트
 --------
