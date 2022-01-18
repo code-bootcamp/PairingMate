@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 `;
 export const Header = styled.div`
   display: flex;
-  width: 100%;
   height: 50px;
   margin: 0px -50px;
 
@@ -19,6 +18,16 @@ export const Header = styled.div`
     width: 50%;
     height: 50px;
     padding: 0px 50px;
+  }
+
+  @media all and ${theme.tablet} {
+    height: auto;
+    margin: 0;
+    div {
+      width: 100%;
+      padding: 0;
+      margin-bottom: ${theme.MarginBottom.mb30};
+    }
   }
 
   select {
@@ -44,9 +53,7 @@ export const PriceInput = styled.input`
     color: #dddddd;
   }
 `;
-export const BodyWrapper = styled.div`
-  width: 100%;
-`;
+export const BodyWrapper = styled.div``;
 export const TitleInput = styled.input`
   /* display: block; */
   width: 100%;
@@ -78,16 +85,18 @@ export const ContentsInput = styled.textarea`
 `;
 export const FunctionWrapper = styled.div`
   display: flex;
-  width: 100%;
+
   height: auto;
   margin-top: 20px;
   margin: 0px -20px;
   @media screen and ${theme.tablet} {
     flex-direction: column;
+    > div {
+      width: 100%;
+    }
   }
 `;
 export const FunctionWrapperLeft = styled.div`
-  display: inline-block;
   width: 50%;
   padding: 0px 20px;
 `;

@@ -4,7 +4,6 @@ import theme from "../../../commons/styles/variables";
 export const TabTitleList = styled.ul``;
 
 export const TabTitle = styled.li<{ isActive: boolean }>`
-  
     display: inline-block;
 
     button {

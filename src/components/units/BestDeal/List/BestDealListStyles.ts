@@ -12,7 +12,6 @@ export const Title = styled.h2`
   }
 `;
 export const Wrapper = styled.div`
-  width: 100%;
   margin-top: 70px;
 `;
 
@@ -47,16 +46,18 @@ export const NavigationList = styled.ul`
         }
       }
     }
+    @media all and ${theme.tablet} {
+      button {
+        font-size: ${theme.fontsize.fs16};
+      }
+    }
   }
 `;
 export const BestProductWrapper = styled.ul`
-  margin: 0 -10px;
+  max-width: 100vw;
 
-  @media all and (min-width: 767px) {
-    .slick-track {
-      width: 100% !important;
-    }
-  }
+  overflow: hidden;
+  margin: 0 -10px;
 `;
 export const ProductWrapper = styled.ul`
   display: flex;
@@ -133,15 +134,30 @@ export const ProductTags = styled.span`
   background-color: #c4c4c4;
 `;
 export const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-top: 90px;
-  justify-content: center;
+  text-align: center;
 `;
 export const MoreButton = styled.button`
   width: 180px;
   height: 50px;
+  margin-top: ${theme.MarginTop.mt90};
+  border: 1px solid #ebebeb;
+  color: #555;
 
-  /* border: 1px solid; */
+  &:hover {
+    background-color: ${theme.colorBase};
+    border: 0;
+    color: #fff;
+    transition: 0.5s;
+  }
+`;
+
+export const WriteButton = styled.button`
+  width: 180px;
+  height: 50px;
+  background-color: #ebebeb;
+
+  @media all and ${theme.tablet} {
+    width: 120px;
+    height: 35px;
+  }
 `;

@@ -7,41 +7,40 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const settings = {
-  dots: false,
-  infinite: true,
-  speed: 1000,
-  autoplay: true,
-  autoplayspeed: 2000,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1021,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-      },
-    },
-    {
-      breakpoint: 767,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 500,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
-
 const BestDealListUI = (props: BestdealListUIProps) => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    autoplay: true,
+    autoplayspeed: 2000,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <>
       <Inner>
@@ -138,10 +137,12 @@ const BestDealListUI = (props: BestdealListUIProps) => {
             <B.MoreButton onClick={props.onClickGetBestdealList}>
               더보기
             </B.MoreButton>
+          </B.ButtonWrapper>
+          <B.ButtonWrapper style={{ textAlign: "right" }}>
             {props.userImage === "null" && (
-              <button onClick={props.onClickMoveToBestdealAddPage}>
+              <B.WriteButton onClick={props.onClickMoveToBestdealAddPage}>
                 글쓰기
-              </button>
+              </B.WriteButton>
             )}
           </B.ButtonWrapper>
         </B.Wrapper>
