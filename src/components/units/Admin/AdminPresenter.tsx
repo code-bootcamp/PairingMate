@@ -5,6 +5,7 @@ import * as AI from "../Admin/inquiry/AdminInquiry.styles";
 import { IAdminProps } from "./Admin.types";
 import ToggleContent from "../../commons/modal/toggleContents";
 import CommonModal from "../../commons/modal/Modal";
+import { getDate, priceToString } from "../../../commons/libraries/utils/utils";
 
 const AdminPageUI = (props: IAdminProps) => {
   return (
@@ -122,52 +123,18 @@ const AdminPageUI = (props: IAdminProps) => {
                   <thead>
                     <tr>
                       <th>업체명</th>
-                      <th>판매개수</th>
-                      <th>총 판매금액</th>
+                      <th>판매금액</th>
+                      <th>판매일</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>스포애니 구로디지털단지점</td>
-                      <td>15개</td>
-                      <td>2,160,000원</td>
-                    </tr>
-
-                    <tr>
-                      <td>스포애니 구로디지털단지점</td>
-                      <td>15개</td>
-                      <td>2,160,000원</td>
-                    </tr>
-
-                    <tr>
-                      <td>스포애니 구로디지털단지점</td>
-                      <td>15개</td>
-                      <td>2,160,000원</td>
-                    </tr>
-
-                    <tr>
-                      <td>스포애니 구로디지털단지점</td>
-                      <td>15개</td>
-                      <td>2,160,000원</td>
-                    </tr>
-
-                    <tr>
-                      <td>스포애니 구로디지털단지점</td>
-                      <td>15개</td>
-                      <td>2,160,000원</td>
-                    </tr>
-
-                    <tr>
-                      <td>스포애니 구로디지털단지점</td>
-                      <td>15개</td>
-                      <td>2,160,000원</td>
-                    </tr>
-
-                    <tr>
-                      <td>스포애니 구로디지털단지점</td>
-                      <td>15개</td>
-                      <td>2,160,000원</td>
-                    </tr>
+                    {props.buylist.map((el, index) => (
+                      <tr key={index}>
+                        <td>{el.productName}</td>
+                        <td>{priceToString(el.price)}원</td>
+                        <td>{getDate(new Date(el.buyAt.seconds * 1000))}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </A.SalseTableWrap>

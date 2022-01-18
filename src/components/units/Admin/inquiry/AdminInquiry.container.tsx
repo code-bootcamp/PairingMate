@@ -12,18 +12,14 @@ import {
   updateDoc,
   deleteDoc,
 } from "@firebase/firestore";
-import { Hidden } from "@material-ui/core";
 import { Modal } from "antd";
-import { OmitProps } from "antd/lib/transfer/ListBody";
 import { useState, useEffect, ChangeEvent } from "react";
 import { app } from "../../../../../pages/_app";
-import ToggleContent from "../../../commons/modal/toggleContents";
 import AdminInquiryUI from "./AdminInquiry.presenter";
 
-const AdminInquiry = ({ setIsShown }) => {
+const AdminInquiry = () => {
   const db = getFirestore(app);
   const [isToggle, setIsToggle] = useState(false);
-  const [temp, setTemp] = useState(null);
   const [docId, setDocId] = useState("");
   const [data, setData] = useState<DocumentData[]>();
   const [faqResultData, setFagResultData] = useState<DocumentData[]>();
@@ -33,11 +29,12 @@ const AdminInquiry = ({ setIsShown }) => {
     contents: "",
   });
   const onLoadGetDocs = async () => {
-    const querySnapshot = await getDocs(collection(db, "partnerinquiry"));
+    const querySnapshot = await getDocs(collection(db, "partnerInquiry"));
     querySnapshot.docs.map((el: QueryDocumentSnapshot<DocumentData>) =>
       setData((prev) => [...(prev || []), el.data()])
     );
   };
+  console.log(data);
 
   const onLoadGetFaqDocs = async () => {
     const querySnapshot = await getDocs(collection(db, "FAQ"));
