@@ -127,13 +127,16 @@ export const ProductTagsWrapper = styled.div`
   border-radius: 30px; */
 `;
 export const ProductTags = styled.span`
+  display: inline-block;
   margin-right: 10px;
   padding: 5px 15px;
+  margin-bottom: 5px;
   border-radius: 30px;
   font-weight: 500;
   font-size: ${theme.fontsize.fs16};
+  color: white;
   line-height: 22px;
-  background-color: #c4c4c4;
+  background-color: ${theme.colorBase};
 `;
 export const ButtonWrapper = styled.div`
   text-align: center;
