@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import {
   IQuery,
   IQueryFetchUseditemsArgs,
@@ -12,6 +13,7 @@ import {
 
 const BestDealList = () => {
   const router = useRouter();
+  const [userImage, setUserImage] = useState("");
 
   const {
     data: bestDealList,
@@ -39,6 +41,10 @@ const BestDealList = () => {
   const onClickMoveToBestdealAddPage = () => {
     router.push(`/best-deal/add/`);
   };
+
+  useEffect(() => {
+    setUserImage(localStorage.getItem("image"));
+  }, []);
 
   const onClickGetBestdealList = () => {
     if (!bestDealList) return;
@@ -70,6 +76,7 @@ const BestDealList = () => {
         onClickCategory={onClickCategory}
         onClickMoveToBestdealAddPage={onClickMoveToBestdealAddPage}
         onClickGetBestdealList={onClickGetBestdealList}
+        userImage={userImage}
       />
     </>
   );

@@ -47,39 +47,43 @@ const BestDealListUI = (props: BestdealListUIProps) => {
       <Inner>
         <B.Title>PairingMate추천 운동센터</B.Title>
         <B.Wrapper>
-          <B.BestdealWrapper>
-            <Slider {...settings}>
-              {/* <B.BestdealItemWrapper> */}
-              {props.bestOfBestDealList?.fetchUseditemsOfTheBest.map(
-                (el: any) => (
-                  <B.BestdealItem key={el._id}>
-                    <B.BestdealImg
-                      src={`https://storage.googleapis.com/${el.images[0]}`}
-                    ></B.BestdealImg>
-                    <B.TextBox>
-                      <B.BestdealTitle
-                        id={el._id}
-                        onClick={props.onClickBestdealGetPage(el._id)}
-                      >
-                        {getTitle(el.name)}
-                      </B.BestdealTitle>
-                      <B.BestdealAddress>
-                        {el.useditemAddress?.address}
-                      </B.BestdealAddress>
-                      <B.TagsWrapper>
-                        {el.tags.map((el: any) => (
-                          <Fragment key={el}>
-                            <B.ProductTags>{el}</B.ProductTags>
-                          </Fragment>
-                        ))}
-                      </B.TagsWrapper>
-                    </B.TextBox>
-                  </B.BestdealItem>
-                )
-              )}
-              {/* </B.BestdealItemWrapper> */}
-            </Slider>
-          </B.BestdealWrapper>
+          <div>
+            <B.BestProductWrapper>
+              <Slider {...settings}>
+                {props.bestOfBestDealList?.fetchUseditemsOfTheBest.map(
+                  (el: any) => (
+                    <B.ProductItem
+                      key={el._id}
+                      onClick={props.onClickBestdealGetPage(el._id)}
+                    >
+                      <B.ItemWrapper>
+                        <B.ImgWrapper>
+                          <B.ProductImg
+                            src={`https://storage.googleapis.com/${el.images[0]}`}
+                          />
+                        </B.ImgWrapper>
+                        <B.ProductTextBox>
+                          <h4>{getTitle(el.name)}</h4>
+                          <p>
+                            {el.useditemAddress?.address
+                              ? el.useditemAddress.address
+                              : "서울 구로구 디지털로 300 "}
+                          </p>
+                          <B.ProductTagsWrapper>
+                            {el.tags.map((el: any) => (
+                              <Fragment key={el}>
+                                <B.ProductTags>{el}</B.ProductTags>
+                              </Fragment>
+                            ))}
+                          </B.ProductTagsWrapper>
+                        </B.ProductTextBox>
+                      </B.ItemWrapper>
+                    </B.ProductItem>
+                  )
+                )}
+              </Slider>
+            </B.BestProductWrapper>
+          </div>
           <B.NavigationList>
             <li>
               <button onClick={props.onClickCategory("")}>전체</button>
@@ -96,39 +100,7 @@ const BestDealListUI = (props: BestdealListUIProps) => {
               </button>
             </li>
           </B.NavigationList>
-          {/* <B.ProductWrapper>
-            {props.bestDealList?.fetchUseditems.map((el: any) => (
-              <B.ItemWrapper key={el._id}>
-                <B.ProductItem>
-                  <B.ImgWrapper>
-                    <B.ProductImg
-                      src={`https://storage.googleapis.com/${el.images[0]}`}
-                    ></B.ProductImg>
-                  </B.ImgWrapper>
-                  <B.ProductTextBox>
-                    <B.ProductTitle
-                      id={el._id}
-                      onClick={props.onClickBestdealGetPage(el._id)}
-                    >
-                      {getTitle(el.name)}
-                    </B.ProductTitle>
-                    <B.ProductAddress>
-                      {el.useditemAddress?.address
-                        ? el.useditemAddress.address
-                        : "서울 구로구 디지털로 300 "}
-                    </B.ProductAddress>
-                    <B.ProductTagsWrapper>
-                      {el.tags.map((el: any) => (
-                        <Fragment key={el}>
-                          <B.ProductTags>{el}</B.ProductTags>
-                        </Fragment>
-                      ))}
-                    </B.ProductTagsWrapper>
-                  </B.ProductTextBox>
-                </B.ProductItem>
-              </B.ItemWrapper>
-            ))}
-          </B.ProductWrapper> */}
+
           <div>
             <B.ProductWrapper>
               {props.bestDealList?.fetchUseditems.map((el: any) => (
@@ -142,6 +114,21 @@ const BestDealListUI = (props: BestdealListUIProps) => {
                         src={`https://storage.googleapis.com/${el.images[0]}`}
                       />
                     </B.ImgWrapper>
+                    <B.ProductTextBox>
+                      <h4>{getTitle(el.name)}</h4>
+                      <p>
+                        {el.useditemAddress?.address
+                          ? el.useditemAddress.address
+                          : "서울 구로구 디지털로 300 "}
+                      </p>
+                      <B.ProductTagsWrapper>
+                        {el.tags.map((el: any) => (
+                          <Fragment key={el}>
+                            <B.ProductTags>{el}</B.ProductTags>
+                          </Fragment>
+                        ))}
+                      </B.ProductTagsWrapper>
+                    </B.ProductTextBox>
                   </B.ItemWrapper>
                 </B.ProductItem>
               ))}
@@ -151,7 +138,11 @@ const BestDealListUI = (props: BestdealListUIProps) => {
             <B.MoreButton onClick={props.onClickGetBestdealList}>
               더보기
             </B.MoreButton>
-            <button onClick={props.onClickMoveToBestdealAddPage}>글쓰기</button>
+            {props.userImage === "null" && (
+              <button onClick={props.onClickMoveToBestdealAddPage}>
+                글쓰기
+              </button>
+            )}
           </B.ButtonWrapper>
         </B.Wrapper>
       </Inner>
