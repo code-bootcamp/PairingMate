@@ -248,7 +248,17 @@ export const BodyTextContent = styled.pre`
 export const TableWrapper = styled.div`
   width: 100%;
   margin-top: 70px;
+
+  @media all and ${theme.tablet} {
+    overflow-x: scroll;
+  }
   /* background-color: brown; */
+
+  > div {
+    @media all and ${theme.tablet} {
+      width: 1000px;
+    }
+  }
 `;
 export const Table = styled.table`
   width: 100%;

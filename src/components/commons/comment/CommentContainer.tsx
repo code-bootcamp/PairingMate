@@ -73,7 +73,7 @@ const Comments = (props: any) => {
         createdAt: String(new Date()),
       });
       Modal.success({ content: "댓글등록에 성공하였습니다" });
-      // location.reload();
+      getComments();
     } catch (error) {
       Modal.error({ content: "댓글등록에 성공하였습니다" });
     }

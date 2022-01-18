@@ -48,7 +48,7 @@ export const FindmatesUserInfo = styled.div`
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
-    padding: 0px 30px 20px 30px;
+    padding: 20px 30px;
     border-bottom: 1px solid #dddddd;
     hr {
       display: none;
@@ -182,7 +182,8 @@ export const FindmatesContentsInfo = styled.div`
 
   @media screen and ${theme.tablet} {
     width: 100%;
-    padding: 0px 30px 20px 30px;
+    padding: 0;
+    padding-bottom: 30px;
     border: none;
 
     h1 {
