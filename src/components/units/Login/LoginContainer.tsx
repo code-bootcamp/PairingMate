@@ -129,7 +129,7 @@ const Login = () => {
       const accessToken = result.data?.loginUser.accessToken;
       setAccessToken?.(accessToken || "");
       
-      // 
+      // 이 시점에서 Graphql api 쿼리 실행
       const companyLoginUser = await client.query({
         query:FETCH_USER_LOGGED_IN,
         context: {

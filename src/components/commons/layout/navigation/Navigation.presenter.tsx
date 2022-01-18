@@ -4,6 +4,8 @@ import * as N from "./Navigation.styles";
 import { NavigationProps } from "./Navigation.types";
 
 const NavigationUI = (props: NavigationProps) => {
+  const userInfo = props.FirebaseUserInfo?.email;
+
   return (
     <>
       <N.NaviButton isOpen={props.isOpen} onClick={props.onClickopen}>
@@ -13,14 +15,16 @@ const NavigationUI = (props: NavigationProps) => {
       </N.NaviButton>
       <N.Navigation isOpen={props.isOpen}>
         <N.LoginSection>
-          {props.FirebaseUserInfo?.email || props.companyUserInfo?.fetchUserLoggedIn.email
+          {userInfo || props.companyUserInfo?.fetchUserLoggedIn.email
           ? ( 
               <>
                   <h6>
                     <span>{props.userName || props.companyUserInfo?.fetchUserLoggedIn.name}</span> 님 환영합니다!<br />
                     당신의 <span>메이트</span>를 만나보세요.
                   </h6>
-                  <button type="button" onClick={props.onClickMoveToMypage}>마이페이지</button>
+                  {userInfo === "admin@gmail.com" 
+                  ? (<button type="button" onClick={props.onClickMoveToMypage}>관리자페이지</button>) 
+                  : (<button type="button" onClick={props.onClickMoveToMypage}>마이페이지</button>)}
                   <LogoutButton type="button" name="로그아웃" />
                 </>
             ) 
