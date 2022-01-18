@@ -1,7 +1,9 @@
 import * as MS3 from "./Section03.styles";
 import { Inner } from "../../../../commons/styles/common";
+import { IMainSection03Props } from "./Section03.types";
+import { getTitle } from "../../../../commons/libraries/utils/utils";
 
-const MainSection03UI = () => {
+const MainSection03UI = (props: IMainSection03Props) => {
   return (
     <>
       <Inner>
@@ -12,84 +14,23 @@ const MainSection03UI = () => {
           </MS3.title>
         </MS3.TextWrap>
         <div>
-          <MS3.BestDealTaplist>
-            <li>
-              <button>전체</button>
-            </li>
-
-            <li>
-              <button>GYM</button>
-            </li>
-
-            <li>
-              <button>YOGA</button>
-            </li>
-
-            <li>
-              <button>PILATES</button>
-            </li>
-          </MS3.BestDealTaplist>
           <div>
             <MS3.BestDealList>
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
-
-              <li>
-                <figure>
-                  <figcaption>BestDeal Data</figcaption>
-                </figure>
-              </li>
+              {props.data?.fetchUseditems.map((el) => (
+                <li key={el._id} onClick={props.onClickBestdealGetPage(el._id)}>
+                  <figure>
+                    <p>
+                      <img
+                        src={`https://storage.googleapis.com/${el.images[0]}`}
+                        alt=""
+                      />
+                    </p>
+                    <figcaption>
+                      <h4>{getTitle(el.name)}</h4>
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
             </MS3.BestDealList>
           </div>
         </div>

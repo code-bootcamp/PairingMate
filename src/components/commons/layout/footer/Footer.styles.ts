@@ -37,6 +37,10 @@ export const FooterLogo = styled.h1`
       width: 100%;
       height: 100%;
     }
+    @media all and ${theme.tablet} {
+      width: 120px;
+      height: 45px;
+    }
   }
 
   @media all and ${theme.tablet} {

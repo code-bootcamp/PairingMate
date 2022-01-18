@@ -87,14 +87,61 @@ export const BestDealList = styled.ul`
     margin-bottom: 20px;
 
     figure {
+      position:relative;
       width: 100%;
       height: 264px;
       background-color: #ccc;
       border-radius: 15px;
+      overflow:hidden;
+
+      p{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+
+        img{
+          display:block;
+          width:100%;
+          height:100%;
+        }
+
+        &::before{
+          content:"";
+          position:absolute;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          background-color:rgba(0,0,0,.5);
+          opacity:0;
+          transition:.5;
+        }
+      }
 
       figcaption {
-        padding-top: 60%;
-        padding-left: 20px;
+        position:relative;
+        padding-top: 50%;
+        
+        z-index:3;
+        opacity:0;
+        transition:.5s;
+        text-align:center;
+        h4{
+          color:#fff;
+        }
+      }
+      &:hover{
+
+        p {
+          &::before{
+            opacity:1;
+          }
+        }
+        figcaption{
+          opacity:1;
+        }
       }
     }
   }

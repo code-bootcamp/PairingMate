@@ -39,13 +39,14 @@ export const TextDesc = styled.p`
 `;
 
 export const BestFindMatesList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
   margin: 0 -10px;
 
   li {
     width: 25%;
     padding: 0 10px;
+    cursor: pointer;
   }
 
   @media all and ${theme.tablet} {

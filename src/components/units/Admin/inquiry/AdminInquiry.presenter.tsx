@@ -39,7 +39,9 @@ const AdminInquiryUI = (props: IAdminInquiryProps) => {
                         <AI.CompanyAsk>{el.contents}</AI.CompanyAsk>
                         <ToggleContent
                           toggle={(show) => (
-                            <AI.ReplyBtn onClick={show}>상세보기</AI.ReplyBtn>
+                            <p style={{ textAlign: "center" }}>
+                              <AI.ReplyBtn onClick={show}>상세보기</AI.ReplyBtn>
+                            </p>
                           )}
                           content={(hide) => (
                             <CommonModal>
