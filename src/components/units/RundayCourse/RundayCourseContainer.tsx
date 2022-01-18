@@ -49,7 +49,7 @@ const RundayCourse = () => {
         const result = await axios.get(
           `http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${courseName}/${pointName}`
         );
-        console.log(result);
+
         setPointData(result.data?.SeoulGilWalkCourse.row);
       } catch (error) {
         Modal.error({ content: "서버 장애 , 관리자에게 문의해주세요." });

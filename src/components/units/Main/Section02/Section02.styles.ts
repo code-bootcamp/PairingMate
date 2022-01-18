@@ -61,6 +61,7 @@ export const BestFindMatesCard = styled.figure`
   border: 1px solid #ebebeb;
   p.imageWrapper {
     height: 250px;
+    overflow: hidden;
 
     img {
       display: block;
@@ -68,11 +69,21 @@ export const BestFindMatesCard = styled.figure`
       height: 100%;
     }
   }
+
+  &:hover {
+    p {
+      img {
+        transform: scale(1.1);
+        transition: 0.7s;
+      }
+    }
+  }
 `;
 
 export const BestFindMatsCardText = styled.figcaption`
   padding: 30px 20px;
   border-top: 1px solid #ebebeb;
+  background-color: #fff;
 
   h5 {
     padding-bottom: ${theme.PaddingBottom.pb10};
@@ -87,8 +98,9 @@ export const BestFindMatsCardText = styled.figcaption`
   span {
     margin-right: 3px;
     padding: 3px 10px;
-    background: #eee;
+    background: ${theme.colorBase};
     border-radius: 10px;
     font-size: ${theme.fontsize.fs14};
+    color: #fff;
   }
 `;

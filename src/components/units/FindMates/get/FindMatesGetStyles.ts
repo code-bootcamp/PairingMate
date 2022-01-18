@@ -256,3 +256,9 @@ export const ContentsInfoImage = styled.div`
     height: 100%;
   }
 `;
+
+export const ContentsWrap = styled.pre`
+  width: 100%;
+  padding: 40px 0;
+  line-height: 1.5;
+`;

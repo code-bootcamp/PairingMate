@@ -108,9 +108,9 @@ export const ContactInfo = styled.p`
 `;
 
 export const CompanyAsk = styled.p`
-  display: inline-block;
-  width: calc(100% - 160px);
-  height: 20px;
+  display: block;
+  width: 100%;
+  height: 70px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -182,8 +182,8 @@ export const UserContents = styled.div`
 `;
 export const UserReportContents = styled.p`
   display: inline-block;
-  width: calc(100% - 160px);
-  height: 20px;
+  width: 100%;
+  height: 70px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

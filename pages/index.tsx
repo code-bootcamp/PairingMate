@@ -7,6 +7,7 @@ import MainSection03 from "../src/components/units/Main/Section03/Section03.cont
 import MainSection04 from "../src/components/units/Main/Section04/Section04.container";
 import Header from "../src/components/commons/layout/header/Header.container";
 import Footer from "../src/components/commons/layout/footer/Footer.container";
+import { css } from "@emotion/react";
 
 const Home: NextPage = () => {
   return (
@@ -26,10 +27,10 @@ const Home: NextPage = () => {
                 <div className="section">
                   <MainSection01 />
                 </div>
-                <div className="section">
+                <div className="section section02-bg">
                   <MainSection02 />
                 </div>
-                <div className="section">
+                <div className="section section03-bg">
                   <MainSection03 />
                 </div>
                 <div className="section fp-auto-height">

@@ -69,7 +69,8 @@ export const GetList = styled.ul`
 `;
 export const List = styled.li`
   width: 100%;
-  height: 180px;
+  height: 200px;
+  padding: 25px 23px;
   border-bottom: 1px solid #eeeeee;
   @media all and ${theme.laptop} {
     width: 25%;
