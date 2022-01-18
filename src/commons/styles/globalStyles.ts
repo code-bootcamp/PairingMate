@@ -8,6 +8,7 @@
 
 import { css } from "@emotion/react";
 import "antd/dist/antd.css";
+import theme from "./variables";
 
 export const globalStyles = css`
   * {
@@ -19,10 +20,12 @@ export const globalStyles = css`
   body {
     font-size: 1rem;
   }
-
-  body.fp-viewing-0 header {
-    background: none;
+  .fp-enabled header {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
+
   body.fp-viewing-0 header h1 button {
     background-image: url("/images/common/logo.png");
   }
@@ -215,5 +218,11 @@ export const globalStyles = css`
     background-size: cover;
     opacity: 0.2;
     z-index: -1;
+  }
+
+  @media all and ${theme.laptop} {
+    .section {
+      height: 100% !important;
+    }
   }
 `;

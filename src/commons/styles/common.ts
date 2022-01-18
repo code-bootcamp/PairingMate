@@ -9,6 +9,7 @@ export const Inner = styled.div`
 
   @media all and ${theme.laptop} {
     padding: 50px 20px;
+    overflow-x: hidden;
   }
 `;
 export const FullpageSection = styled.section`
