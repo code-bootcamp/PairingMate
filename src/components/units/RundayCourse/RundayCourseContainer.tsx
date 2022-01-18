@@ -37,7 +37,12 @@ const RundayCourse = () => {
       setIsOpen(true);
       try {
         const result = await axios.get(
-          `http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${courseName}/${pointName}`
+          `https://cors-anywhere.herokuapp.com/http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${courseName}/${pointName}`,
+          {
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+            },
+          }
         );
         console.log(result);
         setPointData(result.data?.SeoulGilWalkCourse.row);
@@ -56,7 +61,12 @@ const RundayCourse = () => {
     }
     GU_COURSE_NAME[location].forEach(async (el: string) => {
       const result = await axios.get(
-        `http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${el}`
+        `https://cors-anywhere.herokuapp.com/http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${el}`,
+        {
+          headers: {
+            "X-Requested-With": "XMLHttpRequest",
+          },
+        }
       );
       if (result.data?.SeoulGilWalkCourse !== undefined) {
         newData = newData.concat(result.data?.SeoulGilWalkCourse.row);
