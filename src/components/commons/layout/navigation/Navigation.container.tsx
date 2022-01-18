@@ -1,7 +1,7 @@
 import NavigationUI from "./Navigation.presenter";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { onAuthStateChanged, reload } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { app, auth } from "../../../../../pages/_app";
 import {
   collection,
