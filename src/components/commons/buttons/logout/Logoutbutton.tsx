@@ -36,7 +36,6 @@ const Logoutbuttons = styled.button`
 
 const LogoutButton = (props: ButtonsProps) => {
   const auth = getAuth();
-  // const provider = new GoogleAuthProvider().providerId;
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
   const { data: companyLoginUser } =
   useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
@@ -59,7 +58,7 @@ const LogoutButton = (props: ButtonsProps) => {
           setTimeout(() => location.reload(), 1000);
         })
         .catch((error) => {
-          console.log(error);
+          Modal.error({content:error.message});
         });
     } else {
       try {

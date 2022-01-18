@@ -20,16 +20,14 @@ import {
 } from "firebase/firestore";
 import { app, GlobalContext } from "../../../../pages/_app";
 import { useRouter } from "next/router";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation, useApolloClient } from "@apollo/client";
 import { FETCH_USER_LOGGED_IN, LOGIN_USER } from "./LoginQueries";
-import { IQuery } from "../../../commons/types/generated/types";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loginUser] = useMutation(LOGIN_USER);
-  const { data: companyLoginUser } =
-    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
+  const client = useApolloClient();
 
   const { setAccessToken } = useContext(GlobalContext);
   const router = useRouter();
@@ -59,11 +57,9 @@ const Login = () => {
       });
       return;
     }
-
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-
         // // 로그인 정보 가져오기
         onAuthStateChanged(auth, async (user) => {
           if (user) {
@@ -128,15 +124,24 @@ const Login = () => {
           password,
         },
       });
+      
       localStorage.setItem("refreshToken", "true");
-      localStorage.setItem("email", companyLoginUser?.fetchUserLoggedIn.email);
-      localStorage.setItem("name", companyLoginUser?.fetchUserLoggedIn.name);
-      localStorage.setItem("uid" , (result.data.loginUser.accessToken || ""));
-      localStorage.setItem(
-        "image",
-        companyLoginUser?.fetchUserLoggedIn.picture
-        );
-      setAccessToken?.(result.data.loginUser.accessToken || "");
+      const accessToken = result.data?.loginUser.accessToken;
+      setAccessToken?.(accessToken || "");
+      
+      // 
+      const companyLoginUser = await client.query({
+        query:FETCH_USER_LOGGED_IN,
+        context: {
+          headers: {
+            authorization : `Bearer ${accessToken}`,
+          },
+        },
+      });
+      localStorage.setItem("uid" , companyLoginUser.data.fetchUserLoggedIn._id);
+      localStorage.setItem("email" , companyLoginUser.data.fetchUserLoggedIn.email);
+      localStorage.setItem("name" , companyLoginUser.data.fetchUserLoggedIn.name);
+      localStorage.setItem("image", companyLoginUser.data.fetchUserLoggedIn.picture);
       router.push("/");
     } catch (error) {
       Modal.error({ content: error.message });
