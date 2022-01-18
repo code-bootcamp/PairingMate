@@ -66,7 +66,7 @@ const Navigation = () => {
   const onClickMoveToMypage = () => {
     const userUid = FirebaseUserInfo?.uid;
     if (companyUserInfo?.fetchUserLoggedIn.email)
-      router.push(`/mypage/company/${companyUserInfo.fetchUserLoggedIn._id}`);
+      router.push(`/mypage/company/${companyUserInfo.fetchUserLoggedIn._id}/`);
     else router.push(`/mypage/user/${userUid}/`);
     setIsOpen(false);
   };
