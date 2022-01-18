@@ -51,7 +51,7 @@ export const TagsInput = styled.input`
   border-bottom: 1px solid #efefef;
   outline: none;
   &::placeholder {
-    font-size:${theme.fontsize.fs14};
+    font-size: ${theme.fontsize.fs14};
     color: #dddddd;
   }
 `;
@@ -129,9 +129,16 @@ export const FindmatesSearchWrapper = styled.div`
   }
 `;
 
+export const FlexBox = styled.div`
+  width: 50%;
+
+  @media all and ${theme.laptop} {
+    width: 100%;
+  }
+`;
+
 export const FindmatesUploadsWrapper = styled.div`
   position: relative;
-  width: 45%;
 
   button {
     position: absolute;
@@ -152,10 +159,7 @@ export const FindmatesUploadsWrapper = styled.div`
 
 export const UploadImageWrapper = styled.div`
   display: flex;
-
-  @media screen and ${theme.tablet} {
-    flex-direction: column;
-  }
+  flex-wrap: wrap;
 `;
 
 export const UploadImageIcon = styled.div`
