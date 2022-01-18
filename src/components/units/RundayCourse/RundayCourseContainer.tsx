@@ -36,13 +36,18 @@ const RundayCourse = () => {
     (courseName: string, pointName: string) => async () => {
       setIsOpen(true);
       try {
+        // 프록시 우회 코드
+        // const result = await axios.get(
+        //   `https://cors-anywhere.herokuapp.com/http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${courseName}/${pointName}`,
+        //   {
+        //     headers: {
+        //       "X-Requested-With": "XMLHttpRequest",
+        //     },
+        //   }
+        // );
+
         const result = await axios.get(
-          `https://cors-anywhere.herokuapp.com/http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${courseName}/${pointName}`,
-          {
-            headers: {
-              "X-Requested-With": "XMLHttpRequest",
-            },
-          }
+          `http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${courseName}/${pointName}`
         );
         console.log(result);
         setPointData(result.data?.SeoulGilWalkCourse.row);
@@ -60,13 +65,18 @@ const RundayCourse = () => {
       return;
     }
     GU_COURSE_NAME[location].forEach(async (el: string) => {
+      // 프록시 우회 코드
+      // const result = await axios.get(
+      //   `https://cors-anywhere.herokuapp.com/http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${el}`,
+      //   {
+      //     headers: {
+      //       "X-Requested-With": "XMLHttpRequest",
+      //     },
+      //   }
+      // );
+
       const result = await axios.get(
-        `https://cors-anywhere.herokuapp.com/http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${el}`,
-        {
-          headers: {
-            "X-Requested-With": "XMLHttpRequest",
-          },
-        }
+        `http://openapi.seoul.go.kr:8088/75676d4b54776f6f3130397555666d4f/json/SeoulGilWalkCourse/1/100/${el}`
       );
       if (result.data?.SeoulGilWalkCourse !== undefined) {
         newData = newData.concat(result.data?.SeoulGilWalkCourse.row);
