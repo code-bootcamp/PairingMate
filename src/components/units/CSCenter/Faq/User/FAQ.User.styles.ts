@@ -29,7 +29,13 @@ export const AccodianList = styled.ul`
       left: 0;
       transform: translateY(-50%);
       padding: 15px 20px;
+      font-size: ${theme.fontsize.fs20};
       cursor: pointer;
+
+      @media all and ${theme.tablet} {
+        padding: 15px 50px 15px 20px;
+        font-size: 15px;
+      }
     }
 
     div {

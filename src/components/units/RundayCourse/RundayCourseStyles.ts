@@ -11,6 +11,13 @@ export const MapWrapper = styled.div`
   g {
     .cls-1 {
       transition: 0.5s;
+
+      &.on {
+        fill: #213358;
+        filter: drop-shadow(3px 3px 2px #324e86);
+        transition: 0.5s;
+        cursor: pointer;
+      }
     }
     &:hover {
       .cls-1 {

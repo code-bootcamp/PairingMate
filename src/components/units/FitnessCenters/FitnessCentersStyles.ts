@@ -57,7 +57,7 @@ export const GetListWrap = styled.div`
   width: 100%;
   overflow: scroll;
 `;
-export const GetList = styled.div`
+export const GetList = styled.ul`
   width: 100%;
   height: 1010px;
   overflow: scroll;
@@ -67,21 +67,20 @@ export const GetList = styled.div`
     height: 200px;
   }
 `;
-export const List = styled.div`
+export const List = styled.li`
   width: 100%;
   height: 180px;
   border-bottom: 1px solid #eeeeee;
   @media all and ${theme.laptop} {
     width: 25%;
     height: 100%;
-    padding: 15px 0;
+    padding: 15px 23px;
   }
 `;
 export const PlaceName = styled.h3`
   width: 100%;
   height: 23px;
-  margin-left: 33px;
-  margin-top: 25px;
+
   font-size: ${theme.fontsize.fs16};
   font-weight: 500;
   line-height: 23px;
@@ -91,27 +90,27 @@ export const PlaceName = styled.h3`
     font-weight: 700;
   }
 `;
-export const Address = styled.div`
+export const Address = styled.p`
   width: 100%;
   height: 23px;
-  margin-left: 33px;
+
   margin-top: 11px;
   font-size: 14px;
   line-height: 20px;
   color: #555555;
 `;
-export const Phone = styled.div`
+export const Phone = styled.p`
   width: 100%;
   height: 23px;
-  margin-left: 33px;
+
   margin-top: 11px;
   font-size: 14px;
   line-height: 20px;
 `;
-export const Distance = styled.div`
+export const Distance = styled.p`
   width: 100%;
   height: 23px;
-  margin-left: 33px;
+
   margin-top: 11px;
   font-size: 14px;
   line-height: 20px;
@@ -120,7 +119,6 @@ export const MoveToDetail = styled.a`
   display: block;
   width: 100%;
   height: 23px;
-  margin-left: 33px;
   margin-top: 11px;
   font-size: 14px;
   line-height: 20px;

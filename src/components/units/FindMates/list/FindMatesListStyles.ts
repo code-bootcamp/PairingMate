@@ -10,6 +10,10 @@ export const FindMateAddButtonWrap = styled.p`
     width: 85%;
     max-width: 100%;
   }
+
+  @media all and ${theme.tablet} {
+    width: 90%;
+  }
 `;
 
 export const FindmateAddButton = styled.button`
