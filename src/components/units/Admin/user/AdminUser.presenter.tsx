@@ -17,7 +17,6 @@ const AdminUserUI = (props: IAdminUserProps) => {
                     <tr>
                       <th>유저명</th>
                       <th>E-Mail</th>
-                      <th>강퇴</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -25,7 +24,6 @@ const AdminUserUI = (props: IAdminUserProps) => {
                       <tr key={index}>
                         <td>{el.name}</td>
                         <td>{el.email}</td>
-                        <td>{el.uid}</td>
                       </tr>
                     ))}
                   </tbody>

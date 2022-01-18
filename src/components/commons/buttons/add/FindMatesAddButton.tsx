@@ -40,7 +40,7 @@ function FindMatesAddButton() {
   ) : (
     <FindMateAddButtonWrap>
       <FindmateAddButton
-        style={{ opacity: "0", transition: ".5;" }}
+        style={{ opacity: "0", transition: ".5s;" }}
         onClick={onClickMoveToFindmateAddPage}
       ></FindmateAddButton>
     </FindMateAddButtonWrap>

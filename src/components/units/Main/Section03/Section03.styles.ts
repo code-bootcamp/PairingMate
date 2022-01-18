@@ -92,6 +92,7 @@ export const BestDealList = styled.ul`
       height: 264px;
       background-color: #ccc;
       border-radius: 15px;
+      border:1px solid #ebebeb;
       overflow:hidden;
 
       p{

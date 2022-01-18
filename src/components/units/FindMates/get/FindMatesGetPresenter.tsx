@@ -104,7 +104,7 @@ const FindmatesGetUI = (props: IFindmateGetUIProps) => {
                     </S.ContentsInfoImage>
                   ))}
               </Slider>
-              <p>{props.data?.fetchBoard.contents}</p>
+              <S.ContentsWrap>{props.data?.fetchBoard.contents}</S.ContentsWrap>
               {replaceTags(props.data?.fetchBoard.youtubeUrl || "").map(
                 (el) => (
                   <span key={el}>{el}</span>

@@ -184,4 +184,36 @@ export const globalStyles = css`
     outline: none;
     cursor: pointer;
   }
+
+  .section02-bg {
+    position: relative;
+  }
+  .section02-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/sub/cs-center/img_partner_inquiry.jpg");
+    background-size: cover;
+    opacity: 0.1;
+    z-index: -1;
+  }
+
+  .section03-bg {
+    position: relative;
+  }
+  .section03-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/main/bg_main_section03.jpg");
+    background-size: cover;
+    opacity: 0.2;
+    z-index: -1;
+  }
 `;
