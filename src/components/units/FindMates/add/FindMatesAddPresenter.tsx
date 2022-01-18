@@ -44,16 +44,20 @@ const FindMatesAddUI = (props: FindmatesAddUIProps) => {
             defaultValue={props.data?.fetchBoard.contents}
           />
           <S.FindmatesInputFooter>
-            <SearchAddr
-              setBoardAddress={props.setBoardAddress}
-              data={props.data}
-            />
-            <Uploads
-              isUpdate={props.isUpdate}
-              data={props.data?.fetchBoard.images}
-              setIsUpdateImages={props.setIsUpdateImages}
-              setImages={props.setImages}
-            />
+            <S.FlexBox>
+              <SearchAddr
+                setBoardAddress={props.setBoardAddress}
+                data={props.data}
+              />
+            </S.FlexBox>
+            <S.FlexBox>
+              <Uploads
+                isUpdate={props.isUpdate}
+                data={props.data?.fetchBoard.images}
+                setIsUpdateImages={props.setIsUpdateImages}
+                setImages={props.setImages}
+              />
+            </S.FlexBox>
           </S.FindmatesInputFooter>
           <S.FindmatesButtonWrapper>
             {props.isUpdate ? (
