@@ -16,18 +16,39 @@ export const Wrapper = styled.div`
   margin-top: 70px;
 `;
 export const BestdealWrapper = styled.div`
-  display: flex;
-  /* flex-wrap: wrap; */
-  flex-flow: row wrap;
+  /* display: flex; */
   width: 100%;
   padding: 0 -10px;
   /* border: 1px solid; */
+
+  @media all and (min-width: 1200px) {
+    .slick-track {
+      width: 100% !important;
+    }
+  }
+`;
+export const BestdealItemWrapper = styled.div`
+  /* display: flex; */
+  width: 100%;
 `;
 export const BestdealItem = styled.div`
   width: 25%;
   height: 375px;
   margin: 0 10px;
   background-color: #dddddd;
+
+  width: 100%;
+  @media all and ${theme.laptop} {
+    width: 33.3333%;
+  }
+
+  @media all and ${theme.tablet} {
+    width: 50%;
+  }
+  @media all and (max-width: 400px) {
+    width: 100%;
+    margin-bottom: 25px;
+  }
 `;
 export const BestdealImg = styled.img`
   width: 100%;
@@ -101,36 +122,30 @@ export const NavigationList = styled.ul`
     }
   }
 `;
-export const ProductWrapper = styled.div`
+export const ProductWrapper = styled.ul`
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   margin: 30px -10px 0 -10px;
+  padding: 0 -10px;
 `;
-export const ProductItem = styled.div`
-  width: 25%;
+export const ProductItem = styled.li`
+  width: 100%;
   height: 375px;
-  background-color: #dddddd;
-  padding: 0 10px;
-
-  @media all and ${theme.laptop} {
-    width: 33.3333%;
-  }
-
-  @media all and ${theme.tablet} {
-    width: 50%;
-  }
-
-  @media all and (max-width: 400px) {
-    width: 100%;
-    margin-bottom: 25px;
-  }
+  /* padding: 0 10px; */
+`;
+export const ItemWrapper = styled.figure`\
+width: 25%;
+margin: 0 10px;
+background-color: #dddddd;
+`;
+export const ImgWrapper = styled.p`
+  width: 100%;
 `;
 export const ProductImg = styled.img`
   width: 100%;
   height: 240px;
 `;
-export const ProductTextBox = styled.div`
+export const ProductTextBox = styled.figcaption`
   width: 100%;
   height: 135px;
   padding-left: 14px;
@@ -142,7 +157,7 @@ export const ProductTitle = styled.h4`
   font-size: 16px;
   line-height: 23px;
 `;
-export const ProductAddress = styled.h4`
+export const ProductAddress = styled.p`
   height: 23px;
   margin-top: 14px;
   font-weight: 500;
@@ -160,6 +175,7 @@ export const ProductTags = styled.span`
   width: 50px;
   height: 23px;
   margin-right: 10px;
+  padding: 5px 10px;
   border-radius: 30px;
   font-weight: 500;
   font-size: 15px;

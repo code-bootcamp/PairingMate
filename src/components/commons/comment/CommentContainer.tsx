@@ -36,7 +36,6 @@ const Comments = (props: any) => {
   useEffect(() => {
     getComments();
   }, []);
-  console.log("리로드");
   // 가져오는 로직
   const getComments = async () => {
     const userRef = collection(db, "comments");
