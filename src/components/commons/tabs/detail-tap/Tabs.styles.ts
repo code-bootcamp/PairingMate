@@ -21,6 +21,11 @@ export const TabTitle = styled.li<{ isActive: boolean }>`
   &:last-child {
     border-right: 1px solid #ddd;
   }
+  @media all and ${theme.tablet} {
+    height: 35px;
+    font-size: ${theme.fontsize.fs16};
+    line-height: 25px;
+  }
 
   button {
     display: block;
@@ -28,5 +33,9 @@ export const TabTitle = styled.li<{ isActive: boolean }>`
     padding: 10px 15px;
     color: ${(props) => (!props.isActive ? "#333" : "#213358")};
     font-weight: ${(props) => (!props.isActive ? "400" : "700")};
+
+    @media all and ${theme.tablet} {
+      padding: 5px 10px;
+    }
   }
 `;

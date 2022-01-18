@@ -4,7 +4,7 @@ import theme from "../../../../commons/styles/variables";
 export const Header = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  margin: 0 -30px;
 
   @media all and ${theme.tablet} {
     margin: 0;
