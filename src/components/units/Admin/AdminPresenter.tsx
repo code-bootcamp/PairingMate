@@ -28,7 +28,6 @@ const AdminPageUI = (props: IAdminProps) => {
                       <A.UserCount>
                         120<span>명</span>
                       </A.UserCount>
-                      <button>유저 리스트</button>
                     </figcaption>
                   </figure>
                 </li>
@@ -46,7 +45,6 @@ const AdminPageUI = (props: IAdminProps) => {
                       <A.UserCount>
                         20<span>명</span>
                       </A.UserCount>
-                      <button>유저 리스트</button>
                     </figcaption>
                   </figure>
                 </li>
@@ -79,16 +77,16 @@ const AdminPageUI = (props: IAdminProps) => {
                                     <span>{el.name}</span>
                                   </AI.JobTitle>
                                   <AI.ContactInfo>
-                                    <p>
+                                    <div>
                                       <span>이메일 주소 : </span>
                                       {el.email}
-                                    </p>
+                                    </div>
                                   </AI.ContactInfo>
                                   <AI.ContactInfo>
-                                    <p>
+                                    <div>
                                       <span>연락처 : </span>
                                       {el.contact}
-                                    </p>
+                                    </div>
                                   </AI.ContactInfo>
                                   <h3
                                     style={{
@@ -99,7 +97,7 @@ const AdminPageUI = (props: IAdminProps) => {
                                     문의내용
                                   </h3>
                                   <AI.ModalInquiryContents>
-                                    <p>{el.contents}</p>
+                                    <div>{el.contents}</div>
                                   </AI.ModalInquiryContents>
                                 </AI.CompanyInquiryModal>
                                 <AI.CloseButton onClick={hide}>

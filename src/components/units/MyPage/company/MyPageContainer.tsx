@@ -1,26 +1,23 @@
 import MyPageUI from "./MyPagePresenter";
 import { useMutation, useQuery } from "@apollo/client";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { FETCH_BOARDS } from "./MyPageQueries";
 import {
   IQuery,
-  IQueryFetchBoardsArgs,
+  IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
 import {
   collection,
-  doc,
   getDocs,
   getFirestore,
   query,
-  updateDoc,
   where,
 } from "@firebase/firestore";
 import { app } from "../../../../../pages/_app";
 import { UPLOAD_FILE } from "../../../commons/uploads/UploadsQueries";
 import { checkValidationImage } from "../../../commons/uploads/UploadsValidation";
-import { Modal } from "antd";
-import { gql } from "graphql-request";
+
 import { FETCH_USER_LOGGED_IN } from "../../Login/LoginQueries";
+import { FETCH_USED_ITEMS } from "../../BestDeal/List/BestDealListQueries";
 
 const MyPage = () => {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -38,13 +35,13 @@ const MyPage = () => {
     if (userEmail) {
       const newData = [];
       const buylistRef = collection(db, "payments");
-      const q = query(buylistRef, where("buyer.email", "==", userEmail));
+      const q = query(buylistRef, where("seller.email", "==", userEmail));
       const querySnapshot = await getDocs(q);
-      // querySnapshot.docs.map((el) => seyBuyList(el.data()));
       querySnapshot.docs.map((el) => newData.push(el.data()));
       setBuyList(newData);
     }
   };
+  console.log(buylist);
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const myFile = checkValidationImage(event.target.files?.[0]);
@@ -63,21 +60,16 @@ const MyPage = () => {
     fileRef.current?.click();
   };
 
-  const onClickUpdateProfileImg = async () => {
-    if (profileImage.length === 0) {
-      // const result =
-    }
-  };
-
   // 현재 접속한 유저 정보 파이어 베이스에서 가져오기
 
   useEffect(() => {
     onLoadGetBuyList();
   }, []);
 
-  const { data } = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
-    FETCH_BOARDS
-  );
+  const { data } = useQuery<
+    Pick<IQuery, "fetchUseditems">,
+    IQueryFetchUseditemsArgs
+  >(FETCH_USED_ITEMS);
 
   return (
     <MyPageUI
@@ -89,7 +81,6 @@ const MyPage = () => {
       companyUserInfo={companyUserInfo}
       onChangeFile={onChangeFile}
       onClickProfileImage={onClickProfileImage}
-      onClickUpdateProfileImg={onClickUpdateProfileImg}
     />
   );
 };

@@ -4,7 +4,7 @@ import { IQuery } from "../../../../commons/types/generated/types";
 import { ChangeEvent } from "react";
 
 export interface IMypageProps {
-  data: Pick<IQuery, "fetchBoards">;
+  data: Pick<IQuery, "fetchUseditems">;
   companyUserInfo: Pick<IQuery, "fetchUserLoggedIn">;
   isChanged: boolean;
   profileImage: string;
@@ -12,5 +12,4 @@ export interface IMypageProps {
   buylist: any;
   onClickProfileImage: () => void;
   onChangeFile: (event: ChangeEvent<HTMLInputElement>) => Promise<void>;
-  onClickUpdateProfileImg: () => Promise<void>;
 }

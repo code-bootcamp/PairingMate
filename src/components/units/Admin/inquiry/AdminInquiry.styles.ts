@@ -27,8 +27,10 @@ export const CompanyInquiry = styled.ul`
   margin-top: ${theme.MarginTop.mt30};
 
   li {
-    width: 25%;
+    width: 33.3333%;
+    min-height: 350px;
     margin-bottom: 20px;
+    padding: 0 10px;
 
     > div {
       position: relative;
@@ -43,6 +45,10 @@ export const CompanyInquiry = styled.ul`
         width: 10px;
         height: 100%;
         background-color: ${theme.colorBase};
+      }
+
+      p {
+        padding: 10px 0;
       }
     }
   }
@@ -72,7 +78,10 @@ export const ModalInquiryContents = styled.div`
   border: 1px solid #ebebeb;
   line-height: 1.8;
 `;
-export const InquiryContents = styled.div``;
+export const InquiryContents = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 export const CompanyName = styled.h6`
   padding-bottom: ${theme.PaddingBottom.pb20};
@@ -111,7 +120,7 @@ export const ReplyBtn = styled.button`
   display: inline-block;
   width: 140px;
   height: 30px;
-  margin-left: 20px;
+
   background: #ddd;
 `;
 

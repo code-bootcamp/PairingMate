@@ -19,27 +19,13 @@ const MyPageUI = (props: IMypageProps) => {
             <M.UserInfoHeader>
               <M.UserProfileWrap>
                 <M.UserProfileImg onClick={props.onClickProfileImage}>
-                  <img
-                    src={`https://storage.googleapis.com/${props.profileImage}`}
-                    alt=""
-                  />
+                  <img src="/images/common/logo.png" alt="" />
                 </M.UserProfileImg>
-                <label>
-                  <img src="/images/sub/mypage/ico_user_settings.png" alt="" />
-                </label>
-                <M.OptionButton type="file" onChange={props.onChangeFile} />
               </M.UserProfileWrap>
               <figcaption>
                 <M.UserName>
                   {props.companyUserInfo?.fetchUserLoggedIn.name}
                 </M.UserName>
-                <M.FollowButtonWrap onClick={props.onClickUpdateProfileImg}>
-                  {props.isChanged && (
-                    <>
-                      <M.FollowButton>프로필 수정하기</M.FollowButton>
-                    </>
-                  )}
-                </M.FollowButtonWrap>
               </figcaption>
             </M.UserInfoHeader>
           </M.MyPageUserInfo>
@@ -51,10 +37,10 @@ const MyPageUI = (props: IMypageProps) => {
                     <h3>내가 쓴 게시글</h3>
                     <M.MypageFindMatesPostWrap>
                       <ul>
-                        {props.data?.fetchBoards.map((el) => (
+                        {props.data?.fetchUseditems.map((el) => (
                           <li key={el._id}>
-                            <span>{getCategory(el.title)}</span>
-                            {getTitle(el.title)}
+                            <span>{getCategory(el.name)}</span>
+                            {getTitle(el.name)}
                           </li>
                         ))}
                       </ul>
@@ -98,10 +84,10 @@ const MyPageUI = (props: IMypageProps) => {
                     <h3>내가 쓴 게시글</h3>
                     <M.MypageFindMatesPostWrap>
                       <ul>
-                        {props.data?.fetchBoards.map((el) => (
+                        {props.data?.fetchUseditems.map((el) => (
                           <li key={el._id}>
-                            <span>{getCategory(el.title)}</span>
-                            {getTitle(el.title)}
+                            <span>{getCategory(el.name)}</span>
+                            {getTitle(el.name)}
                           </li>
                         ))}
                       </ul>

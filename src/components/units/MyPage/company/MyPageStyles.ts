@@ -82,6 +82,7 @@ export const UserProfileImg = styled.p`
   height: 150px;
   margin: 0 auto;
   border-radius: 50%;
+  border: 1px solid #ebebeb;
   text-align: center;
   overflow: hidden;
   img {
@@ -184,7 +185,11 @@ export const MyPageArticle = styled.article`
 `;
 
 export const MypageContents = styled.div`
-  padding: 20px 0;
+  padding: 40px 0;
+
+  h3 {
+    margin-top: ${theme.MarginTop.mt20};
+  }
 `;
 
 export const MypageFindMatesPostWrap = styled.div`
