@@ -8,7 +8,9 @@ const AdminNavigationUI = (props: AdminNavigationProps) => {
         <AN.AdminUserProfile>
           <figure>
             <p>
-              <img src="/images/common/white-logo.png" alt="" />
+              <button onClick={props.onClickMoveToMain}>
+                <img src="/images/common/white-logo.png" alt="" />
+              </button>
             </p>
             <figcaption>
               <h3>

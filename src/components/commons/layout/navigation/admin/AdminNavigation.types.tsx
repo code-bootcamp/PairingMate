@@ -4,4 +4,5 @@ export interface AdminNavigationProps {
   onClickMoveToUser: () => void;
   onClickMoveToInquiry: () => void;
   onClickMoveToSales: () => void;
+  onClickMoveToMain: () => void;
 }

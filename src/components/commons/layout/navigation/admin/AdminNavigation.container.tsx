@@ -35,6 +35,10 @@ const AdminNavigation = () => {
     router.push("/admin/sales");
   };
 
+  const onClickMoveToMain = () => {
+    router.push("/");
+  };
+
   useEffect(() => {
     getCurrentDate();
   });
@@ -46,6 +50,7 @@ const AdminNavigation = () => {
         onClickMoveToUser={onClickMoveToUser}
         onClickMoveToInquiry={onClickMoveToInquiry}
         onClickMoveToSales={onClickMoveToSales}
+        onClickMoveToMain={onClickMoveToMain}
       />
     </>
   );
