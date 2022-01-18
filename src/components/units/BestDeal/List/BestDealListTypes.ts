@@ -7,4 +7,5 @@ export interface BestdealListUIProps {
   onClickGetBestdealList: () => void;
   bestOfBestDealList: Pick<IQuery, "fetchUseditemsOfTheBest">;
   bestDealList: Pick<IQuery, "fetchUseditems">;
+  userImage: string;
 }
