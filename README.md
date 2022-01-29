@@ -59,6 +59,9 @@ ppt 이미지 들어갈것
     
     **서비스 지역내 제휴업체와의 협약을 통한 회원권 판매**
     
+    <img width="1216" alt="스크린샷 2022-01-29 오후 8 41 28" src="https://user-images.githubusercontent.com/93374891/151659818-74c6aa80-05f7-4dc2-b176-4d79e212cf47.png">
+
+    
 3. FitnessCenter
     
     **위치기반 서비스를 이용한 현재위치 반경 10km 이내의 피트니스 센터 검색 및 정보제공**
@@ -72,3 +75,9 @@ ppt 이미지 들어갈것
     
     ![스크린샷 2022-01-18 오전 1 17 34](https://user-images.githubusercontent.com/93374891/149805777-1c101fc3-03c1-40f2-be96-db3ba2ca4483.png)
 
+
+5. 고객센터/관리자 페이지
+    
+    **파트너 문의 및 FAQ 수정 및 작성 가능**
+    
+    <img width="1209" alt="스크린샷 2022-01-29 오후 8 41 50" src="https://user-images.githubusercontent.com/93374891/151659849-2d44b0d4-69f3-45b9-9977-91c084f05be6.png">
