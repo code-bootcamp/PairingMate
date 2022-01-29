@@ -42,11 +42,6 @@ URL: [PairingMate](http://pairingmate.com)
 ![스크린샷 2022-01-18 오전 12 34 13](https://user-images.githubusercontent.com/93374891/149798504-711f49bc-da5d-4a45-b447-5168a6b78683.png)
 
 
-
-플로우차트
---------
-ppt 이미지 들어갈것
-
 주요기능
 --------
 1. Find Mates   
@@ -58,6 +53,8 @@ ppt 이미지 들어갈것
 2. BestDeal
     
     **서비스 지역내 제휴업체와의 협약을 통한 회원권 판매**
+    <img width="1216" alt="스크린샷 2022-01-29 오후 8 41 28" src="https://user-images.githubusercontent.com/93374891/151659697-99a7841a-f49c-4ebc-9123-3af1218a4a6b.png">
+
     
 3. FitnessCenter
     
@@ -71,4 +68,11 @@ ppt 이미지 들어갈것
     **위치기반 서비스를 이용한 날씨정보 제공 및 서비스 지역내 산책/운동 코스 정보제공**
     
     ![스크린샷 2022-01-18 오전 1 17 34](https://user-images.githubusercontent.com/93374891/149805777-1c101fc3-03c1-40f2-be96-db3ba2ca4483.png)
+
+5. 고객센터/파트너 페이지
+    
+    **Faq작성 및 파트너 문의 현황 확인**
+    
+   <img width="1209" alt="스크린샷 2022-01-29 오후 8 41 50" src="https://user-images.githubusercontent.com/93374891/151659754-a1cc3883-c924-4c45-9b03-a51dba0e19d6.png">
+
 
